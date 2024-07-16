@@ -316,10 +316,13 @@ require("lazy").setup({
 							key = "h",
 						},
 						{
-							desc = " Neovim Files",
+							desc = " Dot Files",
 							group = "Number",
 							action = function()
-								require("telescope.builtin").find_files({ cwd = "~/.config/nvim/" })
+								require("telescope.builtin").find_files({
+									cwd = "~/dotfiles/",
+									hidden = true,
+								})
 							end,
 							key = "n",
 						},
