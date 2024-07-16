@@ -1,3 +1,3 @@
 # dotfiles
 
-Here are my dotfiles, feel free to use be inspired by as I was by many youtubers/influencers
+These are my dotfiles, feel free to "get inspired" by them, just like I did with many others out there
