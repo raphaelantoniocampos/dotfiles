@@ -9,18 +9,23 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-for_window [class="^.*"] border pixel 1
+# for_window [class="^.*"] border pixel 1
+
 set $mod Mod1
 
 exec --no-startup-id picom
 
-exec_always feh --bg-scale ~/backgrounds/nice-desert-background.jpg
+exec_always feh --bg-fill ~/feh/nice-desert-background.jpg
 
 
 # kill any hanging polybar processes
 exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
+
+# Display Resolution
+
+exec_always xrandr --output eDP-1 --mode 1366x768
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:0xProto Nerd Font Mono 10
@@ -243,3 +248,5 @@ client.urgent            $peach    $base  $peach   $overlay0  $peach
 client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
 client.background        $base
 
+# Shortcut for Lockscreen
+# bindsym $mod+x exec /home/$USER/.config/scripts/lock
