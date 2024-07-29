@@ -128,8 +128,8 @@
   polybar
   rofi
   git
-  gleam
   killall
+  gleam
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
