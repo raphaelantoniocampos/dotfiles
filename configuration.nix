@@ -19,45 +19,53 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
- #  # Enable OpenGL
- #  hardware.opengl = {
- #    enable = true;
- #  };
-	#
- #  # Load nvidia driver for Xorg and Wayland
- #  services.xserver.videoDrivers = ["nvidia"];
-	#
- #  hardware.nvidia = {
-	#
- #    # Modesetting is required.
- #    modesetting.enable = true;
-	#
- #    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
- #    # Enable this if you have graphical corruption issues or application crashes after waking
- #    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
- #    # of just the bare essentials.
- #    powerManagement.enable = false;
-	#
- #    # Fine-grained power management. Turns off GPU when not in use.
- #    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
- #    powerManagement.finegrained = false;
-	#
- #    # Use the NVidia open source kernel module (not to be confused with the
- #    # independent third-party "nouveau" open source driver).
- #    # Support is limited to the Turing and later architectures. Full list of 
- #    # supported GPUs is at: 
- #    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
- #    # Only available from driver 515.43.04+
- #    # Currently alpha-quality/buggy, so false is currently the recommended setting.
- #    open = false;
-	#
- #    # Enable the Nvidia settings menu,
-	# # accessible via `nvidia-settings`.
- #    nvidiaSettings = true;
-	#
- #    # Optionally, you may need to select the appropriate driver version for your specific GPU.
- #    package = config.boot.kernelPackages.nvidiaPackages.stable;
- #  };
+  # Enable OpenGL
+  hardware.graphics.enable = true;
+
+  # # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # of just the bare essentials.
+    powerManagement.enable = false;
+
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    prime = {
+      sync.enable = true;
+      # Make sure to use the correct Bus ID values for your system!
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:4:0:0";
+      # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
+    };
+
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
  
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -77,6 +85,21 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
+  # Configure auto upgrade and auto garbage collect
+  system.autoUpgrade = {
+   enable = true;
+   dates = "*-*-* 04:00:00";
+   persistent = true;
+   allowReboot = true;
+  };
+
+  nix.gc = {
+   automatic = true;
+   persistent = false;
+   dates = "daily";
+   options = "--delete-older-than 30d";
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -92,13 +115,14 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   
   # Enable i3 Window Manager.
   services.xserver.windowManager.i3.enable = true;
+  # services.xserver.desktopManager.xterm.enable = true;
+  # services.displayManager.defaultSession = "none+i3";
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
@@ -108,15 +132,17 @@
   services.printing.enable = true;
 
   # Enable sound.
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = true;
   # OR
-  services.pipewire = {
-    enable = true;
-    # pulse.enable = true;
-  };
+  # services.pipewire = {
+  #   enable = true;
+  #   # pulse.enable = true;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
+
+  programs.steam.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.raphaelac = {
@@ -142,24 +168,34 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+  killall
+  firefox
+  lshw
+  #graphics
+  intel-gpu-tools
+  xorg.xf86videonouveau
+  xorg.xf86videofbdev
+  xorg.xf86videovesa
+  nvd
+  #dev tools
   neovim
   wget
   ripgrep
   fd
   xclip
+  git
+  #i3
   i3
   feh
   picom
   polybar
   rofi
-  git
-  killall
-  firefox
-  lshw
-  # programming languages
+  #programming languages
   gleam
   python3
   zig
+  rustc
+  cargo
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
