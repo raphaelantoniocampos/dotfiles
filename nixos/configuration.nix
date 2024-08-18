@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -17,13 +18,14 @@
   networking.hostName = "raphael-x555lf"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Enable OpenGL
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   # # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 
@@ -50,7 +52,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     prime = {
@@ -66,7 +68,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
- 
+
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
@@ -85,20 +87,33 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # Configure auto upgrade and auto garbage collect
+  # Configure auto upgrade
   system.autoUpgrade = {
-   enable = true;
-   dates = "*-*-* 04:00:00";
-   persistent = true;
-   allowReboot = true;
+    enable = true;
+    dates = "*-*-* 04:00:00";
+    persistent = true;
+    allowReboot = true;
   };
 
+  # Enable auto garbace collect
   nix.gc = {
-   automatic = true;
-   persistent = false;
-   dates = "daily";
-   options = "--delete-older-than 30d";
+    automatic = true;
+    persistent = false;
+    dates = "daily";
+    options = "--delete-older-than 30d";
   };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings.auto-optimise-store = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # swapDevices = [{
+  #   device = "/var/lib/swapfile/";
+  #   size = 16 * 1024;
+  # }];
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -118,11 +133,17 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
+
+  # Prevent system from sleeping
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
   # Enable i3 Window Manager.
   services.xserver.windowManager.i3.enable = true;
+  services.displayManager.defaultSession = "none+i3";
   # services.xserver.desktopManager.xterm.enable = true;
-  # services.displayManager.defaultSession = "none+i3";
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "br";
@@ -132,29 +153,99 @@
   services.printing.enable = true;
 
   # Enable sound.
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio =
+    {
+      enable = true;
+      # configFile = pkgs.writeText "default.pa" ''
+      #   load-module module-bluetooth-policy
+      #   load-module module-bluetooth-discover
+      #   ## module fails to load with 
+      #   ##   module-bluez5-device.c: Failed to get device path from module arguments
+      #   ##   module.c: Failed to load module "module-bluez5-device" (argument: ""): initialization failed.
+      #   # load-module module-bluez5-device
+      #   # load-module module-bluez5-discover
+      # '';
+      extraConfig = "load-module module-combine-sink";
+    };
   # OR
   # services.pipewire = {
   #   enable = true;
-  #   # pulse.enable = true;
+  # pulse.enable = true;
   # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  programs.steam.enable = true;
+  # Laptop power management
+  services.power-profiles-daemon.enable = false;
+
+  # auto-cpufreq
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "always";
+      };
+    };
+  };
+
+  # tlp service
+  #
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #
+  #     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  #     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+  #
+  #     CPU_MIN_PERF_ON_AC = 0;
+  #     CPU_MAX_PERF_ON_AC = 100;
+  #     CPU_MIN_PERF_ON_BAT = 0;
+  #     CPU_MAX_PERF_ON_BAT = 20;
+  #
+  #    #Optional helps save long term battery health
+  #    # START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+  #    # STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+  #
+  #   };
+  # };
+
+  # gtk.enable = true;
+
+  # Enable steam
+  # programs.steam.enable = true;
+  # programs.steam.gamescopeSession.enable = true;
+  # programs.gamemode.enable = true;
+
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        Experimental = true;
+      };
+    };
+  };
+
+  services.blueman.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.raphaelac = {
     isNormalUser = true;
     description = "raphaelac";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [
-    librewolf
-    steam
-    kitty
-    stow
-    neofetch
+      librewolf
+      neofetch
     ];
   };
 
@@ -164,47 +255,78 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
-  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  killall
-  firefox
-  lshw
-  #graphics
-  intel-gpu-tools
-  xorg.xf86videonouveau
-  xorg.xf86videofbdev
-  xorg.xf86videovesa
-  nvd
-  #dev tools
-  neovim
-  wget
-  ripgrep
-  fd
-  xclip
-  git
-  #i3
-  i3
-  feh
-  picom
-  polybar
-  rofi
-  #programming languages
-  gleam
-  python3
-  zig
-  rustc
-  cargo
+    networkmanagerapplet
+    killall
+    firefox
+    lshw
+    lsof
+    gvfs
+    pulseaudio
+    pulseaudioFull
+    libpulseaudio
+    polybar-pulseaudio-control
+    pulseaudio-module-xrdp
+    unrar
+    #graphics
+    # egl-wayland
+    # vtk_9_egl
+    # dbus
+    # spirv-tools
+    # vulkan-utility-libraries
+    # vulkan-tools
+    # vulkan-extension-layer
+    # vulkan-validation-layers
+    # vulkan-headers
+    # haskellPackages.vulkan-utils
+    intel-gpu-tools
+    xorg.xf86videonouveau
+    xorg.xf86videofbdev
+    xorg.xf86videovesa
+    nvd
+    #i3
+    i3
+    feh
+    picom
+    polybarFull
+    rofi
+    #dev tools
+    neovim
+    stow
+    kitty
+    xdotool
+    vimPlugins.luasnip
+    wget
+    ripgrep
+    unzip
+    fd
+    xclip
+    git
+    maim
+    luajitPackages.luarocks-nix
+    transmission_4-gtk
+    #programming languages
+    python3
+    erlang
+    gleam
+    lua
+    rustup
+    zig
+    gccgo
+    cmake
+    gnumake
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (oldAttrs: {
+  #       buildInputs = oldAttrs.buildInputs ++ [ super.spirv-tools ];
+  #     });
+  #   })
+  # ];
 
   # List services that you want to enable:
 

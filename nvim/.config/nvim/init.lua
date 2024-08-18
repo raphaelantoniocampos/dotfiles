@@ -229,17 +229,29 @@ require("lazy").setup({
 		end,
 	},
 
-	-- {
-	-- 	"folke/zen-mode.nvim",
-	-- 	opts = {
-	-- 		-- your configuration comes here
-	-- 		-- or leave it empty to use the default settings
-	-- 		-- refer to the configuration section below
-	-- 	},
-	-- 	config = function()
-	-- 		require("zen-mode").toggle()
-	-- 	end,
-	-- },
+{
+  "allaman/emoji.nvim",
+  version = "1.0.0", -- optionally pin to a tag
+  ft = "markdown", -- adjust to your needs
+  dependencies = {
+    -- optional for nvim-cmp integration
+    "hrsh7th/nvim-cmp",
+    -- optional for telescope integration
+    "nvim-telescope/telescope.nvim",
+  },
+  opts = {
+    -- default is false
+    enable_cmp_integration = false,
+    -- optional if your plugin installation directory
+    -- is not vim.fn.stdpath("data") .. "/lazy/
+    plugin_path = vim.fn.expand("$HOME/plugins/"),
+  },
+  config = function(_, opts)
+    require("emoji").setup(opts)
+    -- optional for telescope integration
+    require("telescope").load_extension("emoji")
+  end,
+},
 
 	{
 		"stevearc/oil.nvim",
@@ -335,10 +347,14 @@ require("lazy").setup({
 							action = function()
 								require("telescope.builtin").find_files({
 									cwd = "~/dotfiles/",
+									follow = true,
 									hidden = true,
+									no_ignore = false,
+									no_ignore_parent = false,
+									file_ignore_patterns = {".git/"},
 								})
 							end,
-							key = "n",
+							key = ".",
 						},
 					},
 				},
@@ -685,6 +701,9 @@ require("lazy").setup({
 				"debugpy",
 				"mypy",
 				"ruff",
+				"nil",
+				"nixpkgs-fmt",
+				"rnix-lsp",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

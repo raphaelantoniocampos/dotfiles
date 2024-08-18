@@ -1,5 +1,5 @@
 if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+  for m in $(xrandr --query | grep "eDP" | grep "connected" | cut -d" " -f1); do
     MONITOR=$m polybar --reload toph &
   done
 else
