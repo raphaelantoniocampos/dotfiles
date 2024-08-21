@@ -221,6 +221,14 @@
   # programs.steam.gamescopeSession.enable = true;
   # programs.gamemode.enable = true;
 
+  programs.nix-ld =
+    {
+      enable = true;
+      libraries = with pkgs; [
+        ruff
+      ];
+    };
+
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -269,6 +277,7 @@
     polybar-pulseaudio-control
     pulseaudio-module-xrdp
     unrar
+    transmission_4-gtk
     #graphics
     # egl-wayland
     # vtk_9_egl
@@ -304,8 +313,7 @@
     xclip
     git
     maim
-    luajitPackages.luarocks-nix
-    transmission_4-gtk
+    luajitPackages.luarocks
     #programming languages
     python3
     erlang
