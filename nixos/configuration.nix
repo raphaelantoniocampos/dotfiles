@@ -2,13 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -103,17 +103,14 @@
     options = "--delete-older-than 30d";
   };
 
+  # Enable experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable auto optimise
   nix.settings.auto-optimise-store = true;
 
+  # Configure kernel update
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # swapDevices = [{
-  #   device = "/var/lib/swapfile/";
-  #   size = 16 * 1024;
-  # }];
-
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -241,6 +238,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.raphaelac = {
     isNormalUser = true;
+    initialPassword = "1234";
     description = "raphaelac";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [
@@ -319,14 +317,6 @@
     cmake
     gnumake
   ];
-
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     vulkan-validation-layers = super.vulkan-validation-layers.overrideAttrs (oldAttrs: {
-  #       buildInputs = oldAttrs.buildInputs ++ [ super.spirv-tools ];
-  #     });
-  #   })
-  # ];
 
   # List services that you want to enable:
 
