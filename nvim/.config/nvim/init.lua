@@ -81,6 +81,10 @@ vim.keymap.set("n", "<C-W>n", ":Neotree<CR>", { desc = "Open [N]eotree" })
 vim.keymap.set("n", "<C-W>t", ":tabnew<CR>", { desc = "Open a new [t]ab" })
 vim.keymap.set("n", "<C-W>T", ":tabnew | term<CR>", { desc = "Open a new tab and [T]erminal" })
 vim.keymap.set("n", "<C-W>m", ":tabnew | edit main.py<CR>", { desc = "Open a new tab and main" })
+vim.keymap.set("n", "<leader>se", function()
+	vim.cmd("split | terminal tuimoji")
+end, { desc = "[S]earch [E]moji" })
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -226,30 +230,6 @@ require("lazy").setup({
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
 			require("colorizer").setup({})
-		end,
-	},
-
-	{
-		"allaman/emoji.nvim",
-		version = "1.0.0", -- optionally pin to a tag
-		ft = "markdown", -- adjust to your needs
-		dependencies = {
-			-- optional for nvim-cmp integration
-			"hrsh7th/nvim-cmp",
-			-- optional for telescope integration
-			"nvim-telescope/telescope.nvim",
-		},
-		opts = {
-			-- default is false
-			enable_cmp_integration = false,
-			-- optional if your plugin installation directory
-			-- is not vim.fn.stdpath("data") .. "/lazy/
-			plugin_path = vim.fn.expand("$HOME/plugins/"),
-		},
-		config = function(_, opts)
-			require("emoji").setup(opts)
-			-- optional for telescope integration
-			require("telescope").load_extension("emoji")
 		end,
 	},
 
@@ -427,7 +407,7 @@ require("lazy").setup({
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
-		branch = "0.1.x",
+		-- branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{ -- If encountering errors, see telescope-fzf-native README for install instructions
@@ -645,7 +625,8 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- gopls = {},
-				-- pyright = {},
+				ruff_lsp = {},
+				html = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -701,6 +682,7 @@ require("lazy").setup({
 				"debugpy",
 				"mypy",
 				"ruff",
+				"ruff-lsp",
 				"html-lsp",
 				"prettier",
 			})
@@ -717,6 +699,8 @@ require("lazy").setup({
 						require("lspconfig")[server_name].setup(server)
 
 						require("lspconfig").gleam.setup({})
+						require("lspconfig").ruff_lsp.setup({})
+						require("lspconfig").html.setup({})
 					end,
 				},
 			})
