@@ -287,3 +287,4 @@ client.background        $base
 
 # Shortcut for Lockscreen
 # bindsym $mod+x exec /home/$USER/.config/scripts/lock
+
