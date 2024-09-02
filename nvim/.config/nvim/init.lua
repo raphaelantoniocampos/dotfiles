@@ -684,7 +684,7 @@ require("lazy").setup({
 				"ruff",
 				"ruff-lsp",
 				"html-lsp",
-				"prettier",
+				-- "prettier",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
