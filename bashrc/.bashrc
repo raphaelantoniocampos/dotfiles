@@ -14,16 +14,20 @@ test -s ~/.alias && . ~/.alias || true
 
 # NOTE: AWS keys
 function con() {
-    if [ -f "$HOME/personal/$1/ssh.txt" ]; then
-        COMMAND=$(cat "$HOME/personal/$1/ssh.txt")
+    if [ -f "$HOME/repositories/personal/$1/ssh.txt" ]; then
+        COMMAND=$(cat "$HOME/repositories/personal/$1/ssh.txt")
         eval "$COMMAND"
     else
-        echo "Arquivo $HOME/personal/$1/ssh.txt não encontrado."
+        echo "Arquivo $HOME/repositories/personal/$1/ssh.txt não encontrado."
     fi
 }
 
 # NOTE: OpenSuse alias
 alias zup="sudo zypper refresh && sudo zypper dup --allow-vendor-change"
+alias zin="sudo zypper in"
+alias zse="sudo zypper se"
 alias zclean='sudo zypper packages --unneeded | grep ^i > /tmp/unneeded_packages.txt && if [ -s /tmp/unneeded_packages.txt ]; then cat /tmp/unneeded_packages.txt | cut -d '\''|'\'' -f3 | xargs sudo zypper rm -y --clean-deps; else echo "No unneeded packages found."; fi'
 alias zclean_old='sudo zypper packages --unneeded | grep ^i|cut -d '\''|'\'' -f3|xargs sudo zypper rm -y --clean-deps'
 
+# NOTE:Gleam Run Lustre Fullstack
+alias glustre="gleam run -m lustre/dev build --outdir=../server/priv/static"
