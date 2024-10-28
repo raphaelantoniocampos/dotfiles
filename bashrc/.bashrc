@@ -30,4 +30,4 @@ alias zclean='sudo zypper packages --unneeded | grep ^i > /tmp/unneeded_packages
 alias zclean_old='sudo zypper packages --unneeded | grep ^i|cut -d '\''|'\'' -f3|xargs sudo zypper rm -y --clean-deps'
 
 # NOTE:Gleam Run Lustre Fullstack
-alias glustre="gleam run -m lustre/dev build --outdir=../server/priv/static"
+alias glustre="gleam run -m lustre/dev build --outdir=../server/priv/static --minify"

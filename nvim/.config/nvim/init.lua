@@ -75,6 +75,15 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 for i = 1, 9 do
 	vim.keymap.set("n", "<leader>" .. i, ":tabn " .. i .. "<CR>", {})
 end
+
+-- HTML SNIPPET
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>th", -- Atalho: \ + t + h
+	'i<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n\n</body>\n</html>',
+	{ noremap = true, silent = true }
+)
+
 vim.keymap.set("n", "<S-tab>", ":tabp<CR>", {})
 vim.keymap.set("n", "<tab>", ":tabn<CR>", {})
 vim.keymap.set("n", "<C-W>n", ":Neotree<CR>", { desc = "Open [N]eotree" })
