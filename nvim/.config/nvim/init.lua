@@ -701,7 +701,6 @@ require("lazy").setup({
 				"debugpy",
 				"mypy",
 				"ruff",
-				"ruff-lsp",
 				"python-lsp-server",
 				"html-lsp",
 				"prettier",
