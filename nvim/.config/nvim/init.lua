@@ -644,7 +644,6 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- gopls = {},
-				ruff_lsp = {},
 				html = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -718,7 +717,6 @@ require("lazy").setup({
 						require("lspconfig")[server_name].setup(server)
 
 						require("lspconfig").gleam.setup({})
-						require("lspconfig").ruff_lsp.setup({})
 						require("lspconfig").html.setup({})
 					end,
 				},
