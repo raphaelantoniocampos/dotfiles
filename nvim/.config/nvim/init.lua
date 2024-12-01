@@ -76,6 +76,10 @@ for i = 1, 9 do
 	vim.keymap.set("n", "<leader>" .. i, ":tabn " .. i .. "<CR>", {})
 end
 
+vim.keymap.set("n", "<leader>ca", function()
+	require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
+
 -- HTML SNIPPET
 vim.api.nvim_set_keymap(
 	"n",
@@ -175,6 +179,26 @@ require("lazy").setup({
 	-- Custom Plugins
 	--
 	--
+	--
+	{
+		"rachartier/tiny-code-action.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		event = "LspAttach",
+		config = function()
+			require("tiny-code-action").setup()
+		end,
+	},
+
+	{
+		"sbdchd/neoformat",
+		-- config = function()
+		-- 	require("neoformat").setup()
+		-- end,
+	},
+
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
