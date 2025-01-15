@@ -197,6 +197,7 @@ return { -- LSP Configuration & Plugins
       bashls = {},
       cssls = {},
       clangd = {},
+      gopls = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -207,6 +208,7 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
+      'clang-format',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

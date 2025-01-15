@@ -55,4 +55,16 @@ return {
       require('colorizer').setup()
     end,
   },
+
+  {
+    -- high-performance color highlighter
+    'nvimtools/none-ls.nvim',
+    config = function()
+      require('none-ls').setup(){
+sources = {
+        none-ls.builtins.formatting.clang_format,
+      }
+    end,
+  },
 }
+
