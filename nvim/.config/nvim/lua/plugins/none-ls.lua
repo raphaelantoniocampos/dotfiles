@@ -4,6 +4,7 @@ return {
   dependencies = {
     'nvimtools/none-ls-extras.nvim',
     'jayp0521/mason-null-ls.nvim', -- ensure dependencies are installed
+    'vesztergombi/checkmate',
   },
   config = function()
     local null_ls = require 'null-ls'
@@ -26,7 +27,7 @@ return {
       diagnostics.checkmake,
       formatting.stylua,
       formatting.shfmt.with { args = { '-i', '4' } },
-      formatting.terraform_fmt,
+      formatting.clang_format,
       require('none-ls.formatting.ruff').with { extra_args = { '--extend-select', 'I' } },
       require 'none-ls.formatting.ruff_format',
     }

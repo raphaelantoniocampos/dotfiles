@@ -20,18 +20,18 @@ return {
     -- Hints keybinds
     'folke/which-key.nvim',
     opts = {
-      -- win = {
-      --   border = {
-      --     { '┌', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '┐', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --     { '┘', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '└', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --   },
-      -- },
+      win = {
+        border = {
+          { '┌', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '┐', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+          { '┘', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '└', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+        },
+      },
     },
   },
   {
@@ -55,16 +55,4 @@ return {
       require('colorizer').setup()
     end,
   },
-
-  {
-    -- high-performance color highlighter
-    'nvimtools/none-ls.nvim',
-    config = function()
-      require('none-ls').setup(){
-sources = {
-        none-ls.builtins.formatting.clang_format,
-      }
-    end,
-  },
 }
-

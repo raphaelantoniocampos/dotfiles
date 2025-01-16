@@ -6,9 +6,10 @@ return {
   },
   event = 'LspAttach',
   config = function()
-    require('tiny-code-action').setup()
+    local tiny_code_action = require 'tiny-code-action'
+    tiny_code_action.setup()
     vim.keymap.set('n', '<leader>ca', function()
-      require('tiny-code-action').code_action()
+      tiny_code_action.code_action()
     end, { noremap = true, silent = true })
   end,
 }
