@@ -25,7 +25,7 @@ require('lazy').setup({
   require 'plugins.lsp',
   require 'plugins.none-ls',
   require 'plugins.indent-blankline',
-  require 'plugins.tiny-code-action',
+  require 'plugins.trouble',
   require 'plugins.misc',
   require 'plugins.noice',
   require 'plugins.dashboard',
