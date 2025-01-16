@@ -25,7 +25,6 @@ require('lazy').setup({
   require 'plugins.lsp',
   require 'plugins.none-ls',
   require 'plugins.indent-blankline',
-  require 'plugins.harpoon',
   require 'plugins.tiny-code-action',
   require 'plugins.misc',
   require 'plugins.noice',
@@ -34,6 +33,7 @@ require('lazy').setup({
   require 'plugins.comment',
   require 'plugins.mini-animate',
   require 'plugins.oil',
+  require 'plugins.which-key',
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the

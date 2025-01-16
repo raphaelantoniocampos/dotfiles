@@ -16,24 +16,26 @@ return {
     -- GitHub integration for vim-fugitive
     'tpope/vim-rhubarb',
   },
-  {
-    -- Hints keybinds
-    'folke/which-key.nvim',
-    opts = {
-      win = {
-        border = {
-          { '┌', 'FloatBorder' },
-          { '─', 'FloatBorder' },
-          { '┐', 'FloatBorder' },
-          { '│', 'FloatBorder' },
-          { '┘', 'FloatBorder' },
-          { '─', 'FloatBorder' },
-          { '└', 'FloatBorder' },
-          { '│', 'FloatBorder' },
-        },
-      },
-    },
-  },
+
+  -- TODO: Remove comment
+  -- {
+  --   -- Hints keybinds
+  --   'folke/which-key.nvim',
+  --   opts = {
+  --     win = {
+  --       border = {
+  --         { '┌', 'FloatBorder' },
+  --         { '─', 'FloatBorder' },
+  --         { '┐', 'FloatBorder' },
+  --         { '│', 'FloatBorder' },
+  --         { '┘', 'FloatBorder' },
+  --         { '─', 'FloatBorder' },
+  --         { '└', 'FloatBorder' },
+  --         { '│', 'FloatBorder' },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     -- Autoclose parentheses, brackets, quotes, etc.
     'windwp/nvim-autopairs',

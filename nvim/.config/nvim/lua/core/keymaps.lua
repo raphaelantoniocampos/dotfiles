@@ -44,19 +44,21 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts())
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts())
 
 -- Buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts())
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts())
-vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts 'Delete buffer') -- close buffer
-vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts())                                -- next buffer
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts())                          -- previous buffer
+vim.keymap.set('n', '<leader>b<Tab>', ':bnext<CR>', opts 'Next buffer')           -- next buffer
+vim.keymap.set('n', '<leader>b<S-Tab>', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
+vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer')           -- close buffer
+vim.keymap.set('n', '<leader>xb', ':Bdelete!<CR>', opts 'Close buffer')           -- close buffer
+vim.keymap.set('n', '<leader>bn', '<cmd> enew <CR>', opts 'New buffer')           -- new buffer
 
 -- Increment/decrement numbers
 vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment
 vim.keymap.set('n', '<leader>-', '<C-x>', opts 'Decrement number') -- decrement
 
 -- Window management
-vim.keymap.set('n', '<leader>v', '<C-w>v', opts 'Split window vertically') -- split window vertically
-vim.keymap.set('n', '<leader>h', '<C-w>s', opts 'Split window horizontally') -- split window horizontally
-vim.keymap.set('n', '<leader>se', '<C-w>=', opts 'Make split windows equal width & height') -- make split windows equal width & height
+vim.keymap.set('n', '<leader>v', '<C-w>v', opts 'Split window vertically')         -- split window vertically
+vim.keymap.set('n', '<leader>h', '<C-w>s', opts 'Split window horizontally')       -- split window horizontally
 vim.keymap.set('n', '<leader>xs', ':close<CR>', opts 'Close current split window') -- close current split window
 
 -- Navigate between splits
@@ -66,10 +68,11 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts())
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts())
 
 -- Tabs
-vim.keymap.set('n', '<leader><Tab>o', ':tabnew<CR>', opts 'New tab') -- open new tab
+vim.keymap.set('n', '<leader><Tab>o', ':tabnew<CR>', opts 'New tab')     -- open new tab
 vim.keymap.set('n', '<leader><Tab>x', ':tabclose<CR>', opts 'Close tab') -- close current tab
-vim.keymap.set('n', '<leader><Tab>n', ':tabn<CR>', opts 'Next tab') --  go to next tab
-vim.keymap.set('n', '<leader><Tab>p', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
+vim.keymap.set('n', '<leader>x<Tab>', ':tabclose<CR>', opts 'Close tab') -- close current tab
+vim.keymap.set('n', '<leader><Tab>n', ':tabn<CR>', opts 'Next tab')      --  go to next tab
+vim.keymap.set('n', '<leader><Tab>p', ':tabp<CR>', opts 'Previous tab')  --  go to previous tab
 
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts())
@@ -85,9 +88,6 @@ vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', opts())
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts())
 
--- Replace word under cursor
-vim.keymap.set('n', '<leader>j', '*``cgn', opts())
-
 -- Explicitly yank to system clipboard (highlighted and entire row)
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
@@ -99,9 +99,9 @@ vim.keymap.set('n', '<leader>do', function()
   diagnostics_active = not diagnostics_active
 
   if diagnostics_active then
-    vim.diagnostic.enable(0)
+    vim.diagnostic.enable(true)
   else
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end
 end)
 
@@ -111,6 +111,5 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- Save and load session
-vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, silent = false })
