@@ -119,3 +119,6 @@ vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, 
 
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts '󰒲 Lazy')
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts '󰡢 Mason')
+
+-- Open float terminal
+vim.keymap.set('n', '<leader>t', ':CustomTerm<CR>', opts 'Open Terminal')

@@ -49,7 +49,7 @@ return {
       vim.keymap.set('n', '<leader>fx', function()
         return require('fold-cycle').close()
       end, { silent = true, desc = 'Fold-cycle: close folds' })
-      vim.keymap.set('n', '<leader>F', function()
+      vim.keymap.set('n', '<leader>ff', function()
         return require('fold-cycle').close_all()
       end, { remap = true, silent = true, desc = 'Fold-cycle: close all folds' })
     end,

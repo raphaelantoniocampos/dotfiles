@@ -23,6 +23,8 @@ return {
         { '<leader><tab>', group = 'tabs' },
         { '<leader>W', group = 'workspaces', icon = { icon = '󰒖', color = 'yellow' } },
         { '<leader>c', group = 'code' },
+        { '<leader>d', group = 'debug' },
+        { '<leader>f', group = 'fold', icon = { icon = '󰅂', color = 'yellow' } },
         { '<leader>s', group = 'search' },
         { '<leader>S', group = 'session' },
         { '<leader>\\', group = 'neotree', icon = { icon = '󰙅', color = 'blue' } },

@@ -1,5 +1,6 @@
 require 'core.options'
 require 'core.keymaps'
+require 'core.custom-term'
 
 -- Install Lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -29,7 +30,7 @@ require('lazy').setup({
   require 'plugins.misc',
   require 'plugins.neo-tree',
   require 'plugins.noice',
-  require 'plugins.none-ls',
+  -- require 'plugins.none-ls',
   require 'plugins.oil',
   require 'plugins.telescope',
   require 'plugins.treesitter',
