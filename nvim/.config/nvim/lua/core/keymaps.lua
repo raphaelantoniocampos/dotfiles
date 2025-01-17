@@ -49,20 +49,20 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts())
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts())
 
 -- Buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- next buffer
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- previous buffer
-vim.keymap.set('n', '<leader>b<Tab>', ':bnext<CR>', opts 'Next buffer') -- next buffer
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts())                                -- next buffer
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts())                          -- previous buffer
+vim.keymap.set('n', '<leader>b<Tab>', ':bnext<CR>', opts 'Next buffer')           -- next buffer
 vim.keymap.set('n', '<leader>b<S-Tab>', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
-vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer') -- close buffer
-vim.keymap.set('n', '<leader>bn', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
+vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer')           -- close buffer
+vim.keymap.set('n', '<leader>b<Tab>', '<cmd> enew <CR>', opts 'New buffer')       -- new buffer
 
 -- Increment/decrement numbers
 -- vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment
 -- vim.keymap.set('n', '<leader>-', '<C-x>', opts 'Decrement number') -- decrement
 
 -- Window management
-vim.keymap.set('n', '<leader>wv', '<C-w>v', opts 'Split window vertically') -- split window vertically
-vim.keymap.set('n', '<leader>wh', '<C-w>s', opts 'Split window horizontally') -- split window horizontally
+vim.keymap.set('n', '<leader>wv', '<C-w>v', opts 'Split window vertically')        -- split window vertically
+vim.keymap.set('n', '<leader>wh', '<C-w>s', opts 'Split window horizontally')      -- split window horizontally
 vim.keymap.set('n', '<leader>wx', ':close<CR>', opts 'Close current split window') -- close current split window
 
 -- Navigate between splits
@@ -72,10 +72,10 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts())
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts())
 
 -- Tabs
-vim.keymap.set('n', '<leader><Tab>o', ':tabnew<CR>', opts 'New tab') -- open new tab
+vim.keymap.set('n', '<leader><Tab><Tab>', ':tabnew<CR>', opts 'New tab') -- open new tab
 vim.keymap.set('n', '<leader><Tab>x', ':tabclose<CR>', opts 'Close tab') -- close current tab
-vim.keymap.set('n', '<leader><Tab>n', ':tabn<CR>', opts 'Next tab') --  go to next tab
-vim.keymap.set('n', '<leader><Tab>p', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
+vim.keymap.set('n', '<leader><Tab>n', ':tabn<CR>', opts 'Next tab')      --  go to next tab
+vim.keymap.set('n', '<leader><Tab>p', ':tabp<CR>', opts 'Previous tab')  --  go to previous tab
 
 -- Toggle line wrapping
 -- vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts())

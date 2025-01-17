@@ -103,6 +103,8 @@ return { -- LSP Configuration & Plugins
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+    local lspconfig = require 'lspconfig'
+
     -- Enable the following language servers
     local servers = {
       html = { filetypes = { 'html', 'twig', 'hbs' } },
@@ -195,7 +197,7 @@ return { -- LSP Configuration & Plugins
       bashls = {},
       cssls = {},
       clangd = {},
-      ast_grep = {},
+      -- ast_grep = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -207,6 +209,7 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
       'clang-format',
+      'codelldb',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
