@@ -27,11 +27,9 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', opts())
 vim.keymap.set('n', '<C-s>', '<cmd>noautocmd w <CR>', opts())
 
 -- format file
-vim.keymap.set('n', '<leader>cf', function()
+vim.keymap.set('n', '<leader>cF', function()
   vim.lsp.buf.format()
 end, opts 'Format')
-
--- :lua vim.lsp.buf.format() <CR>
 
 -- delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts())
@@ -59,8 +57,8 @@ vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer') -- close
 vim.keymap.set('n', '<leader>bn', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
 
 -- Increment/decrement numbers
-vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment
-vim.keymap.set('n', '<leader>-', '<C-x>', opts 'Decrement number') -- decrement
+-- vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment
+-- vim.keymap.set('n', '<leader>-', '<C-x>', opts 'Decrement number') -- decrement
 
 -- Window management
 vim.keymap.set('n', '<leader>wv', '<C-w>v', opts 'Split window vertically') -- split window vertically
@@ -100,7 +98,7 @@ vim.keymap.set('n', '<leader>Y', [["+Y]])
 -- Toggle diagnostics
 local diagnostics_active = true
 
-vim.keymap.set('n', '<leader>cD', function()
+vim.keymap.set('n', '<leader>xD', function()
   diagnostics_active = not diagnostics_active
 
   if diagnostics_active then
@@ -119,5 +117,5 @@ vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diag
 vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
-vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts 'Lazy')
-vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts 'Mason')
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts '󰒲 Lazy')
+vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts '󰡢 Mason')
