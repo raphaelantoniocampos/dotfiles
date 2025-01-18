@@ -20,7 +20,7 @@ return {
     spec = {
       {
         mode = { 'n', 'v' },
-        { '<leader><tab>', group = 'tabs' },
+        { '<leader>T', group = 'tabs' },
         { '<leader>W', group = 'workspaces', icon = { icon = '󰒖', color = 'yellow' } },
         { '<leader>c', group = 'code' },
         { '<leader>d', group = 'debug' },
@@ -34,7 +34,7 @@ return {
         { ']', group = 'next' },
         { 'g', group = 'goto' },
         {
-          '<leader>b',
+          '<leader><Tab>',
           group = 'buffer',
           expand = function()
             return require('which-key.extras').expand.buf()
@@ -49,7 +49,7 @@ return {
           end,
         },
         -- better descriptions
-        -- { 'gx', desc = 'Open with system app' },
+        { 'gx', desc = 'Open with system app' },
       },
     },
   },

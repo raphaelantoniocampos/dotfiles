@@ -196,7 +196,9 @@ return { -- LSP Configuration & Plugins
       jsonls = {},
       bashls = {},
       cssls = {},
-      clangd = {},
+      clangd = {
+        cmd = {"clangd"},
+      },
       -- ast_grep = {},
     }
 

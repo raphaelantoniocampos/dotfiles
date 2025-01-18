@@ -51,10 +51,10 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts())
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts())                                -- next buffer
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts())                          -- previous buffer
-vim.keymap.set('n', '<leader>b<Tab>', ':bnext<CR>', opts 'Next buffer')           -- next buffer
-vim.keymap.set('n', '<leader>b<S-Tab>', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
-vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer')           -- close buffer
-vim.keymap.set('n', '<leader>b<Tab>', '<cmd> enew <CR>', opts 'New buffer')       -- new buffer
+-- vim.keymap.set('n', '<leader><Tab>n', ':bnext<CR>', opts 'Next buffer')           -- next buffer
+-- vim.keymap.set('n', '<leader><Tab><S-Tab>', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
+vim.keymap.set('n', '<leader><Tab>x', ':Bdelete!<CR>', opts 'Close buffer')           -- close buffer
+vim.keymap.set('n', '<leader><Tab>n', '<cmd> enew <CR>', opts 'New buffer')       -- new buffer
 
 -- Increment/decrement numbers
 -- vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment
@@ -72,10 +72,10 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts())
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts())
 
 -- Tabs
-vim.keymap.set('n', '<leader><Tab><Tab>', ':tabnew<CR>', opts 'New tab') -- open new tab
-vim.keymap.set('n', '<leader><Tab>x', ':tabclose<CR>', opts 'Close tab') -- close current tab
-vim.keymap.set('n', '<leader><Tab>n', ':tabn<CR>', opts 'Next tab')      --  go to next tab
-vim.keymap.set('n', '<leader><Tab>p', ':tabp<CR>', opts 'Previous tab')  --  go to previous tab
+vim.keymap.set('n', '<leader>T<Tab>', ':tabnew<CR>', opts 'New tab') -- open new tab
+vim.keymap.set('n', '<leader>Tx', ':tabclose<CR>', opts 'Close tab') -- close current tab
+vim.keymap.set('n', '<leader>Tn', ':tabn<CR>', opts 'Next tab')      --  go to next tab
+vim.keymap.set('n', '<leader>Tp', ':tabp<CR>', opts 'Previous tab')  --  go to previous tab
 
 -- Toggle line wrapping
 -- vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts())
@@ -121,4 +121,4 @@ vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts '󰒲 Lazy')
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts '󰡢 Mason')
 
 -- Open float terminal
-vim.keymap.set('n', '<leader>t', ':CustomTerm<CR>', opts 'Open Terminal')
+vim.keymap.set('n', 'T', ':CustomTerm<CR>', opts 'Open Terminal')
