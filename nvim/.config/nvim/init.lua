@@ -29,7 +29,6 @@ require('lazy').setup({
   require 'plugins.misc',
   require 'plugins.neo-tree',
   require 'plugins.noice',
-  require 'plugins.none-ls',
   require 'plugins.oil',
   require 'plugins.telescope',
   require 'plugins.treesitter',
