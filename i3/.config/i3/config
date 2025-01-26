@@ -15,7 +15,7 @@ set $mod Mod4
 
 exec --no-startup-id picom
 
-exec_always feh --bg-fill ~/feh/nice-space-background.png
+exec_always feh --bg-fill ~/feh/nice-space-background.jpg
 
 
 # kill any hanging polybar processes
