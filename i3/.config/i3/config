@@ -35,7 +35,7 @@ bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -s
 bindsym Ctrl+Shift+Print exec maim --select | xclip -selection clipboard -t image/png
 
 # Display Resolution
-exec_always xrandr --output eDP-1 --mode 1366x768
+exec_always xrandr --output eDP-1 --mode 1920x1080
 exec xrandr --setprovideroutputsource modesetting NVIDIA-0 
 exec xrandr --auto
 
