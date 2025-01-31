@@ -33,4 +33,4 @@ zin i3 picom feh kitty vim polybar rofi
 sudo reboot now
 
 ### Install essential apps
-zin -y NetworkManager-applet ripgrep fd nodejs22 npm22 lua51-luarocks
+zin -y NetworkManager-applet ripgrep fd nodejs22 npm22 lua51-luarocks docker
