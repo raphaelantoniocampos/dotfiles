@@ -20,7 +20,7 @@ exec_always feh --bg-fill ~/feh/nice-space-background.jpg
 
 # kill any hanging polybar processes
 exec_always kill $(ps aux | grep 'polybar' | awk '{print $2}')  >/dev/null 2>&1
-exec_always --no-startup-id . ~/.config/i3/launch_polybar.sh
+exec_always --no-startup-id . ~/.config/polybar/launch_polybar.sh
 
 # exec_always --no-startup-id blueman-applet
 

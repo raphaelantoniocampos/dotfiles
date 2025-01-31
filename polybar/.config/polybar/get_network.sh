@@ -4,7 +4,7 @@
 wireless=$(nmcli -t -f ACTIVE,DEVICE,SSID dev wifi | awk -F ':' '$1 == "sim" {print $2 ": " $3}')
 
 # Verifica se há uma conexão ethernet ativa
-ethernet=$(nmcli -t -f ACTIVE,DEVICE,STATE | grep "conectado" | grep "cabeada" | awk -F':' '{print $1 ": " connected}')
+ethernet=$(nmcli -t -f ACTIVE,DEVICE,STATE | grep -e "conectado" -e "connected" | grep -e "cabeada" -e "" | grep -v "externally" | awk -F: '{print $1 ":" " connected"}')
 
 # Mostra a conexão ativa
 if [ -n "$ethernet" ]; then
