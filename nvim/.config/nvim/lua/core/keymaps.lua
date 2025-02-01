@@ -117,8 +117,8 @@ vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diag
 vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
-vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts '󰒲 Lazy')
-vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts '󰡢 Mason')
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts() )
+vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts())
 
 -- Open float terminal
 vim.keymap.set('n', 'T', ':CustomTerm<CR>', opts 'Open Terminal')
