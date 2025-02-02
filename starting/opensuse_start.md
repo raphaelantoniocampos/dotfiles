@@ -34,3 +34,8 @@ sudo reboot now
 
 ### Install essential apps
 zin -y NetworkManager-applet ripgrep fd nodejs22 npm22 lua51-luarocks docker
+
+### Install trash-cli (you WILL want to use it)
+sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F/openSUSE_Tumbleweed/home:X0F.repo
+sudo zypper refresh
+zin trash-cli

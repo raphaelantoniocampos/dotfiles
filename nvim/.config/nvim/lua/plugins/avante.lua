@@ -16,6 +16,12 @@ return {
         -- optional
         api_key_name = "GROQ_API_KEY",  -- default OPENAI_API_KEY if not set
       },
+    mappings = {
+      sidebar = {
+      apply_cursor = "<Enter>",
+      apply_all = "<S-Enter>",
+        },
+    },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

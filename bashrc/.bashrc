@@ -12,14 +12,10 @@
 
 test -s ~/.alias && . ~/.alias || true
 
-# NOTE: AWS keys
-function con() {
-    if [ -f "$HOME/repositories/personal/$1/ssh.txt" ]; then
-        COMMAND=$(cat "$HOME/repositories/personal/$1/ssh.txt")
-        eval "$COMMAND"
-    else
-        echo "Arquivo $HOME/repositories/personal/$1/ssh.txt não encontrado."
-    fi
+# NOTE: Keys
+function key() {
+    KEY="$HOME/personal/keys/$1"
+    cat $KEY
 }
 
 # NOTE: OpenSuse alias
@@ -31,3 +27,14 @@ alias zclean_old='sudo zypper packages --unneeded | grep ^i|cut -d '\''|'\'' -f3
 
 # NOTE:Gleam Run Lustre Fullstack
 alias glustre="gleam run -m lustre/dev build --outdir=../server/priv/static --minify"
+
+# NOTE:Trash-cli
+alias rm='echo "This is not the command you are looking for. (If you really want it use \rm)"; false'
+
+alias tr='trash'
+alias trp='trash-put'
+alias tre='trash-empty'
+alias trl='trash-list'
+alias trr='trash-restore'
+alias trrm='trash-rm'
+
