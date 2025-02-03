@@ -26,7 +26,7 @@ return {
         { '<leader>d', group = 'debug' },
         { '<leader>f', group = 'fold', icon = { icon = '󰅂', color = 'yellow' } },
         { '<leader>l', group = 'lazy', icon = { icon = '💤' } },
-        { '<leader>u', group = 'UI', },
+        { '<leader>u', group = 'UI' },
         { '<leader>m', group = 'mason', icon = { icon = '🧱' } },
         { '<leader>s', group = 'search' },
         { '<leader>a', group = 'avante', icon = { icon = '✨', color = 'orange' } },

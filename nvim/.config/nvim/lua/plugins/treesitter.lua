@@ -14,7 +14,6 @@ return {
         'c',
         'regex',
         'sql',
-        'dockerfile',
         'toml',
         'json',
         'gitignore',

@@ -1,93 +1,91 @@
 -- Use themery to live preview themes
 return {
   {
-    "zaldih/themery.nvim",
+    'zaldih/themery.nvim',
     lazy = false,
     config = function()
-      require("themery").setup({
-  themes = {
-          "ash",
-          "dracula",
-'tokyonight-night',
-'tokyonight-storm',
-'tokyonight-day',
-'tokyonight-moon',
-          "cyberdream",
-          "onehalflight",
-          "onehalfdark",
-          "vague",
+      require('themery').setup {
+        themes = {
+          'ash',
+          'dracula',
+          'tokyonight-night',
+          'tokyonight-storm',
+          'tokyonight-day',
+          'tokyonight-moon',
+          'cyberdream',
+          'onehalflight',
+          'onehalfdark',
+          'vague',
           'catppuccin-latte',
           'catppuccin-frappe',
           'catppuccin-macchiato',
           'catppuccin-mocha',
           'lackluster-hack',
-'kanagawa-wave',
-'kanagawa-dragon',
-'kanagawa-lotus',
-          'rose-pine'
+          'kanagawa-wave',
+          'kanagawa-dragon',
+          'kanagawa-lotus',
+          'rose-pine',
         }, -- Your list of installed colorschemes.
-  livePreview = true, -- Apply theme while picking. Default to true.
-      })
-    end
+        livePreview = true, -- Apply theme while picking. Default to true.
+      }
+    end,
   },
 
--- Colorschemes
+  -- Colorschemes
 
   {
-  'Mofiqul/dracula.nvim',
-  lazy = false,
-  priority = 100,
+    'Mofiqul/dracula.nvim',
+    lazy = false,
+    priority = 100,
   },
-{
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-},
-{
-    "scottmckendry/cyberdream.nvim",
+  {
+    'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
-},
+    opts = {},
+  },
+  {
+    'scottmckendry/cyberdream.nvim',
+    lazy = false,
+    priority = 1000,
+  },
 
-{
+  {
     'clearaspect/onehalf',
     lazy = false,
     priority = 1000,
-},
+  },
 
-{
-  "vague2k/vague.nvim",
+  {
+    'vague2k/vague.nvim',
     lazy = false,
     priority = 1000,
-},
+  },
 
-{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
-{
-    "slugbyte/lackluster.nvim",
+  {
+    'slugbyte/lackluster.nvim',
     lazy = false,
     priority = 1000,
-},
+  },
 
-{
-    "drewxs/ash.nvim",
+  {
+    'drewxs/ash.nvim',
     lazy = false,
     priority = 1000,
-},
+  },
 
-{
-	"rose-pine/neovim",
+  {
+    'rose-pine/neovim',
     lazy = false,
     priority = 1000,
-	name = "rose-pine",
-},
+    name = 'rose-pine',
+  },
 
-{
-"rebelot/kanagawa.nvim",
+  {
+    'rebelot/kanagawa.nvim',
     lazy = false,
     priority = 1000,
-},
-  }
-
-
+  },
+}

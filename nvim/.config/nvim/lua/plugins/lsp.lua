@@ -197,7 +197,7 @@ return { -- LSP Configuration & Plugins
       bashls = {},
       cssls = {},
       clangd = {
-        cmd = {"clangd"},
+        cmd = { 'clangd' },
       },
       -- ast_grep = {},
     }
@@ -209,10 +209,10 @@ return { -- LSP Configuration & Plugins
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua',       -- Used to format lua code
+      'stylua', -- Used to format lua code
       'clang-format', -- C/C++ Formatter
-      'codelldb',     -- C/C++ Debugger
-      'cpplint',      -- C/C++ Linter
+      'codelldb', -- C/C++ Debugger
+      'cpplint', -- C/C++ Linter
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

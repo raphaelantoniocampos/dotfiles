@@ -19,6 +19,7 @@ require('lazy').setup({
   require 'plugins.bufferline',
   require 'plugins.colorschemes',
   require 'plugins.comment',
+  require 'plugins.conform',
   require 'plugins.dashboard',
   require 'plugins.debug',
   require 'plugins.gitsigns',
