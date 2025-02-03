@@ -92,8 +92,8 @@ vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', opts())
 vim.keymap.set('v', 'p', '"_dP', opts())
 
 -- Explicitly yank to system clipboard (highlighted and entire row)
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
+-- vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+-- vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 -- Toggle diagnostics
 local diagnostics_active = true
@@ -124,13 +124,3 @@ vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts())
 vim.keymap.set('n', '<leader>us', ':Themery<CR>', opts 'Select Colorscheme')
 
 vim.keymap.set('n', '<leader>uc', ':colorscheme<CR>', opts 'Current Colorscheme')
-
-vim.keymap.set('n', '<leader>ut', function()
-  dark_backgroud = not dark_backgroud
-
-  if dark_backgroud then
-    vim.o.background = 'dark'
-  else
-    vim.o.background = 'light'
-  end
-end, opts 'Toggle Dark Background')
