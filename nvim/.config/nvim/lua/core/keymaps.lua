@@ -121,7 +121,9 @@ vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts() )
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts())
 
 -- Colorschemes
-vim.keymap.set('n', '<leader>us', ':Themery<CR>', opts 'Select colorscheme')
+vim.keymap.set('n', '<leader>us', ':Themery<CR>', opts 'Select Colorscheme')
+
+vim.keymap.set('n', '<leader>uc', ':colorscheme<CR>', opts 'Current Colorscheme')
 
 vim.keymap.set('n', '<leader>ut', function()
   dark_backgroud = not dark_backgroud
@@ -131,4 +133,4 @@ vim.keymap.set('n', '<leader>ut', function()
   else
     vim.o.background = 'light'
   end
-end, opts 'Toggle dark background')
+end, opts 'Toggle Dark Background')

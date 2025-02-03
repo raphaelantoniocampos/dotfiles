@@ -24,6 +24,7 @@ return {
 'kanagawa-wave',
 'kanagawa-dragon',
 'kanagawa-lotus',
+          'rose-pine'
         }, -- Your list of installed colorschemes.
   livePreview = true, -- Apply theme while picking. Default to true.
       })
@@ -80,11 +81,6 @@ return {
     lazy = false,
     priority = 1000,
 	name = "rose-pine",
-},
-{
-'elvessousa/sobrio',
-    lazy = false,
-    priority = 1000,
 },
 
 {
