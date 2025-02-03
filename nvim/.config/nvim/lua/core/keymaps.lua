@@ -120,5 +120,15 @@ vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, 
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts() )
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts())
 
--- Open float terminal
-vim.keymap.set('n', 'T', ':CustomTerm<CR>', opts 'Open Terminal')
+-- Colorschemes
+vim.keymap.set('n', '<leader>us', ':Themery<CR>', opts 'Select colorscheme')
+
+vim.keymap.set('n', '<leader>ut', function()
+  dark_backgroud = not dark_backgroud
+
+  if dark_backgroud then
+    vim.o.background = 'dark'
+  else
+    vim.o.background = 'light'
+  end
+end, opts 'Toggle dark background')

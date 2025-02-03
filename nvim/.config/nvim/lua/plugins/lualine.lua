@@ -85,7 +85,7 @@ return {
             options = {
                 icons_enabled = true,
                 -- theme = themes[env_var_nvim_theme], -- Set theme based on environment variable
-                theme = 'dracula-nvim',
+                theme = 'auto',
                 -- Some useful glyphs:
                 -- https://www.nerdfonts.com/cheat-sheet
                 --        
