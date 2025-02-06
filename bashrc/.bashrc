@@ -12,6 +12,8 @@
 
 test -s ~/.alias && . ~/.alias || true
 
+eval "$(starship init bash)"
+
 # NOTE: Keys
 function key() {
     KEY="$HOME/personal/keys/$1"

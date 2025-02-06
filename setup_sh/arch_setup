@@ -1,0 +1,29 @@
+- display server
+    -xorg
+        sudo pacman -S xorg
+        lspci -v -nn -d ::03xx
+        install driver
+    -wayland
+
+- vim
+    sudo pacman -S vim
+
+- window manager
+    - i3
+        sudo pacman -S i3 rofi polybar picom
+    -hyprland
+        sudo pacman -S hyprland hyprpaper hypridle hyprlock wofi waybar
+
+- display manager (ly)
+    sudo pacman -S ly
+    sudo systemctl enable ly
+    sudo systemctl start ly
+
+- customize
+    sudo pacman -S stow neovim starship
+    cd ~/dotfiles
+    stow
+
+- other
+    xclip
+    firefox
