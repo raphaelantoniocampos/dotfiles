@@ -1,58 +1,203 @@
 {
-    "position": "top",
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "network",
-        "pulseaudio",
-        "battery"
-    ],
-    "clock": {
-        "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-        "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-        "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-        "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-        "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-        "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-        "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "tooltip-format": "{time}"
-    },
-    "network": {
-        "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-        "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-        "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
-    },
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": [
-                "",
-                "",
-                " "
-            ]
-        },
-        "on-click": "pavucontrol"
-    }
+	"layer": "top",
+	"position": "top",
+	"height": 35,
+	"spacing": 5,
+	"margin-top": 3,
+	"margin-right": 3,
+	"margin-left": 3,
+	"modules-left": [
+		"hyprland/workspaces",
+		"custom/paddc",
+		"custom/prefix",
+		"hyprland/window",
+		"custom/paddc",
+		"tray"
+	],
+	"modules-center": [
+		"clock#date",
+		"clock#time"
+	],
+	"modules-right": [
+		"custom/player",
+		"pulseaudio",
+		"custom/backlight",
+		"bluetooth",
+		"custom/paddc",
+		"battery",
+		"custom/paddc",
+		"custom/notification",
+		"custom/paddc",
+		"custom/wifi",
+		"custom/paddc"
+	],
+	// "custom/rofi": {
+	//	"format": "<span color='#fbf1c7' >󰮯</span>",
+	//	"on-click": "rofi -show drun",
+	//   "on-click-right": "wlogout",
+	//   "escape" : true,
+	//   "tooltip" : false
+	//},
+	// Modules configuration
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"active-only": false,
+		"all-outputs": true,
+		"warp-on-scroll": false,
+		"format": "{icon}",
+		"format-icons": {
+			"1": "<span color='#89dceb' >●</span>",
+			"2": "<span color='#94e2d5' >●</span>",
+			"3": "<span color='#a6e3a1' >●</span>",
+			"4": "<span color='#f9e2af' >●</span>",
+			"5": "<span color='#fab387' >●</span>",
+			"6": "<span color='#eba0ac' >●</span>",
+			"7": "<span color='#f38ba8' >●</span>",
+			"default": "<span color='#f38ba8'>●</span>",
+		},
+		"persistent-workspaces": {
+			"*": 5
+		}
+	},
+	"hyprland/window": {
+		"format": "{class}",
+		"max-length": 20,
+		"rewrite": {
+			"": "<span foreground= '#458588'></span> hyprland",
+			"~": " terminal",
+			"com.mitchellh.ghostty": "ghostty",
+		}
+	},
+	"tray": {
+		"icon-size": 15,
+		"spacing": 8
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "<span color='#f5e0dc' >  </span>{volume}%",
+		"format-muted": "<span color='#f5e0dc' >  </span>{volume}%",
+		"format-bluetooth": "<span color='#f5e0dc' > 󰂰 </span>{volume}%",
+		"format-bluetooth-muted": "<span color='#f5e0dc' > 󰂲 </span>{volume}%",
+		"format-source": "{volume}% ",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false,
+		"max-volume": 130
+	},
+	"battery#bat2": {
+		"bat": "BAT2"
+	},
+	"battery": {
+		"interval": 1,
+		"states": {
+			"good": 99,
+			"warning": 30,
+			"critical": 20
+		},
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		],
+		"format": "<span color='#a6e3a1' > {icon}</span>{capacity}%",
+		"format-critical": "<span color='#f38ba8' > {icon}</span>{capacity}%",
+		"format-warning": "<span color='#fab387' > {icon}</span>{capacity}%",
+		"format-full": "<span color='#a6e3a1' > {icon}</span>{capacity}%",
+		"format-charging": "<span color='#a6e3a1' >  </span>{capacity}%",
+		"format-charging-warning": "<span color='#fab387' >  </span>{capacity}%",
+		"format-charging-critical": "<span color='#f38ba8' >  </span>{capacity}%",
+		"format-plugged": "<span color='#a6e3a1' >  </span>{capacity}%",
+		"tooltip": false
+	},
+	"clock#date": {
+		"format": "{:%a %d %b}",
+		"min-length": 8,
+		"max-length": 20
+	},
+	"clock#time": {
+		"format": "{:%I:%M %p}",
+		"tooltip": false,
+		"min-length": 8,
+		"max-length": 12
+	},
+	"custom/backlight": {
+		"exec": "~/.config/waybar/scripts/brightness-control.sh",
+		"return-type": "json",
+		"format": "{}",
+		"tooltip": true,
+		"on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
+		"on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
+		"interval": 1,
+		"min-length": 6,
+		"max-length": 6
+	},
+	"custom/paddc": {
+		"format": " ",
+		"tooltip": false,
+	},
+	"custom/prefix": {
+		"format": "<span color='#cdd6f4' > >></span>",
+		"tooltip": false,
+	},
+	//"hyprland/language": {
+	//  "format": "{}",
+	//  "format-en": "US",
+	//},
+	"custom/wifi": {
+		"exec": "~/.config/waybar/scripts/wifi-status.sh",
+		"return-type": "json",
+		"format": "{}",
+		"tooltip": true,
+		"on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+		"interval": 1,
+		"min-length": 1,
+		"max-length": 12
+	},
+	"bluetooth": {
+		"format": "<span color='#458588'>󰂰 </span>",
+		"format-disabled": "<span color='#458588'>󰂲 </span>",
+		"format-connected": "<span color='#458588'>󰂱 </span>",
+		"format-connected-battery": "<span color='#458588'>󰂱 </span>",
+		"tooltip-format": "{num_connections} connected",
+		"tooltip-format-disabled": "Bluetooth Disabled",
+		"tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
+		"on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+		"interval": 1,
+		"min-length": 1,
+		"max-length": 10
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"rotate": 0,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "󱅫 ",
+			"none": " ",
+			"dnd-notification": "󰂛 ",
+			"dnd-none": "󰂛 ",
+			"inhibited-notification": " ",
+			"inhibited-none": " ",
+			"dnd-inhibited-notification": "󰂛 ",
+			"dnd-inhibited-none": "󰂛 ",
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click-right": "swaync-client -d -sw",
+		"on-click": "swaync-client -t -sw",
+		"escape": true
+	},
+	"custom/player": {
+		"exec": "~/.config/waybar/scripts/player.sh",
+		"format": "{}",
+		"interval": 1,
+		"max-length": 35,
+		"tooltip": false,
+		"on-click-right": "playerctl next",
+		"on-click-left": "playerctl previous",
+		"on-click": "playerctl play-pause",
+	}
 }
