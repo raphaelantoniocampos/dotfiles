@@ -53,8 +53,8 @@ vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- next buffer
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- previous buffer
 -- vim.keymap.set('n', '<leader><Tab>n', ':bnext<CR>', opts 'Next buffer')           -- next buffer
 -- vim.keymap.set('n', '<leader><Tab><S-Tab>', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
-vim.keymap.set('n', '<leader><Tab>x', ':Bdelete!<CR>', opts 'Close buffer') -- close buffer
-vim.keymap.set('n', '<leader><Tab>n', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
+vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer') -- close buffer
+vim.keymap.set('n', '<leader>bn', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
 
 -- Increment/decrement numbers
 -- vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment

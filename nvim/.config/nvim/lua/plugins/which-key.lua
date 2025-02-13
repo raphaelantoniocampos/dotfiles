@@ -38,7 +38,7 @@ return {
         { ']', group = 'next' },
         { 'g', group = 'goto' },
         {
-          '<leader><Tab>',
+          '<leader>b',
           group = 'buffer',
           expand = function()
             return require('which-key.extras').expand.buf()
