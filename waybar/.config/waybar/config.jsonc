@@ -54,7 +54,7 @@
 			"5": "<span color='#fab387' >●</span>",
 			"6": "<span color='#eba0ac' >●</span>",
 			"7": "<span color='#f38ba8' >●</span>",
-			"default": "<span color='#f38ba8'>●</span>",
+			"default": "<span color='#f38ba8'>●</span>"
 		},
 		"persistent-workspaces": {
 			"*": 5
@@ -66,7 +66,7 @@
 		"rewrite": {
 			"": "<span foreground= '#458588'></span> hyprland",
 			"~": " terminal",
-			"com.mitchellh.ghostty": "ghostty",
+			"com.mitchellh.ghostty": "ghostty"
 		}
 	},
 	"tray": {
@@ -135,11 +135,11 @@
 	},
 	"custom/paddc": {
 		"format": " ",
-		"tooltip": false,
+		"tooltip": false
 	},
 	"custom/prefix": {
 		"format": "<span color='#cdd6f4' > >></span>",
-		"tooltip": false,
+		"tooltip": false
 	},
 	//"hyprland/language": {
 	//  "format": "{}",
@@ -182,7 +182,7 @@
 			"inhibited-notification": " ",
 			"inhibited-none": " ",
 			"dnd-inhibited-notification": "󰂛 ",
-			"dnd-inhibited-none": "󰂛 ",
+			"dnd-inhibited-none": "󰂛 "
 		},
 		"return-type": "json",
 		"exec-if": "which swaync-client",
@@ -199,6 +199,6 @@
 		"tooltip": false,
 		"on-click-right": "playerctl next",
 		"on-click-left": "playerctl previous",
-		"on-click": "playerctl play-pause",
+		"on-click": "playerctl play-pause"
 	}
 }

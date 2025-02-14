@@ -72,7 +72,7 @@ if [ "$wifi_status" = "disabled" ]; then
   exit 0
 fi
 
-wifi_info=$(nmcli -t -f active,ssid,signal,security dev wifi | grep "^yes")
+wifi_info=$(nmcli -t -f active,ssid,signal,security dev wifi | grep -e "^yes" -e "^sim")
 
 # If no ESSID is found, set a default value
 if [ -z "$wifi_info" ]; then
