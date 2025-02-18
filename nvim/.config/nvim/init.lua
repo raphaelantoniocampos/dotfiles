@@ -35,6 +35,7 @@ require('lazy').setup({
   require 'plugins.telescope',
   require 'plugins.treesitter',
   require 'plugins.trouble',
+  require 'plugins.ufo',
   require 'plugins.which-key',
 }, {
   ui = {

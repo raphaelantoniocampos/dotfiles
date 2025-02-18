@@ -1,16 +1,16 @@
 configuration{
-    modi: "run,window,combi";
-    font: "0xProto Nerd Font Mono";
-    icon-theme: "Oranchelo";
+    modi: "run,drun,window";
+    icon-theme: "0xProto Nerd Font";
     show-icons: true;
     terminal: "kitty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-combi: " 🖥️  All ";
-    display-run: " 🏃  Run ";
-    display-window: " 🪟  Window";
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 󰕰  Window";
+    display-Network: " 󰤨  Network";
     sidebar-mode: true;
 }
 

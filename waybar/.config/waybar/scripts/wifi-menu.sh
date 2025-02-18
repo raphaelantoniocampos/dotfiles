@@ -3,8 +3,8 @@
 # Author: Jesse Mirabel (@sejjy)
 # GitHub: https://github.com/sejjy/mechabar
 
-# Wofi config
-config="$HOME/.config/wofi/style.css"
+# Rofi config
+config="$HOME/.config/rofi/config.rasi"
 
 options=$(
   echo "Manual Entry"
@@ -12,14 +12,14 @@ options=$(
 )
 option_disabled="Enable Wi-Fi"
 
-# Wofi window override
+# Rofi window override
 override_ssid="entry { placeholder: \"Enter SSID\"; } listview { enabled: false; }"
 override_password="entry { placeholder: \"Enter password\"; } listview { enabled: false; }"
 override_disabled="mainbox { children: [ listview ]; } listview { lines: 1; padding: 6px; }"
 
 # Prompt for password
 get_password() {
-  wofi -dmenu -password -config "${config}" -theme-str "${override_password}" -p " " || pkill -x wofi
+  rofi -dmenu -password -config "${config}" -theme-str "${override_password}" -p " " || pkill -x rofi
 }
 
 while true; do
@@ -39,11 +39,11 @@ while true; do
   case "$wifi_status" in
   *"enabled"*)
     selected_option=$(echo "$options"$'\n'"$(wifi_list)" |
-      wofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x wofi)
+      rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
     ;;
   *"disabled"*)
     selected_option=$(echo "$option_disabled" |
-      wofi -dmenu -i -config "${config}" -theme-str "${override_disabled}" || pkill -x wofi)
+      rofi -dmenu -i -config "${config}" -theme-str "${override_disabled}" || pkill -x rofi)
     ;;
   esac
 
@@ -68,7 +68,7 @@ while true; do
     ;;
   "Manual Entry")
     # Prompt for SSID
-    manual_ssid=$(wofi -dmenu -config "${config}" -theme-str "${override_ssid}" -p " " || pkill -x wofi)
+    manual_ssid=$(rofi -dmenu -config "${config}" -theme-str "${override_ssid}" -p " " || pkill -x rofi)
 
     # Exit if no option is selected
     if [ -z "$manual_ssid" ]; then

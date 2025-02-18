@@ -10,6 +10,13 @@
 # here, since multilingual X sessions would not work properly if LANG is over-
 # ridden in every subshell.
 
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
 test -s ~/.alias && . ~/.alias || true
 
 eval "$(starship init bash)"
@@ -19,6 +26,8 @@ function key() {
     KEY="$HOME/personal/keys/$1"
     cat $KEY
 }
+
+alias icat="kitty icat"
 
 # NOTE: OpenSuse alias
 alias zup="sudo zypper refresh && sudo zypper dup --allow-vendor-change"

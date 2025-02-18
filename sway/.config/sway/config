@@ -1,0 +1,347 @@
+# Raphael Campos
+
+# set mods
+set $mod Mod4
+set $mod1 Mod1
+
+# set terminal
+set $terminal kitty
+
+# set program launcher
+set $menu rofi
+
+# set file manager
+set $filemanager nautilus
+
+# set wallpaper and lock screen
+set $wallpaper /home/$USER/.config/backgrounds/nice-forest-background.jpg
+set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
+
+# i3-gaps
+# for_window [class="^.*"] border
+# gaps inner 4
+# gaps outer 4
+# smart_gaps on
+# default_border pixel 1
+# #smart_borders on
+# #set $borderwidth 1
+# hide_edge_borders both
+
+font pango:0xProto Nerd Font Mono 12
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $terminal
+
+# start file manager
+bindsym $mod+e exec $filemanager
+
+# custom bindsyms
+bindsym $mod+Shift+c exec ~/.config/sway/bin/logout
+bindsym $mod+Shift+x exec ~/.config/sway/bin/screen
+
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start program launcher
+bindsym $mod+d exec --no-startup-id $menu -show run -m
+bindsym $mod+Shift+d exec --no-startup-id $programlauncher -show combi
+bindsym $mod+Tab exec --no-startup-id $programlauncher -show window
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+Ctrl+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+s layout toggle split
+
+# toggle tiling / floatinl
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+
+# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
+# bindsym $mod+Shift+c restart
+bindsym $mod+Shift+r reload
+# exit sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
+
+# hibernate
+bindsym $mod+Shift+z exec swaynag -t warning -m 'Sleepy time?!?!' -b 'ZzZz...' 'systemctl hibernate'
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Ctrl+$mod+r mode "resize"
+bindsym $mod+Shift+f exec ~/.config/sway/bin/rofi_finder
+
+# custom bind keys
+bindsym $mod+x exec swaylock -i $lockscreen
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
+bindsym XF86AudioMute exec pactl set-sink-mute  $(pacmd list-sinks |awk '/* index:/{print $3}') toggle # Mute
+
+# Sreen brightness controls -- # https://github.com/haikarainen/light
+bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%- 
+# multimedia keys
+bindsym XF86AudioPlay  exec "mpc toggle"
+bindsym XF86AudioStop  exec "mpc stop"
+bindsym XF86AudioNext  exec "mpc next"
+bindsym XF86AudioPrev  exec "mpc prev"
+bindsym XF86AudioPause exec "mpc pause"
+
+bar {
+    swaybar_command waybar
+    workspace_buttons yes
+}
+
+# startup programs
+exec --no-startup-id mpd
+
+exec --no-startup-id /usr/lib/gsd-xsettings
+
+# bind app to workspace
+# check class by : xprop
+# swaymsg -t get_tree
+# assign [class="Firefox"] $ws3
+# Shutdown, Reboot, Lock Screen, and Logout 
+
+bindsym $mod1+Shift+p   exec systemctl poweroff
+bindsym $mod1+Shift+r   exec systemctl reboot
+bindsym $mod1+Shift+l   exec swaylock -i $lockscreen 
+bindsym $mod1+Shift+h   exec systemctl hibernate  
+
+# Floating windows
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
+for_window [window_role="Open Files"] floating enable sticky
+for_window [window_role="File Operation Progress"] floating enable sticky
+for_window [window_role="Save As"] floating enable
+
+for_window [class="qBittorrent" window_role="pop-up"] floating enable
+for_window [class="mtp-ng-qt" window_role="Open"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+#for_window [class="VirtualBox"] floating enable
+
+# Sticky window
+for_window [instance="file_progress"]  sticky enable
+for_window [class="info|Mate-color-select|gcolor2|timesup|QtPass|GtkFileChooserDialog"] sticky enable
+
+# Teamviewer
+for_window [instance="TeamViewer.exe"] floating enable
+for_window [class="TeamViewer"] floating enable
+#for_window [instance="Qt-subapplication" title="TeamViewer"] move scratchpad
+
+# Focus window settings
+no_focus [window_role="pop-up"]
+focus_on_window_activation urgent 
+#for_window [class="(?i)"] focus 
+
+# Allow Firefox pop-ups
+for_window [class="Firefox" title="Opening"] floating enable, focus
+for_window [class="Firefox" instance="Navigator"] floating enable
+for_window [class="Firefox" instance="Dialog"] floating enable
+
+# Allow Chromium pop-ups
+for_window [class="Chromium" instance="chromium"] floating enable
+for_window [class="Chromium" instance="dialog"] floating enable
+
+bindsym --release Print exec --no-startup-id "grim $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Shift+Print exec --no-startup-id "grim -g '$(slurp)' $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+
+# Configure outputs here
+# How to get outputs configurable - $ swaymsg -t get_outputs
+output eDP-1 {
+                background $wallpaper fill
+                resolution 1920x1080
+		scale 1.0
+           }
+
+# Inputs - Get your inputs with the command:
+# swaymsg -t get_inputs
+input 1267:35:Elan_Touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+input type:keyboard {
+    xkb_layout "br"
+    xkb_options "terminate:ctrl_alt_bksp"
+    xkb_model "microsoftpro"
+}
+
+
+# set $wob wob --config /etc/sway/wob/wob.ini
+#
+# exec_always {
+#     systemctl --user import-environment
+#     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+#     gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+#     gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+#     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+#     test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
+#     tail -f $SWAYSOCK.wob | $wob
+#     swaync --style /etc/sway/swaync/style.css --config /etc/sway/swaync/config.json
+# }
+#
+
+# colorscheme
+set $rosewater #f5e0dc
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $yellow    #f9e2af
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #74c7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
+ 
+# target                 title     bg    text   indicator  border
+client.focused           $green $base $text  $rosewater $green
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+# bar
+bar {
+  colors {
+    background         $base
+    statusline         $text
+    focused_statusline $text
+    focused_separator  $base
+
+    # target           border bg        text
+    focused_workspace  $base  $mauve    $crust
+    active_workspace   $base  $surface2 $text
+    inactive_workspace $base  $base     $text
+    urgent_workspace   $base  $red      $crust
+  }
+}
