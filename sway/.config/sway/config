@@ -1,4 +1,5 @@
 # Raphael Campos
+include /home/$USER/.config/sway/output.conf
 
 # set mods
 set $mod Mod4
@@ -257,14 +258,17 @@ for_window [class="Chromium" instance="dialog"] floating enable
 
 bindsym --release Print exec --no-startup-id "grim $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 bindsym --release Shift+Print exec --no-startup-id "grim -g '$(slurp)' $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release $mod+Shift+s exec --no-startup-id "grim -g '$(slurp)' $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 # Configure outputs here
 # How to get outputs configurable - $ swaymsg -t get_outputs
-output eDP-1 {
-                background $wallpaper fill
-                resolution 1920x1080
-		scale 1.0
-           }
+exec --no-startup-id "sh /home/$USER/.config/sway/scripts/get_outputs.sh"
+
+# output eDP-1 {
+#                 background $wallpaper fill
+#                 resolution 1920x1080
+# 		scale 1.0
+#            }
 
 # Inputs - Get your inputs with the command:
 # swaymsg -t get_inputs

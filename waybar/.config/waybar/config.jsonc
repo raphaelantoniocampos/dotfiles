@@ -32,15 +32,24 @@
 		"custom/wifi",
 		"custom/paddc"
 	],
+	//"custom/workspaces": {
+	//	"exec": "~/.config/waybar/scripts/workspaces.sh",
+	//	"return-type": "json",
+	//	"format": "{icon}",
+	//	"on-click": "swaymsg workspace {name}",
+	//	"on-scroll-up": "swaymsg workspace prev",
+	//	"on-scroll-down": "swaymsg workspace next",
+	//	"interval": 1
+	//},
 	//Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
 		"active-only": false,
 		"warp-on-scroll": false,
-		"format": "{icon}",
+		"format": "{name}",
 		"format-icons": {
-			"default": "<span color='#89dceb' ></span>",
+			"default": "<span color='#89dceb' ><span>",
 			"focused": "<span color='#a6e3a1' ></span>",
 		},
 		//"persistent-workspaces": {
