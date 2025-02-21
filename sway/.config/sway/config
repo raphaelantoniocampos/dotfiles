@@ -1,5 +1,5 @@
 # Raphael Campos
-include /home/$USER/.config/sway/output.conf
+include $HOME/.config/sway/output.conf
 
 # set mods
 set $mod Mod4
@@ -9,7 +9,8 @@ set $mod1 Mod1
 set $terminal kitty
 
 # set program launcher
-set $menu rofi
+
+set $menu wofi --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style.css
 
 # set file manager
 set $filemanager nautilus
@@ -17,6 +18,24 @@ set $filemanager nautilus
 # set wallpaper and lock screen
 set $wallpaper /home/$USER/.config/backgrounds/nice-forest-background.jpg
 set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
+
+set $screenlock 'swaylock --config $HOME/.config/swaylock/swaylock.conf -i $lockscreen'
+
+# Shutdown, Reboot, Lock Screen, and Logout 
+
+# Idle configuration
+exec swayidle -w \
+         timeout 5 $screenlock \
+         timeout 960 'swaymsg "output * power off"' \
+              resume 'swaymsg "output * power on"' \
+         before-sleep $screenlock
+
+
+
+bindsym $mod1+Shift+p   exec systemctl poweroff
+bindsym $mod1+Shift+r   exec systemctl reboot
+bindsym $mod1+Shift+l   exec swaylock -i $lockscreen 
+bindsym $mod1+Shift+h   exec systemctl hibernate  
 
 # i3-gaps
 # for_window [class="^.*"] border
@@ -43,14 +62,19 @@ bindsym $mod+e exec $filemanager
 bindsym $mod+Shift+c exec ~/.config/sway/bin/logout
 bindsym $mod+Shift+x exec ~/.config/sway/bin/screen
 
+bindsym $mod+tab workspace next_on_output
+bindsym $mod+Shift+tab workspace prev_on_output
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcher
-bindsym $mod+d exec --no-startup-id $menu -show run -m
-bindsym $mod+Shift+d exec --no-startup-id $programlauncher -show combi
-bindsym $mod+Tab exec --no-startup-id $programlauncher -show window
+# start wofi
+bindsym $mod+d exec --no-startup-id $menu
+
+# start rofi
+# bindsym $mod+d exec --no-startup-id $menu -show run -m
+# bindsym $mod+Shift+d exec --no-startup-id $programlauncher -show combi
+# bindsym $mod+Tab exec --no-startup-id $programlauncher -show window
 
 # change focus
 bindsym $mod+h focus left
@@ -86,9 +110,9 @@ bindsym $mod+Ctrl+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+t layout tabbed
-bindsym $mod+s layout toggle split
+bindsym $mod1+Shift+s layout stacking
+bindsym $mod1+Shift+t layout tabbed
+bindsym $mod1+s layout toggle split
 
 # toggle tiling / floatinl
 bindsym $mod+Shift+space floating toggle
@@ -178,7 +202,6 @@ bindsym Ctrl+$mod+r mode "resize"
 bindsym $mod+Shift+f exec ~/.config/sway/bin/rofi_finder
 
 # custom bind keys
-bindsym $mod+x exec swaylock -i $lockscreen
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
@@ -207,13 +230,7 @@ exec --no-startup-id /usr/lib/gsd-xsettings
 # bind app to workspace
 # check class by : xprop
 # swaymsg -t get_tree
-# assign [class="Firefox"] $ws3
-# Shutdown, Reboot, Lock Screen, and Logout 
-
-bindsym $mod1+Shift+p   exec systemctl poweroff
-bindsym $mod1+Shift+r   exec systemctl reboot
-bindsym $mod1+Shift+l   exec swaylock -i $lockscreen 
-bindsym $mod1+Shift+h   exec systemctl hibernate  
+assign [class="st"] $ws10
 
 # Floating windows
 
@@ -256,13 +273,17 @@ for_window [class="Firefox" instance="Dialog"] floating enable
 for_window [class="Chromium" instance="chromium"] floating enable
 for_window [class="Chromium" instance="dialog"] floating enable
 
-bindsym --release Print exec --no-startup-id "grim $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym --release Shift+Print exec --no-startup-id "grim -g '$(slurp)' $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym --release $mod+Shift+s exec --no-startup-id "grim -g '$(slurp)' $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+
+bindsym $mod+g exec --no-startup-id "st wf-recorder -f $HOME/Videos/recording-$(date +%Y-%m-%d_%H-%M-%S).mkv"
+# bindsym $mod+Shift+g exec --no-startup-id "wf-recorder "
+
+bindsym --release Print exec --no-startup-id "grim $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Shift+Print exec --no-startup-id "grim -g '$(slurp)' $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release $mod+Shift+s exec --no-startup-id "grim -g '$(slurp)' $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 # Configure outputs here
 # How to get outputs configurable - $ swaymsg -t get_outputs
-exec --no-startup-id "sh /home/$USER/.config/sway/scripts/get_outputs.sh"
+exec --no-startup-id "sh /$HOME/.config/sway/scripts/get_outputs.sh"
 
 # output eDP-1 {
 #                 background $wallpaper fill
@@ -286,17 +307,17 @@ input type:keyboard {
 
 # set $wob wob --config /etc/sway/wob/wob.ini
 #
-# exec_always {
-#     systemctl --user import-environment
-#     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-#     gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-#     gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-#     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-#     test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
-#     tail -f $SWAYSOCK.wob | $wob
-#     swaync --style /etc/sway/swaync/style.css --config /etc/sway/swaync/config.json
-# }
-#
+exec_always {
+    systemctl --user import-environment
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
+    tail -f $SWAYSOCK.wob | $wob
+    swaync --style /etc/sway/swaync/style.css --config /etc/sway/swaync/config.json
+}
+
 
 # colorscheme
 set $rosewater #f5e0dc
