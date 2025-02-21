@@ -230,7 +230,6 @@ exec --no-startup-id /usr/lib/gsd-xsettings
 # bind app to workspace
 # check class by : xprop
 # swaymsg -t get_tree
-assign [class="st"] $ws10
 
 # Floating windows
 
@@ -274,7 +273,8 @@ for_window [class="Chromium" instance="chromium"] floating enable
 for_window [class="Chromium" instance="dialog"] floating enable
 
 
-bindsym $mod+g exec --no-startup-id "st wf-recorder -f $HOME/Videos/recording-$(date +%Y-%m-%d_%H-%M-%S).mkv"
+assign [title="Alacritty"] $ws10
+bindsym $mod+g exec --no-startup-id "notify-send 'Recording' 'Recording started at workspace 10' -a Alacritty -i $HOME/.config/sway/rec.ico && alacritty -e wf-recorder -f $HOME/Videos/recording-$(date +%Y-%m-%d_%H-%M-%S).mkv"
 # bindsym $mod+Shift+g exec --no-startup-id "wf-recorder "
 
 bindsym --release Print exec --no-startup-id "grim $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
