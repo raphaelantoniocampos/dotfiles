@@ -23,6 +23,7 @@ require('lazy').setup({
   require 'plugins.dashboard',
   require 'plugins.debug',
   require 'plugins.gitsigns',
+  require 'plugins.grug-far',
   require 'plugins.indent-blankline',
   require 'plugins.lazygit',
   require 'plugins.lsp',
