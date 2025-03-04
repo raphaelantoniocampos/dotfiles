@@ -15,13 +15,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup plugins
 require('lazy').setup({
   require 'plugins.autocompletion',
-  require 'plugins.avante',
+  -- require 'plugins.avante',
   require 'plugins.bufferline',
   require 'plugins.colorschemes',
   require 'plugins.comment',
   require 'plugins.conform',
   require 'plugins.dashboard',
-  require 'plugins.debug',
+  require 'plugins.dap',
   require 'plugins.gitsigns',
   require 'plugins.grug-far',
   require 'plugins.indent-blankline',

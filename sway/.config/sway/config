@@ -8,12 +8,14 @@ set $mod1 Mod1
 # set terminal
 set $terminal kitty
 
-# set program launcher
-
-set $menu wofi --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style.css
-
 # set file manager
 set $filemanager nautilus
+
+# set browser
+set $browser librewolf
+
+# set program launcher
+set $menu wofi --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style.css
 
 # set wallpaper and lock screen
 set $wallpaper /home/$USER/.config/backgrounds/nice-forest-background.jpg
@@ -22,6 +24,10 @@ set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
 set $screenlock 'swaylock --config $HOME/.config/swaylock/swaylock.conf -i $lockscreen'
 
 # Shutdown, Reboot, Lock Screen, and Logout 
+bindsym $mod1+Shift+p   exec systemctl poweroff
+bindsym $mod1+Shift+r   exec systemctl reboot
+bindsym $mod1+Shift+l   exec swaylock -i $lockscreen 
+bindsym $mod1+Shift+h   exec systemctl hibernate  
 
 # Idle configuration
 exec swayidle -w \
@@ -30,12 +36,6 @@ exec swayidle -w \
               resume 'swaymsg "output * power on"' \
          before-sleep $screenlock
 
-
-
-bindsym $mod1+Shift+p   exec systemctl poweroff
-bindsym $mod1+Shift+r   exec systemctl reboot
-bindsym $mod1+Shift+l   exec swaylock -i $lockscreen 
-bindsym $mod1+Shift+h   exec systemctl hibernate  
 
 # i3-gaps
 # for_window [class="^.*"] border
@@ -58,9 +58,8 @@ bindsym $mod+Return exec $terminal
 # start file manager
 bindsym $mod+e exec $filemanager
 
-# custom bindsyms
-bindsym $mod+Shift+c exec ~/.config/sway/bin/logout
-bindsym $mod+Shift+x exec ~/.config/sway/bin/screen
+# start browser
+bindsym $mod+b exec $browser
 
 bindsym $mod+tab workspace next_on_output
 bindsym $mod+Shift+tab workspace prev_on_output
@@ -171,38 +170,20 @@ bindsym $mod+Shift+r reload
 # exit sway
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
 
-# hibernate
-bindsym $mod+Shift+z exec swaynag -t warning -m 'Sleepy time?!?!' -b 'ZzZz...' 'systemctl hibernate'
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+bindsym Ctrl+Left resize shrink width 5 px or 5 ppt
+# Pressing up will grow the window’s height.
+bindsym Ctrl+Up resize grow height 5 px or 5 ppt
+# Pressing down will shrink the window’s height.
+bindsym Ctrl+Down resize shrink height 5 px or 5 ppt
+# Pressing right will grow the window’s width.
+bindsym Ctrl+Right resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym Ctrl+$mod+r mode "resize"
-bindsym $mod+Shift+f exec ~/.config/sway/bin/rofi_finder
 
 # custom bind keys
-
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
 bindsym XF86AudioMute exec pactl set-sink-mute  $(pacmd list-sinks |awk '/* index:/{print $3}') toggle # Mute
@@ -280,6 +261,7 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating ena
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
 for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
 for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="File Upload"] floating enable
 
 # Allow Chromium pop-ups
 for_window [class="Chromium" instance="chromium"] floating enable

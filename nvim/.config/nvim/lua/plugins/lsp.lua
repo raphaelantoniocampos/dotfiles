@@ -219,7 +219,7 @@ return { -- LSP Configuration & Plugins
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
-          local lspconfig = require 'lspconfig'
+          lspconfig = require 'lspconfig'
           local server = servers[server_name] or {}
           -- This handles overriding only values explicitly passed
           -- by the server configuration above. Useful when disabling
