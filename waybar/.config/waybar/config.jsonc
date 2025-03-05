@@ -8,39 +8,42 @@
 	"margin-left": 3,
 	"modules-left": [
 		"sway/workspaces",
-		"custom/paddc",
-		"custom/prefix",
-		"custom/paddc",
-		"custom/paddc",
 		"sway/window",
-		"tray"
+		"custom/paddc",
+		"custom/paddc",
+		"custom/paddc",
+		"custom/media",
+		"tray",
+		"sway/mode"
 	],
 	"modules-center": [
 		"clock#date",
-		"clock#time"
+		"clock#time",
 	],
 	"modules-right": [
-		"custom/player",
+		"battery",
+		"cpu",
+		"custom/paddc",
+		"memory",
+		"custom/paddc",
+		"temperature",
+		"custom/paddc",
+		"backlight",
+		"custom/paddc",
 		"pulseaudio",
-		"custom/backlight",
+		"custom/paddc",
+		"network",
+		"custom/paddc",
 		"bluetooth",
 		"custom/paddc",
-		"battery",
+		"custom/zypper",
 		"custom/paddc",
-		"custom/notification",
+		"custom/weather",
 		"custom/paddc",
-		"custom/wifi",
-		"custom/paddc"
+		"custom/power",
+		"custom/paddc",
+		"custom/paddc",
 	],
-	//"custom/workspaces": {
-	//	"exec": "~/.config/waybar/scripts/workspaces.sh",
-	//	"return-type": "json",
-	//	"format": "{icon}",
-	//	"on-click": "swaymsg workspace {name}",
-	//	"on-scroll-up": "swaymsg workspace prev",
-	//	"on-scroll-down": "swaymsg workspace next",
-	//	"interval": 1
-	//},
 	//Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -60,33 +63,60 @@
 			"9": "<span color='#89dceb' >󰭂</span>",
 			"10": "<span color='#f38ba8' size='xx-large'></span>",
 			//"urgent": ": ",
-			//"default": ""
+			//"default": "",
 			"focused": "<span color='#a6e3a1' size='xx-large'>󰮔</span>",
-		},
-		//"persistent-workspaces": {
-		//	"3": [],
-		//	"4": [],
-		//	"5": [],
-		//},
+		}
+	},
+	"custom/paddc": {
+		"format": " ",
+		"tooltip": false
 	},
 	"sway/window": {
 		"format": "{app_id}",
-		"max-length": 20,
+		"max-length": 20
+	},
+	"custom/media": {
+		"format": "{}",
+		"tooltip": false,
+		"interval": 1,
+		"max-length": 35,
+		"format-icons": {
+			"spotify": "",
+			"default": "🎜"
+		},
+		"escape": true,
+		"exec": "$HOME/.config/waybar/custom_modules/mediaplayer.sh",
+		"on-click-right": "playerctl next",
+		"on-click-left": "playerctl previous",
+		"on-click": "playerctl play-pause",
 	},
 	"tray": {
-		"icon-size": 15,
-		"spacing": 8
+		"icon-size": 11,
+		"spacing": 5
 	},
-	"pulseaudio": {
-		// "scroll-step": 1, // %, can be a float
-		"format": "<span color='#f5e0dc' >  </span>{volume}%",
-		"format-muted": "<span color='#f5e0dc' >  </span>{volume}%",
-		"format-bluetooth": "<span color='#f5e0dc' > 󰂰 </span>{volume}%",
-		"format-bluetooth-muted": "<span color='#f5e0dc' > 󰂲 </span>{volume}%",
-		"format-source": "{volume}% ",
-		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"tooltip": false,
-		"max-volume": 130
+	"sway/mode": {
+		"format": "<span style=\"italic\">{}</span>"
+	},
+	"clock#date": {
+		"format": "<span color='#f9e2af' >  </span>{:%e %b}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"today-format": "<b>{}</b>",
+		"on-click": "gnome-calendar",
+		"min-length": 8,
+		"max-length": 20
+	},
+	"clock#time": {
+		"format": "<span color='#74c7ec' >  </span>{:%H:%M}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"on-click": "gnome-calendar",
+		"min-length": 8,
+		"max-length": 12
+	},
+	"custom/weather": {
+		"format": "<span>{}</span>",
+		"exec": "curl 'https://wttr.in/?format=1'",
+		"interval": 3600,
+		"on-click": "gnome-weather"
 	},
 	"battery#bat2": {
 		"bat": "BAT2"
@@ -115,49 +145,76 @@
 		"format-plugged": "<span color='#a6e3a1' >  </span>{capacity}%",
 		"tooltip": false
 	},
-	"clock#date": {
-		"format": "{:%a %d %b}",
-		"min-length": 8,
-		"max-length": 20
+	"cpu": {
+		"interval": "1",
+		"format": "<span color='#f9e2af'>  </span>{usage}%",
+		"on-click": "kitty -e htop --sort-key PERCENT_CPU",
+		"tooltip": false
 	},
-	"clock#time": {
-		"format": "{:%I:%M %p}",
-		"tooltip": false,
-		"min-length": 8,
-		"max-length": 12
+	"memory": {
+		"format": "<span color='#94e2d5'>  </span>{}%",
 	},
-	"custom/backlight": {
-		"exec": "~/.config/waybar/scripts/brightness-control.sh",
-		"return-type": "json",
-		"format": "{}",
+	"temperature": {
+		// "thermal-zone": 2,
+		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"critical-threshold": 80,
+		"format": "<span color='#f38ba8'> {icon}</span> {temperatureC}°C",
+		"format-critical": "{temperatureC}°C {icon}",
+		//"format": "{temperatureC}°C {icon}",
+		"format-icons": [
+			"",
+			"",
+			""
+		]
+	},
+	"backlight": {
+		// "device": "acpi_video1",
+		"format": "<span color='#f9e2af'> {icon} </span> {percent}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"pulseaudio": {
+		"scroll-step": 3, // %, can be a float
+		"format": "<span color='#cba6f7' > {icon} </span>{volume}%",
+		"format-muted": "<span color='#cba6f7 >  </span>{volume}%",
+		"format-bluetooth": "<span color='#cba6f7 > 󰂰 </span>{volume}%",
+		"format-bluetooth-muted": "<span color='#cba6f7' > 󰂲 </span>{volume}%",
+		"format-source": "{volume}% ",
+		"on-click": "pavucontrol",
+		"on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"tooltip": true,
-		"on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
-		"on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
-		"interval": 1,
-		"min-length": 6,
-		"max-length": 6
+		"max-volume": 100,
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
 	},
-	"custom/paddc": {
-		"format": " ",
-		"tooltip": false,
-	},
-	"custom/prefix": {
-		"format": "<span color='#cdd6f4' > >></span>",
-		"tooltip": false,
-	},
-	//"hyprland/language": {
-	//  "format": "{}",
-	//  "format-en": "US",
-	//},
-	"custom/wifi": {
-		"exec": "~/.config/waybar/scripts/wifi-status.sh",
-		"return-type": "json",
-		"format": "{}",
-		"tooltip": true,
-		"on-click": "~/.config/waybar/scripts/wifi-menu.sh",
-		"interval": 1,
-		"min-length": 1,
-		"max-length": 12
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "<big></big>  {essid}",
+		"format-ethernet": " {ipaddr}/{cidr}",
+		"tooltip-format": " {ifname} via {gwaddr}",
+		"format-linked": "  {ifname} (No IP)",
+		"format-disconnected": "⚠ Disconnected",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
 	"bluetooth": {
 		"format": "<span color='#74c7ec'>󰂰 </span>",
@@ -171,38 +228,28 @@
 		"tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
 		"on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
 		"interval": 1,
-		"min-length": 1,
 		"max-length": 10
 	},
-	"custom/notification": {
-		"tooltip": false,
-		"rotate": 0,
-		"format": "{icon}",
-		"format-icons": {
-			"notification": "󱅫 ",
-			"none": " ",
-			"dnd-notification": "󰂛 ",
-			"dnd-none": "󰂛 ",
-			"inhibited-notification": " ",
-			"inhibited-none": " ",
-			"dnd-inhibited-notification": "󰂛 ",
-			"dnd-inhibited-none": "󰂛 ",
-		},
-		"return-type": "json",
-		"exec-if": "which swaync-client",
-		"exec": "swaync-client -swb",
-		"on-click-right": "swaync-client -d -sw",
-		"on-click": "swaync-client -t -sw",
-		"escape": true
+	"custom/zypper": {
+		"format": "<span color='#a6e3a1'> 󰚰 </span>{}%",
+		"interval": 3600, // every hour
+		"exec": "echo $(($(zypper lu | wc -l) - 3))", // # of updates
+		"exec-if": "exit 0", // always run; consider advanced run conditions
+		"on-click": "kitty -e sudo zypper refresh && sudo zypper dup --allow-vendor-change && pkill -SIGRTMIN+8 waybar", // update system
+		"signal": 8,
+		"max-length": 5,
+		"min-length": 5
 	},
-	"custom/player": {
-		"exec": "~/.config/waybar/scripts/player.sh",
-		"format": "{}",
-		"interval": 1,
-		"max-length": 35,
+	"custom/power": {
+		"format": "⏻ ",
 		"tooltip": false,
-		"on-click-right": "playerctl next",
-		"on-click-left": "playerctl previous",
-		"on-click": "playerctl play-pause",
-	}
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/custom_modules/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+	},
 }

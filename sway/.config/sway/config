@@ -14,6 +14,9 @@ set $filemanager nautilus
 # set browser
 set $browser librewolf
 
+# set calculator
+set $calc gnome-calculator
+
 # set program launcher
 set $menu wofi --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style.css
 
@@ -60,6 +63,9 @@ bindsym $mod+e exec $filemanager
 
 # start browser
 bindsym $mod+b exec $browser
+
+# start browser
+bindsym $mod+c exec $calc
 
 bindsym $mod+tab workspace next_on_output
 bindsym $mod+Shift+tab workspace prev_on_output
@@ -174,13 +180,13 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway
 # resize window (you can also use the mouse for that)
 
 # Pressing left will shrink the window’s width.
-bindsym Ctrl+Left resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Left resize shrink width 5 px or 5 ppt
 # Pressing up will grow the window’s height.
-bindsym Ctrl+Up resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
 # Pressing down will shrink the window’s height.
-bindsym Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
 # Pressing right will grow the window’s width.
-bindsym Ctrl+Right resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
 
 
 # custom bind keys
@@ -250,7 +256,7 @@ for_window [app_id="mpv"] floating enable
 for_window [app_id="mpv"] resize set 960 540
 for_window [app_id="mpv"] border pixel 0
 
-for_window [app_id="org.gnome.(Nautilus|Weather)"] floating enable
+for_window [app_id="org.gnome.(Nautilus|Weather|Calculator|Calendar)"] floating enable
 
 # Allow Firefox pop-ups
 for_window [class="Firefox" title="Opening"] floating enable, focus
@@ -302,15 +308,15 @@ input type:keyboard {
 
 # set $wob wob --config /etc/sway/wob/wob.ini
 #
-# exec_always {
-#     systemctl --user import-environment
-#     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-#     gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-#     gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-#     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-#     test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
-#     tail -f $SWAYSOCK.wob | $wob
-# }
+exec_always {
+    systemctl --user import-environment
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface color-scheme 'dark'
+    # test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
+    # tail -f $SWAYSOCK.wob | $wob
+}
 
 
 # colorscheme
