@@ -217,10 +217,10 @@
 		"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
 	"bluetooth": {
-		"format": "<span color='#74c7ec'>󰂰 </span>",
-		"format-disabled": "<span color='#89b4fa'>󰂲 </span>",
-		"format-connected": "<span color='#89dceb'>󰂱 </span>",
-		"format-connected-battery": "<span color='#89dceb'>󰂱 </span>",
+		"format": "<span color='#74c7ec'>󰂰</span>",
+		"format-disabled": "<span color='#89b4fa'>󰂲</span>",
+		"format-connected": "<span color='#89dceb'>󰂱</span>",
+		"format-connected-battery": "<span color='#89dceb'>󰂱</span>",
 		"tooltip-format": "{num_connections} connected",
 		"tooltip-format-disabled": "Bluetooth Disabled",
 		"tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
@@ -231,14 +231,14 @@
 		"max-length": 10
 	},
 	"custom/zypper": {
-		"format": "<span color='#a6e3a1'> 󰚰 </span>{}%",
+		"format": "<span color='#a6e3a1' size='large'> </span>{}",
+		//"format": "<span color='#a6e3a1'>  </span>{}",
 		"interval": 3600, // every hour
 		"exec": "echo $(($(zypper lu | wc -l) - 3))", // # of updates
 		"exec-if": "exit 0", // always run; consider advanced run conditions
 		"on-click": "kitty -e sudo zypper refresh && sudo zypper dup --allow-vendor-change && pkill -SIGRTMIN+8 waybar", // update system
 		"signal": 8,
 		"max-length": 5,
-		"min-length": 5
 	},
 	"custom/power": {
 		"format": "⏻ ",
