@@ -1,5 +1,6 @@
 # Raphael Campos
 include $HOME/.config/sway/output.conf
+include $HOME/.config/sway/env.conf
 
 # set mods
 set $mod Mod4
@@ -64,8 +65,11 @@ bindsym $mod+e exec $filemanager
 # start browser
 bindsym $mod+b exec $browser
 
-# start browser
+# start calculator
 bindsym $mod+c exec $calc
+
+# start yast
+bindsym $mod+Escape exec "foot -e bash -c 'echo $psw | sudo -S -E yast2'"
 
 bindsym $mod+tab workspace next_on_output
 bindsym $mod+Shift+tab workspace prev_on_output
@@ -258,6 +262,13 @@ for_window [app_id="mpv"] border pixel 0
 
 for_window [app_id="org.gnome.(Nautilus|Weather|Calculator|Calendar)"] floating enable
 
+for_window [app_id="org.opensuse.YaST"] floating enable
+
+for_window [app_id="blueman-manager"] floating enable
+
+for_window [app_id="foot"] floating enable
+
+
 # Allow Firefox pop-ups
 for_window [class="Firefox" title="Opening"] floating enable, focus
 for_window [class="Firefox" instance="Navigator"] floating enable
@@ -273,9 +284,7 @@ for_window [app_id="firefox" title="File Upload"] floating enable
 for_window [class="Chromium" instance="chromium"] floating enable
 for_window [class="Chromium" instance="dialog"] floating enable
 
-
-assign [title="Alacritty"] $ws10
-bindsym $mod+g exec --no-startup-id "notify-send 'Recording' 'Recording started at workspace 10' -a Alacritty -i $HOME/.config/sway/rec.ico && alacritty -e wf-recorder -f $HOME/Videos/recording-$(date +%Y-%m-%d_%H-%M-%S).mkv"
+bindsym $mod+g exec --no-startup-id "notify-send 'Recording' 'Recording started at workspace 10' -a foot -i $HOME/.config/sway/rec.ico && foot -e wf-recorder -f $HOME/Videos/recording-$(date +%Y-%m-%d_%H-%M-%S).mkv"
 # bindsym $mod+Shift+g exec --no-startup-id "wf-recorder "
 
 bindsym Print exec --no-startup-id "grim $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
