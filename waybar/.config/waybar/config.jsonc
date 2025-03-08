@@ -6,21 +6,22 @@
 	"margin-top": 3,
 	"margin-right": 3,
 	"margin-left": 3,
+	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
 		"sway/workspaces",
 		"sway/window",
 		"custom/paddc",
 		"custom/paddc",
 		"custom/paddc",
-		"custom/media",
-		"tray",
-		"sway/mode"
+		"custom/mediaplayer",
+		"sway/mode",
 	],
 	"modules-center": [
 		"clock#date",
 		"clock#time",
 	],
 	"modules-right": [
+		"tray",
 		"battery",
 		"cpu",
 		"custom/paddc",
@@ -36,7 +37,7 @@
 		"custom/paddc",
 		"bluetooth",
 		"custom/paddc",
-		"custom/zypper",
+		"custom/suse",
 		"custom/paddc",
 		"custom/weather",
 		"custom/paddc",
@@ -52,15 +53,24 @@
 		"warp-on-scroll": false,
 		"format": "{icon}",
 		"format-icons": {
-			"1": "<span color='#89dceb' >󰬺</span>",
-			"2": "<span color='#89dceb' >󰬻</span>",
-			"3": "<span color='#89dceb' >󰬼</span>",
-			"4": "<span color='#89dceb' >󰬽</span>",
-			"5": "<span color='#89dceb' >󰬾</span>",
-			"6": "<span color='#89dceb' >󰬿</span>",
-			"7": "<span color='#89dceb' >󰭀</span>",
-			"8": "<span color='#89dceb' >󰭁</span>",
-			"9": "<span color='#89dceb' >󰭂</span>",
+			"1": "<span color='#89dceb'>󰬺</span>",
+			"2": "<span color='#89dceb'>󰬻</span>",
+			"3": "<span color='#89dceb'>󰬼</span>",
+			"4": "<span color='#89dceb'>󰬽</span>",
+			"5": "<span color='#89dceb'>󰬾</span>",
+			"6": "<span color='#89dceb'>󰬿</span>",
+			"7": "<span color='#89dceb'>󰭀</span>",
+			"8": "<span color='#89dceb'>󰭁</span>",
+			"9": "<span color='#89dceb'>󰭂</span>",
+			//"1": "<span color='@teal'>󰬺</span>",
+			//"2": "<span color='@teal'>󰬻</span>",
+			//"3": "<span color='@teal'>󰬼</span>",
+			//"4": "<span color='@teal'>󰬽</span>",
+			//"5": "<span color='@teal'>󰬾</span>",
+			//"6": "<span color='@teal'>󰬿</span>",
+			//"7": "<span color='@teal'>󰭀</span>",
+			//"8": "<span color='@teal'>󰭁</span>",
+			//"9": "<span color='@teal'>󰭂</span>",
 			"10": "<span color='#f38ba8' size='xx-large'></span>",
 			//"urgent": ": ",
 			//"default": "",
@@ -75,16 +85,11 @@
 		"format": "{app_id}",
 		"max-length": 20
 	},
-	"custom/media": {
+	"custom/mediaplayer": {
 		"format": "{}",
 		"tooltip": false,
 		"interval": 1,
-		"max-length": 35,
-		"format-icons": {
-			"spotify": "",
-			"default": "🎜"
-		},
-		"escape": true,
+		"max-length": 45,
 		"exec": "$HOME/.config/waybar/custom_modules/mediaplayer.sh",
 		"on-click-right": "playerctl next",
 		"on-click-left": "playerctl previous",
@@ -185,13 +190,13 @@
 	"pulseaudio": {
 		"scroll-step": 3, // %, can be a float
 		"format": "<span color='#cba6f7' > {icon} </span>{volume}%",
-		"format-muted": "<span color='#cba6f7 >  </span>{volume}%",
-		"format-bluetooth": "<span color='#cba6f7 > 󰂰 </span>{volume}%",
+		"format-muted": "<span color='#cba6f7' >  </span>{volume}%",
+		"format-bluetooth": "<span color='#cba6f7' > 󰂰 </span>{volume}%",
 		"format-bluetooth-muted": "<span color='#cba6f7' > 󰂲 </span>{volume}%",
 		"format-source": "{volume}% ",
-		"on-click": "pavucontrol",
-		"on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"tooltip": true,
+		"on-click-right": "pavucontrol",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false,
 		"max-volume": 100,
 		"format-icons": {
 			"headphone": "",
@@ -214,7 +219,8 @@
 		"tooltip-format": " {ifname} via {gwaddr}",
 		"format-linked": "  {ifname} (No IP)",
 		"format-disconnected": "⚠ Disconnected",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"on-click-right": "nm-connection-editor",
 	},
 	"bluetooth": {
 		"format": "<span color='#74c7ec'>󰂰</span>",
@@ -230,13 +236,12 @@
 		"interval": 1,
 		"max-length": 10
 	},
-	"custom/zypper": {
+	"custom/suse": {
 		"format": "<span color='#a6e3a1' size='large'> </span>{}",
-		//"format": "<span color='#a6e3a1'>  </span>{}",
-		"interval": 3600, // every hour
+		"interval": 3600,
 		"exec": "echo $(($(zypper lu | wc -l) - 3))", // # of updates
-		"exec-if": "exit 0", // always run; consider advanced run conditions
-		"on-click": "kitty -e sudo zypper refresh && sudo zypper dup --allow-vendor-change && pkill -SIGRTMIN+8 waybar", // update system
+		"exec-if": "exit 0",
+		"on-click": "sh $HOME/.config/env/yast.sh",
 		"signal": 8,
 		"max-length": 5,
 	},

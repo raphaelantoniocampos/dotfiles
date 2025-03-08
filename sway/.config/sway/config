@@ -1,6 +1,6 @@
 # Raphael Campos
 include $HOME/.config/sway/output.conf
-include $HOME/.config/sway/env.conf
+include $HOME/.config/env/sway.conf
 
 # set mods
 set $mod Mod4
@@ -25,7 +25,7 @@ set $menu wofi --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style
 set $wallpaper /home/$USER/.config/backgrounds/nice-forest-background.jpg
 set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
 
-set $screenlock 'swaylock --config $HOME/.config/swaylock/swaylock.conf -i $lockscreen'
+set $screenlock 'swaylock --config $HOME/.config/sway/swaylock/swaylock.conf -i $lockscreen'
 
 # Shutdown, Reboot, Lock Screen, and Logout 
 bindsym $mod1+Shift+p   exec systemctl poweroff
@@ -116,7 +116,7 @@ bindsym $mod+Ctrl+h split h
 bindsym $mod+Ctrl+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod1+Shift+s layout stacking
@@ -124,7 +124,7 @@ bindsym $mod1+Shift+t layout tabbed
 bindsym $mod1+s layout toggle split
 
 # toggle tiling / floatinl
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -184,13 +184,13 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway
 # resize window (you can also use the mouse for that)
 
 # Pressing left will shrink the window’s width.
-bindsym $mod+Ctrl+Left resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Left resize shrink width 3 px or 3 ppt
 # Pressing up will grow the window’s height.
-bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 3 px or 3 ppt
 # Pressing down will shrink the window’s height.
-bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 3 px or 3 ppt
 # Pressing right will grow the window’s width.
-bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+Right resize grow width 3 px or 3 ppt
 
 
 # custom bind keys
@@ -218,7 +218,7 @@ exec --no-startup-id mpd
 
 exec --no-startup-id /usr/lib/gsd-xsettings
 
-exec --no-startup-id swaync --style /etc/sway/swaync/style.css --config /etc/sway/swaync/config.json
+exec --no-startup-id swaync --style $HOME/.config/sway/swaync/style.css --config $HOME/.config/sway/swaync/config.json
 
 # bind app to workspace
 # check class by : xprop
@@ -263,11 +263,18 @@ for_window [app_id="mpv"] border pixel 0
 for_window [app_id="org.gnome.(Nautilus|Weather|Calculator|Calendar)"] floating enable
 
 for_window [app_id="org.opensuse.YaST"] floating enable
+for_window [app_id="ruby"] floating enable
+
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 
 for_window [app_id="blueman-manager"] floating enable
 
 for_window [app_id="foot"] floating enable
 
+for_window [app_id="xterm"] floating enable
+for_window [app_id="xterm"] resize set 960 540
+
+for_window [app_id="nm-connection-editor"] floating enable
 
 # Allow Firefox pop-ups
 for_window [class="Firefox" title="Opening"] floating enable, focus
