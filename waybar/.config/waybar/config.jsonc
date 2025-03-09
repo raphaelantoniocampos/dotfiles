@@ -239,7 +239,7 @@
 	"custom/suse": {
 		"format": "<span color='#a6e3a1' size='large'> </span>{}",
 		"interval": 3600,
-		"exec": "echo $(($(zypper lu | wc -l) - 3))", // # of updates
+		"exec": "echo $(($(zypper lu | wc -l) - 3))",
 		"exec-if": "exit 0",
 		"on-click": "sh $HOME/.config/env/yast.sh",
 		"signal": 8,
@@ -249,7 +249,7 @@
 		"format": "⏻ ",
 		"tooltip": false,
 		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/custom_modules/power_menu.xml", // Menu file in resources folder
+		"menu-file": "$HOME/.config/waybar/custom_modules/power_menu.xml",
 		"menu-actions": {
 			"shutdown": "shutdown",
 			"reboot": "reboot",
