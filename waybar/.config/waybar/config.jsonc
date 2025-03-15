@@ -8,7 +8,7 @@
 	"margin-left": 3,
 	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
-		"sway/workspaces",
+		"hyprland/workspaces",
 		"sway/window",
 		"custom/paddc",
 		"custom/paddc",
@@ -46,6 +46,30 @@
 		"custom/paddc",
 	],
 	//Modules configuration
+	"hyprland/workspaces": {
+		"all-outputs": true,
+		"active-only": false,
+		"warp-on-scroll": false,
+		"format": "{icon}",
+		"on-click": "activate",
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"format-icons": {
+			"1": "<span color='#89dceb'>󰬺</span>",
+			"2": "<span color='#89dceb'>󰬻</span>",
+			"3": "<span color='#89dceb'>󰬼</span>",
+			"4": "<span color='#89dceb'>󰬽</span>",
+			"5": "<span color='#89dceb'>󰬾</span>",
+			"6": "<span color='#89dceb'>󰬿</span>",
+			"7": "<span color='#89dceb'>󰭀</span>",
+			"8": "<span color='#89dceb'>󰭁</span>",
+			"9": "<span color='#89dceb'>󰭂</span>",
+			"10": "<span color='#89dceb'size='xx-large'>󰿩</span>",
+			//"urgent": ": ",
+			//"default": "",
+			"active": "<span color='#a6e3a1' size='xx-large'>󰮔</span>",
+		}
+	},
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
@@ -112,7 +136,9 @@
 		"format": "<span>{}</span>",
 		"exec": "curl 'https://wttr.in/?format=1'",
 		"interval": 3600,
-		"on-click": "gnome-weather"
+		"on-click": "gnome-weather",
+		"min-length": 5,
+		"max-length": 10
 	},
 	"battery#bat2": {
 		"bat": "BAT2"

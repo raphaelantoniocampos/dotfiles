@@ -30,6 +30,8 @@ function key() {
 }
 
 alias icat="kitty icat"
+alias ls="lsd"
+alias cat="bat"
 
 # NOTE: OpenSuse alias
 alias zup="sudo zypper refresh && sudo zypper dup --allow-vendor-change"

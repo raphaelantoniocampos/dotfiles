@@ -4,7 +4,7 @@ include $HOME/.config/env/sway.conf
 
 # set mods
 set $mod Mod4
-set $mod1 Mod1
+set $mod2 Mod1
 
 # set terminal
 set $terminal kitty
@@ -28,10 +28,10 @@ set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
 set $screenlock 'swaylock --config $HOME/.config/sway/swaylock/swaylock.conf -i $lockscreen'
 
 # Shutdown, Reboot, Lock Screen, and Logout 
-bindsym $mod1+Shift+p   exec systemctl poweroff
-bindsym $mod1+Shift+r   exec systemctl reboot
-bindsym $mod1+Shift+l   exec swaylock -i $lockscreen 
-bindsym $mod1+Shift+h   exec systemctl hibernate  
+bindsym $mod2+Shift+p   exec systemctl poweroff
+bindsym $mod2+Shift+r   exec systemctl reboot
+bindsym $mod2+Shift+l   exec swaylock -i $lockscreen 
+bindsym $mod2+Shift+h   exec systemctl hibernate  
 
 # Idle configuration
 exec swayidle -w \
@@ -119,9 +119,9 @@ bindsym $mod+Ctrl+v split v
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod1+Shift+s layout stacking
-bindsym $mod1+Shift+t layout tabbed
-bindsym $mod1+s layout toggle split
+bindsym $mod2+Shift+s layout stacking
+bindsym $mod2+Shift+t layout tabbed
+bindsym $mod2+s layout toggle split
 
 # toggle tiling / floatinl
 bindsym $mod+f floating toggle
