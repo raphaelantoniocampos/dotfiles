@@ -16,6 +16,7 @@ return {
           'onehalflight',
           'onehalfdark',
           'vague',
+          'oxocarbon',
           'catppuccin-latte',
           'catppuccin-frappe',
           'catppuccin-macchiato',
@@ -63,6 +64,8 @@ return {
   },
 
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+
+  { 'nyoom-engineering/oxocarbon.nvim', name = 'oxocarbon', priority = 1000 },
 
   {
     'slugbyte/lackluster.nvim',
