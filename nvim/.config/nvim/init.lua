@@ -20,6 +20,7 @@ require('lazy').setup({
   require 'plugins.colorschemes',
   require 'plugins.comment',
   require 'plugins.conform',
+  require 'plugins.csvview',
   require 'plugins.dashboard',
   require 'plugins.dap',
   require 'plugins.gitsigns',

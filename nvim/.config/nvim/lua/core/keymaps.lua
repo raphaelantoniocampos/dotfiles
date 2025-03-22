@@ -124,3 +124,6 @@ vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts())
 vim.keymap.set('n', '<leader>us', ':Themery<CR>', opts 'Select Colorscheme')
 
 vim.keymap.set('n', '<leader>uc', ':colorscheme<CR>', opts 'Current Colorscheme')
+
+-- CSS View Mode
+vim.keymap.set('n', '<leader>uv', ':CsvViewToggle<CR>', opts 'CSS View Mode')
