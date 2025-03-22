@@ -7,25 +7,26 @@ return {
       require('themery').setup {
         themes = {
           'ash',
-          'dracula',
-          'tokyonight-night',
-          'tokyonight-storm',
-          'tokyonight-day',
-          'tokyonight-moon',
-          'cyberdream',
-          'onehalflight',
-          'onehalfdark',
-          'vague',
-          'oxocarbon',
           'catppuccin-latte',
           'catppuccin-frappe',
           'catppuccin-macchiato',
           'catppuccin-mocha',
-          'lackluster-hack',
-          'kanagawa-wave',
+          'cyberdream',
+          'dracula',
+          'gruvbox',
           'kanagawa-dragon',
           'kanagawa-lotus',
+          'kanagawa-wave',
+          'lackluster-hack',
+          'onehalfdark',
+          'onehalflight',
+          'oxocarbon',
           'rose-pine',
+          'tokyonight-day',
+          'tokyonight-moon',
+          'tokyonight-night',
+          'tokyonight-storm',
+          'vague',
         }, -- Your list of installed colorschemes.
         livePreview = true, -- Apply theme while picking. Default to true.
       }
@@ -39,6 +40,8 @@ return {
     lazy = false,
     priority = 100,
   },
+  { 'ellisonleao/gruvbox.nvim', priority = 1000, config = true },
+
   {
     'folke/tokyonight.nvim',
     lazy = false,
