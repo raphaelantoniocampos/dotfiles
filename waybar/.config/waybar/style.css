@@ -1,3 +1,4 @@
+/* Catppuccin Color Definitions */
 @define-color rosewater #f5e0dc;
 @define-color flamingo #f2cdcd;
 @define-color pink #f5c2e7;
@@ -24,3 +25,225 @@
 @define-color base #1e1e2e;
 @define-color mantle #181825;
 @define-color crust #11111b;
+@define-color transparent rgba(0, 0, 0, 0.5);
+@define-color crust_transparent rgba(30, 30, 46, 0.8);
+@define-color surface0_transparent rgba(49, 50, 68, 0.8);
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: '0xProtoNerdFont';
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: @crust_transparent;
+    border: 1px solid @surface0_transparent;
+    border-radius: 20px;
+    color: @subtext1;
+    font-weight: bold;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    background: @crust;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @text;
+}
+
+tooltip label {
+    color: @text;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px @transparent;
+}
+
+#custom-os_button {
+    font-size: 20px;
+    padding-left: 12px;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    color: @text
+}
+
+#custom-os_button:hover {
+    background: @transparent;
+    color: @text;
+}
+
+#workspaces {
+    color: @transparent;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+#workspaces button {
+    padding: 3px;
+    color: @text;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#workspaces button.active {
+    color: @text;
+    border-bottom: 2px solid @text;
+}
+
+#workspaces button.focused {
+    color: @text;
+}
+
+#workspaces button.urgent {
+    background: @crust;
+    border-bottom: 2px dashed @red;
+    color: @red;
+}
+
+#workspaces button:hover {
+    background: @crust;
+    color: @text;
+}
+
+/*#taskbar {*/
+/*    background: transparent;*/
+/*    outline-color: transparent;*/
+/*    border-color: transparent;*/
+/*    color: transparent;*/
+/*    box-shadow: none;*/
+/*    font-size: 0px;*/
+/*    padding: 0px;*/
+/*    margin: 0px;*/
+/**/
+/*}*/
+/**/
+/*#taskbar button {*/
+/*    background: transparent;*/
+/*    outline-color: transparent;*/
+/*    border-color: transparent;*/
+/*    color: transparent;*/
+/*    box-shadow: none;*/
+/*    font-size: 0px;*/
+/*    padding: 0px;*/
+/*    margin: 0px;*/
+/*}*/
+/**/
+/*#taskbar button.active {*/
+/*    min-width: 100px;*/
+/*    border-bottom: 2px solid @text;*/
+/*    margin-left: 2px;*/
+/*    margin-right: 2px;*/
+/*    padding-left: 8px;*/
+/*    padding-right: 8px;*/
+/*    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
+/*    border-bottom: 2px solid @text;*/
+/*    color: @text;*/
+/*    background: @crust;*/
+/*}*/
+/**/
+/*#taskbar button:hover {*/
+/*    border-bottom: 2px solid @text;*/
+/*    background: @crust;*/
+/*    color: @text;*/
+/*}*/
+
+/*#taskbar button.minimized {*/
+/*    border-bottom: 0px;*/
+/*    margin-left: 0px;*/
+/*    margin-right: 0px;*/
+/*    padding-left: 0px;*/
+/*    padding-right: 0px;*/
+/*    color: transparent;*/
+/*}*/
+
+#cpu,
+#disk,
+#memory {
+    padding: 2px;
+}
+
+#temperature {
+    color: @subtext1;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#temperature.critical {
+    padding-right: 2px;
+    color: @red;
+    font-size: initial;
+    border-bottom: 2px dashed @red;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#window {
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#tray {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#tray>.passive {
+    border-bottom: none;
+}
+
+#tray>.active {
+    border-bottom: 2px solid @text;
+}
+
+#tray>.needs-attention {
+    border-bottom: 2px solid @red;
+}
+
+#tray>widget {
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#tray>widget:hover {
+    background: @crust;
+}
+
+#pulseaudio {
+    font-family: "0xProtoNerdFont";
+    padding-left: 3px;
+    padding-right: 3px;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#network {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#language {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#custom-weather {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#custom-power {
+    padding-left: 5px;
+    padding-right: 20px;
+}

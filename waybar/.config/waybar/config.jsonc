@@ -8,8 +8,10 @@
 	"margin-left": 3,
 	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
+		"custom/os_button",
 		"hyprland/workspaces",
-		"sway/window",
+		//"sway/window",
+		"custom/taskbar",
 		"custom/mediaplayer",
 		"sway/mode",
 	],
@@ -18,7 +20,6 @@
 		"clock#time",
 	],
 	"modules-right": [
-		"tray",
 		"battery",
 		"cpu",
 		"memory",
@@ -27,34 +28,28 @@
 		"pulseaudio",
 		"network",
 		"bluetooth",
-		"custom/suse",
+		"tray",
 		"custom/weather",
+		"hyprland/language",
 		"custom/power",
 	],
 	//Modules configuration
+	"custom/os_button": {
+		"format": " ",
+		"on-click": "wofi --show drun",
+		"on-click-right": "sh $HOME/.config/env/yast.sh",
+		"tooltip": true
+	},
 	"hyprland/workspaces": {
 		"all-outputs": true,
 		"active-only": false,
 		"warp-on-scroll": false,
+		"icon-size": 32,
+		"spacing": 16,
 		"format": "{icon}",
 		"on-click": "activate",
 		"on-scroll-up": "hyprctl dispatch workspace e+1",
 		"on-scroll-down": "hyprctl dispatch workspace e-1",
-		"format-icons": {
-			"1": "<span color='#89dceb'size='xx-large'>󰬺</span>",
-			"2": "<span color='#89dceb'size='xx-large'>󰬻</span>",
-			"3": "<span color='#89dceb'size='xx-large'>󰬼</span>",
-			"4": "<span color='#89dceb'size='xx-large'>󰬽</span>",
-			"5": "<span color='#89dceb'size='xx-large'>󰬾</span>",
-			"6": "<span color='#89dceb'size='xx-large'>󰬿</span>",
-			"7": "<span color='#89dceb'size='xx-large'>󰭀</span>",
-			"8": "<span color='#89dceb'size='xx-large'>󰭁</span>",
-			"9": "<span color='#89dceb'size='xx-large'>󰭂</span>",
-			"10": "<span color='#89dceb'size='xx-large'>󰿩</span>",
-			//"urgent": ": ",
-			//"default": "",
-			"active": "<span color='#a6e3a1' size='large'>󰮔</span>",
-		}
 	},
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -62,25 +57,19 @@
 		"active-only": false,
 		"warp-on-scroll": false,
 		"format": "{icon}",
-		"format-icons": {
-			"1": "<span color='#89dceb'size='xx-large'>󰬺</span>",
-			"2": "<span color='#89dceb'size='xx-large'>󰬻</span>",
-			"3": "<span color='#89dceb'size='xx-large'>󰬼</span>",
-			"4": "<span color='#89dceb'size='xx-large'>󰬽</span>",
-			"5": "<span color='#89dceb'size='xx-large'>󰬾</span>",
-			"6": "<span color='#89dceb'size='xx-large'>󰬿</span>",
-			"7": "<span color='#89dceb'size='xx-large'>󰭀</span>",
-			"8": "<span color='#89dceb'size='xx-large'>󰭁</span>",
-			"9": "<span color='#89dceb'size='xx-large'>󰭂</span>",
-			"10": "<span color='#89dceb'size='x-large'>󰿩</span>",
-			//"urgent": ": ",
-			//"default": "",
-			"focused": "<span color='#a6e3a1' size='large'>󰮔</span>",
-		}
 	},
 	"sway/window": {
 		"format": "{app_id}",
 		"max-length": 20
+	},
+	"custom/taskbar": {
+		"all-outputs": false,
+		//"format": "{icon} {title:.17}",
+		"format": "{}",
+		//"format": "{app_id}",
+		"exec": "$HOME/.config/waybar/custom_modules/taskbar.sh",
+		"icon-size": 20,
+		"spacing": 3,
 	},
 	"custom/mediaplayer": {
 		"format": "{}",
@@ -93,23 +82,23 @@
 		"on-click": "playerctl play-pause",
 	},
 	"tray": {
-		"icon-size": 11,
-		"spacing": 5
+		"icon-size": 13,
+		"spacing": 3
 	},
 	"sway/mode": {
 		"format": "<span style=\"italic\">{}</span>"
 	},
 	"clock#date": {
-		"format": "<span color='#f9e2af'> </span><b>{:%e %b}</b>",
+		"format": "<span color='#f9e2af'> </span>{:%e %b}",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
-		"today-format": "<b>{}</b>",
+		"today-format": "{}",
 		"on-click": "gnome-calendar",
 		"min-length": 8,
 		"max-length": 20
 	},
 	"clock#time": {
-		"format": "<span color='#74c7ec'> </span><b>{:%H:%M}</b>",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format": "<span color='#74c7ec'> </span>{:%H:%M}",
+		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"on-click": "gnome-calendar",
 		"min-length": 8,
 		"max-length": 12
@@ -131,41 +120,38 @@
 			" ",
 			" "
 		],
-		"format": "<span color='#a6e3a1'>{icon}</span><b>{capacity}%</b>",
-		"format-critical": "<span color='#f38ba8'>{icon}</span><b>{capacity}%</b>",
-		"format-warning": "<span color='#fab387'>{icon}</span><b>{capacity}%</b>",
-		"format-full": "<span color='#a6e3a1'>{icon}</span><b>{capacity}%</b>",
-		"format-charging": "<span color='#a6e3a1'></span><b>{capacity}%</b>",
-		"format-charging-warning": "<span color='#fab387'></span><b>{capacity}%</b>",
-		"format-charging-critical": "<span color='#f38ba8'></span><b>{capacity}%</b>",
-		"format-plugged": "<span color='#a6e3a1'></span><b>{capacity}%</b>",
-		"tooltip": false
+		"format": "<span color='#a6e3a1'>{icon}</span>{capacity}%",
+		"format-critical": "<span color='#f38ba8'>{icon}</span>{capacity}%",
+		"format-warning": "<span color='#fab387'>{icon}</span>{capacity}%",
+		"format-full": "<span color='#a6e3a1'>{icon}</span>{capacity}%",
+		"format-charging": "<span color='#a6e3a1'></span>{capacity}%",
+		"format-charging-warning": "<span color='#fab387'></span>{capacity}%",
+		"format-charging-critical": "<span color='#f38ba8'></span>{capacity}%",
+		"format-plugged": "<span color='#a6e3a1'></span>{capacity}%",
 	},
 	"cpu": {
 		"interval": "1",
-		"format": "<span color='#f9e2af'> </span><b>{usage}%</b>",
+		"format": "<span color='#f9e2af'> </span>{usage}%",
 		"on-click": "kitty -e htop --sort-key PERCENT_CPU",
-		"tooltip": false
-	},
-	"memory": {
-		"format": "<span color='#94e2d5'> </span><b>{}%</b>",
 	},
 	"temperature": {
 		// "thermal-zone": 2,
-		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-		"critical-threshold": 80,
-		"format": "<span color='#f38ba8'>{icon}</span> <b>{temperatureC}°C</b>",
+		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"critical-threshold": 75,
+		"format": "<span color='#f38ba8'>{icon}</span> {temperatureC}°C",
 		"format-critical": "{temperatureC}°C {icon}",
-		//"format": "{temperatureC}°C {icon}",
 		"format-icons": [
 			"",
 			"",
 			""
 		]
 	},
+	"memory": {
+		"format": "<span color='#94e2d5'> </span>{}%",
+	},
 	"backlight": {
-		// "device": "acpi_video1",
-		"format": "<span color='#f9e2af'>{icon}</span> <b>{percent}%</b>",
+		//"device": "acpi_video1",
+		"format": "<span color='#f9e2af'>{icon}</span> {percent}%",
 		"format-icons": [
 			"",
 			"",
@@ -176,18 +162,18 @@
 			"",
 			"",
 			""
-		]
+		],
+		"tooltip-format": "{percent}%",
 	},
 	"pulseaudio": {
 		"scroll-step": 3, // %, can be a float
-		"format": "<span color='#cba6f7'>{icon}</span>  <b>{volume}%</b>",
-		"format-muted": "<span color='#cba6f7'> </span>  <b>{volume}%</b>",
-		"format-bluetooth": "<span color='#cba6f7'>󰂰</span>  <b>{volume}%</b>",
-		"format-bluetooth-muted": "<span color='#cba6f7'>󰂲</span>  <b>{volume}%</b>",
-		"format-source": "  <b>{volume}%</b>",
+		"format": "<span color='#cba6f7'>{icon}</span> {volume}%",
+		"format-muted": "<span color='#cba6f7'> </span> {volume}%",
+		"format-bluetooth": "<span color='#cba6f7'>󰂰</span> {volume}%",
+		"format-bluetooth-muted": "<span color='#cba6f7'>󰂲</span> {volume}%",
+		"format-source": "  {volume}%",
 		"on-click-right": "pavucontrol",
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"tooltip": false,
 		"max-volume": 100,
 		"format-icons": {
 			"headphone": "",
@@ -197,15 +183,15 @@
 			"portable": "",
 			"car": "",
 			"default": [
-				"",
-				"",
-				""
+				" ",
+				" ",
+				" "
 			]
 		},
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "  <b>{essid}</b>",
+		"format-wifi": "  {essid}",
 		"format-ethernet": "   {ipaddr}/{cidr}",
 		"tooltip-format": "   {ifname} via {gwaddr}",
 		"format-linked": "    {ifname} (No IP)",
@@ -227,25 +213,22 @@
 		"interval": 1,
 		"max-length": 10
 	},
-	"custom/suse": {
-		"format": "<span color='#a6e3a1'> </span> <b>{}</b>",
-		"interval": 60,
-		"exec": "echo $(($(zypper lu | wc -l) - 3))",
-		"exec-if": "exit 0",
-		"on-click": "sh $HOME/.config/env/yast.sh",
-		"signal": 8,
-		"max-length": 10,
-	},
 	"custom/weather": {
-		"format": "<b>{}</b>",
+		"format": "{}",
 		"exec": "curl 'https://wttr.in/?format=1'",
+		//"exec": "curl 'https://wttr.in/'",
+		"tooltip-format": "{}",
 		"interval": 3600,
 		"on-click": "gnome-weather",
 		"min-length": 5,
 		"max-length": 10
 	},
+	"hyprland/language": {
+		"format": "{}",
+		"format-pt": "PT-BR",
+	},
 	"custom/power": {
-		"format": "<b>  </b>",
+		"format": "",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/custom_modules/power_menu.xml",
