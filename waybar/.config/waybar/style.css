@@ -77,14 +77,14 @@ button:hover {
 }
 
 #custom-os_button {
-    font-size: 20px;
+    font-size: 15px;
     padding-left: 12px;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: @text
+    color: @green
 }
 
 #custom-os_button:hover {
-    color: @green;
+    color: @text;
 }
 
 #workspaces {
@@ -175,6 +175,10 @@ button:hover {
 }
 
 #cpu:hover {
+    color: @green;
+}
+
+#disk:hover {
     color: @green;
 }
 
