@@ -1,15 +1,17 @@
-WORKSPACE=$(
-	hyprctl activewindow |
-	rg workspace |
-	awk '{print $2}');
+#!/bin/bash
 
-MONITOR=$(
-	hyprctl activewindow |
-	rg monitor |
-	awk '{print $2}');
+# Obtém a janela ativa ou retorna JSON vazio
+ACTIVE_WIN=$(hyprctl activewindow -j || echo '{}')
 
-echo workspace: $WORKSPACE;
-echo monitor: $MONITOR;
-
-hyprctl clients -j |
-jq -r --arg WORKSPACE "$WORKSPACE" 'map(select(.workspace.id == ($WORKSPACE|tonumber)))';
+# Processa com jq garantindo campos obrigatórios
+echo "$ACTIVE_WIN" | jq -c '
+{
+    class: (.class // "unknown"),
+    title: (.title // ""),
+    address: (.address // ""),
+    icon: (if .class == "kitty" then "terminal"
+          elif .class == "LibreWolf" then "web-browser"
+          elif .class == "firefox" then "firefox"
+          elif .class == "Code" then "code"
+          else (.class // "default") end)
+}'

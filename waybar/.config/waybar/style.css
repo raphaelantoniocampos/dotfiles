@@ -84,14 +84,13 @@ button:hover {
 }
 
 #custom-os_button:hover {
-    background: @transparent;
-    color: @text;
+    color: @green;
 }
 
 #workspaces {
     color: @transparent;
-    margin-right: 2px;
-    margin-left: 2px;
+    margin-right: 4px;
+    margin-left: 4px;
 }
 
 #workspaces button {
@@ -117,7 +116,7 @@ button:hover {
 
 #workspaces button:hover {
     background: @crust;
-    color: @text;
+    color: @green;
 }
 
 /*#taskbar {*/
@@ -171,10 +170,20 @@ button:hover {
 /*    color: transparent;*/
 /*}*/
 
-#cpu,
-#disk,
+#battery:hover {
+    color: @green;
+}
+
+#cpu:hover {
+    color: @green;
+}
+
 #memory {
     padding: 2px;
+}
+
+#memory:hover {
+    color: @green;
 }
 
 #temperature {
@@ -190,10 +199,18 @@ button:hover {
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+#temperature:hover {
+    color: @green;
+}
+
 #window {
     border-radius: 10px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+#backlight:hover {
+    color: @green;
 }
 
 #tray {
@@ -228,9 +245,17 @@ button:hover {
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+#pulseaudio:hover {
+    color: @green;
+}
+
 #network {
     padding-left: 3px;
     padding-right: 3px;
+}
+
+#network:hover {
+    color: @green;
 }
 
 #language {
@@ -238,12 +263,32 @@ button:hover {
     padding-right: 5px;
 }
 
+#language:hover {
+    color: @green;
+}
+
 #custom-weather {
     padding-left: 5px;
     padding-right: 5px;
 }
 
+#clock:hover {
+    color: @green;
+}
+
+#bluetooth:hover {
+    color: @green;
+}
+
+#custom-weather:hover {
+    color: @green;
+}
+
 #custom-power {
     padding-left: 5px;
     padding-right: 20px;
+}
+
+#custom-power:hover {
+    color: @green;
 }

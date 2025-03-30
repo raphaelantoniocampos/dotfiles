@@ -63,13 +63,22 @@
 		"max-length": 20
 	},
 	"custom/taskbar": {
-		"all-outputs": false,
-		//"format": "{icon} {title:.17}",
-		"format": "{}",
-		//"format": "{app_id}",
-		"exec": "$HOME/.config/waybar/custom_modules/taskbar.sh",
-		"icon-size": 20,
-		"spacing": 3,
+		"exec": "~/.config/waybar/custom_modules/taskbar.sh",
+		"return-type": "json",
+		"format": "{icon} {class}",
+		"format-icons": {
+			"terminal": "",
+			"web-browser": "",
+			"firefox": "",
+			"code": "",
+			"unknown": "",
+			"default": ""
+		},
+		"tooltip": false,
+		"max-length": 30,
+		"escape": true,
+		"on-click": "hyprctl dispatch focuswindow address:{address}",
+		"signal": 1
 	},
 	"custom/mediaplayer": {
 		"format": "{}",
