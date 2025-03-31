@@ -116,7 +116,7 @@ button:hover {
 
 #workspaces button:hover {
     background: @crust;
-    color: @green;
+    color: @text;
 }
 
 /*#taskbar {*/
@@ -171,15 +171,15 @@ button:hover {
 /*}*/
 
 #battery:hover {
-    color: @green;
+    color: @text;
 }
 
 #cpu:hover {
-    color: @green;
+    color: @text;
 }
 
 #disk:hover {
-    color: @green;
+    color: @text;
 }
 
 #memory {
@@ -187,7 +187,7 @@ button:hover {
 }
 
 #memory:hover {
-    color: @green;
+    color: @text;
 }
 
 #temperature {
@@ -204,7 +204,7 @@ button:hover {
 }
 
 #temperature:hover {
-    color: @green;
+    color: @text;
 }
 
 #window {
@@ -214,7 +214,7 @@ button:hover {
 }
 
 #backlight:hover {
-    color: @green;
+    color: @text;
 }
 
 #tray {
@@ -250,7 +250,7 @@ button:hover {
 }
 
 #pulseaudio:hover {
-    color: @green;
+    color: @text;
 }
 
 #network {
@@ -259,7 +259,7 @@ button:hover {
 }
 
 #network:hover {
-    color: @green;
+    color: @text;
 }
 
 #language {
@@ -268,7 +268,7 @@ button:hover {
 }
 
 #language:hover {
-    color: @green;
+    color: @text;
 }
 
 #custom-weather {
@@ -277,15 +277,15 @@ button:hover {
 }
 
 #clock:hover {
-    color: @green;
+    color: @text;
 }
 
 #bluetooth:hover {
-    color: @green;
+    color: @text;
 }
 
 #custom-weather:hover {
-    color: @green;
+    color: @text;
 }
 
 #custom-power {
@@ -294,5 +294,5 @@ button:hover {
 }
 
 #custom-power:hover {
-    color: @green;
+    color: @text;
 }
