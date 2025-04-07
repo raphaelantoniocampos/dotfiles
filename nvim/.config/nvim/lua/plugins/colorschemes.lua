@@ -17,7 +17,6 @@ return {
           'kanagawa-dragon',
           'kanagawa-lotus',
           'kanagawa-wave',
-          'lackluster-hack',
           'onehalfdark',
           'onehalflight',
           'oxocarbon',
@@ -69,12 +68,6 @@ return {
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
   { 'nyoom-engineering/oxocarbon.nvim', name = 'oxocarbon', priority = 1000 },
-
-  {
-    'slugbyte/lackluster.nvim',
-    lazy = false,
-    priority = 1000,
-  },
 
   {
     'drewxs/ash.nvim',
