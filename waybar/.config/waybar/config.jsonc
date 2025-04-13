@@ -12,15 +12,15 @@
 		"hyprland/workspaces",
 		"hyprland/window",
 		//"sway/window",
-		"custom/mediaplayer",
 		//"sway/mode",
-		"tray",
+		"custom/mediaplayer"
 	],
 	"modules-center": [
 		"clock#date",
-		"clock#time",
+		"clock#time"
 	],
 	"modules-right": [
+		"tray",
 		"battery",
 		"cpu",
 		"disk",
@@ -32,7 +32,7 @@
 		"bluetooth",
 		"custom/weather",
 		//"hyprland/language",
-		"custom/power",
+		"custom/power"
 	],
 	//Modules configuration
 	"custom/os_button": {
