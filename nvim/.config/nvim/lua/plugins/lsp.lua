@@ -135,8 +135,6 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
-      dockerls = {},
-      docker_compose_language_service = {},
       pylsp = {
         settings = {
           pylsp = {
