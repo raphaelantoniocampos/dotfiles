@@ -190,7 +190,6 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
-      -- ast_grep = {},
     }
 
     -- Ensure the servers and tools above are installed
