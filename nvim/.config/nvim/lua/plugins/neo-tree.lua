@@ -314,6 +314,6 @@ return {
       },
     }
 
-    vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+    vim.cmd [[nnoremap \ :Neotree reveal_force_cwd<cr>]]
   end,
 }

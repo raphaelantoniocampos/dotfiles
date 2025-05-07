@@ -25,6 +25,7 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', opts())
 
 -- save file without auto-formatting
 vim.keymap.set('n', '<C-s>', '<cmd>noautocmd w <CR>', opts())
+vim.keymap.set('n', '<leader>cf', '<cmd>noautocmd w <CR>', opts 'Save without formatting')
 
 -- format file
 vim.keymap.set('n', '<leader>cF', function()
@@ -118,13 +119,21 @@ vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diag
 vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
-vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts())
-vim.keymap.set('n', '<leader>m', ':Mason<CR>', opts())
-
--- Colorschemes
-vim.keymap.set('n', '<leader>us', ':Themery<CR>', opts 'Select Colorscheme')
-
-vim.keymap.set('n', '<leader>uc', ':colorscheme<CR>', opts 'Current Colorscheme')
-
 -- CSS View Mode
 vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_mode=border', opts 'CSS View Mode')
+
+-- Terminal mappings
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts 'Exit terminal mode')
+vim.keymap.set('n', '<M-t>', '<cmd>terminal<CR>', opts 'Open terminal')
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', opts 'Move left')
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', opts 'Move down')
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', opts 'Move up')
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', opts 'Move right')
+
+-- Plugin management
+vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>', opts 'Lazy plugin manager')
+vim.keymap.set('n', '<leader>m', '<cmd>Mason<CR>', opts 'Mason package manager')
+
+-- UI toggles
+vim.keymap.set('n', '<leader>us', '<cmd>Themery<CR>', opts 'Colorscheme selector')
+vim.keymap.set('n', '<leader>uc', '<cmd>colorscheme<CR>', opts 'Show colorscheme')
