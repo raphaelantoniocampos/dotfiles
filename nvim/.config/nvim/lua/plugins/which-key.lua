@@ -20,7 +20,7 @@ return {
     spec = {
       {
         mode = { 'n', 'v' },
-        { '<leader>T', group = 'tabs' },
+        { '<leader>t', group = 'tabs' },
         { '<leader>W', group = 'workspaces', icon = { icon = '󰒖', color = 'yellow' } },
         { '<leader>c', group = 'code' },
         { '<leader>d', group = 'debug' },
@@ -33,7 +33,7 @@ return {
         { '<leader>S', group = 'session' },
         { '<leader>\\', group = 'neotree', icon = { icon = '󰙅', color = 'blue' } },
         { '<leader>g', group = 'git' },
-        { '<leader>x', group = 'diagnostics/quickfix', icon = { icon = '󱖫 ', color = 'green' } },
+        { '<leader>e', group = 'diagnostics/quickfix', icon = { icon = '󱖫 ', color = 'green' } },
         { '[', group = 'prev' },
         { ']', group = 'next' },
         { 'g', group = 'goto' },

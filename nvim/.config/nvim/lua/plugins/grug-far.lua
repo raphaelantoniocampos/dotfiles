@@ -4,7 +4,7 @@ return {
   cmd = 'GrugFar',
   keys = {
     {
-      '<leader>rr',
+      '<leader>csr',
       function()
         local grug = require 'grug-far'
         local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
@@ -39,7 +39,7 @@ return {
         }
       end,
       mode = { 'n', 'v' },
-      desc = 'Search and [R]eplace',
+      desc = '[S]earch and [R]eplace',
     },
   },
 }

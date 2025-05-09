@@ -5,7 +5,8 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-
+    { 'antosha417/nvim-lsp-file-operations', config = true }, --adds file operation support to lsp
+    { 'folke/neodev.nvim', opts = {} }, --improves lsp support for nvim's lua api
     {
       'j-hui/fidget.nvim',
       tag = 'v1.4.0',
@@ -204,6 +205,7 @@ return { -- LSP Configuration & Plugins
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
+      automatic_setup = true,
       handlers = {
         function(server_name)
           lspconfig = require 'lspconfig'

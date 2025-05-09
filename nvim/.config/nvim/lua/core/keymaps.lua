@@ -49,15 +49,6 @@ vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts())
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts())
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts())
 
--- Buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- next buffer
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- previous buffer
--- vim.keymap.set('n', '<leader><Tab>n', ':bnext<CR>', opts 'Next buffer')           -- next buffer
--- vim.keymap.set('n', '<leader><Tab><S-Tab>', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
-vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer') -- close buffer
-vim.keymap.set('n', '<leader>X', ':Bdelete!<CR>', opts 'Close buffer') -- close buffer
-vim.keymap.set('n', '<leader>bn', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
-
 -- Increment/decrement numbers
 -- vim.keymap.set('n', '<leader>+', '<C-a>', opts 'Increment number') -- increment
 -- vim.keymap.set('n', '<leader>-', '<C-x>', opts 'Decrement number') -- decrement
@@ -73,11 +64,21 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts())
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts())
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts())
 
+-- Buffers
+vim.keymap.set('n', '<leader>bN', '<cmd> enew <CR>', opts 'New buffer') -- new buffer
+vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer') -- close buffer
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', opts 'Next buffer') -- next buffer
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
+
+vim.keymap.set('n', '<leader>q', ':Bdelete!<CR>', opts 'Close buffer') -- alternative close buffer
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- alternative next buffer
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- alternative previous buffer
+
 -- Tabs
-vim.keymap.set('n', '<leader>T<Tab>', ':tabnew<CR>', opts 'New tab') -- open new tab
-vim.keymap.set('n', '<leader>Tx', ':tabclose<CR>', opts 'Close tab') -- close current tab
-vim.keymap.set('n', '<leader>Tn', ':tabn<CR>', opts 'Next tab') --  go to next tab
-vim.keymap.set('n', '<leader>Tp', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
+vim.keymap.set('n', '<leader>tN', ':tabnew<CR>', opts 'New tab') -- open new tab
+vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts 'Close tab') -- close current tab
+vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts 'Next tab') --  go to next tab
+vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
 
 -- Toggle line wrapping
 -- vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts())
@@ -100,7 +101,7 @@ vim.keymap.set('v', 'p', '"_dP', opts())
 -- Toggle diagnostics
 local diagnostics_active = true
 
-vim.keymap.set('n', '<leader>xD', function()
+vim.keymap.set('n', '<leader>eT', function()
   diagnostics_active = not diagnostics_active
 
   if diagnostics_active then
@@ -113,8 +114,8 @@ end, opts 'Toggle diagnostics')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>em', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+-- vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, silent = false })

@@ -9,12 +9,13 @@ return {
     },
   },
   keys = {
-    { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics (Trouble)' },
-    { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Buffer Diagnostics (Trouble)' },
-    { '<leader>xs', '<cmd>Trouble symbols toggle<cr>', desc = 'Symbols (Trouble)' },
-    { '<leader>xS', '<cmd>Trouble lsp toggle<cr>', desc = 'LSP references/definitions/... (Trouble)' },
-    { '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
-    { '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
+    { '<leader>eo', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Open trouble diagnostics' },
+    { '<leader>ed', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Open trouble document diagnostics' },
+    { '<leader>es', '<cmd>Trouble symbols toggle<cr>', desc = 'Open trouble symbols' },
+    { '<leader>eS', '<cmd>Trouble lsp toggle<cr>', desc = 'Open trouble LSP references/definitions/...' },
+    { '<leader>eL', '<cmd>Trouble loclist toggle<cr>', desc = 'Open trouble location list' },
+    { '<leader>eQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Open trouble quickfix list' },
+    { '<leader>et', '<cmd>Trouble todo toggle<CR>', desc = 'Open todos in trouble' },
     {
       '[q',
       function()
