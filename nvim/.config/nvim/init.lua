@@ -14,31 +14,33 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins
 require('lazy').setup({
+  install = {
+    colorscheme = { require('custom.save-colors').get_colorscheme 'default' },
+  },
   require 'plugins.autocompletion',
-  -- require 'plugins.avante',
   require 'plugins.bufferline',
   require 'plugins.colorschemes',
   require 'plugins.comment',
   require 'plugins.conform',
   require 'plugins.csvview',
-  require 'plugins.dashboard',
+  -- require 'plugins.dashboard', -- snacks dashboard
   require 'plugins.dap',
   require 'plugins.gitsigns',
   require 'plugins.grug-far',
-  require 'plugins.indent-blankline',
-  require 'plugins.lazygit',
+  -- require 'plugins.indent-blankline', -- snacks indent
+  -- require 'plugins.lazygit', -- snacks lazygit
   require 'plugins.lsp',
   require 'plugins.lualine',
-  require 'plugins.mini-animate',
+  -- require 'plugins.mini-animate', -- snacks animate and scroll
   require 'plugins.misc',
-  require 'plugins.neo-tree',
-  require 'plugins.noice',
+  -- require 'plugins.neo-tree', -- snacks explorer
+  -- require 'plugins.noice', -- snacks notifier
   require 'plugins.oil',
-  -- require 'plugins.snacks',
-  require 'plugins.telescope',
+  require 'plugins.snacks',
+  -- require 'plugins.telescope', -- snacks picker
   require 'plugins.treesitter',
   require 'plugins.trouble',
-  require 'plugins.ufo',
+  -- require 'plugins.ufo',
   require 'plugins.which-key',
 }, {
   ui = {
@@ -46,11 +48,11 @@ require('lazy').setup({
     -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
-      config = '🛠',
+      config = '🛠️',
       event = '📅',
       ft = '📂',
-      init = '⚙',
-      keys = '🗝',
+      init = '☀️',
+      keys = '🔑',
       plugin = '🔌',
       runtime = '💻',
       require = '🌙',
@@ -84,3 +86,4 @@ end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+vim.cmd('colorscheme ' .. vim.g.colors_name)

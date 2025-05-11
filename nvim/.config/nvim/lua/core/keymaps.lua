@@ -70,9 +70,10 @@ vim.keymap.set('n', '<leader>bx', ':Bdelete!<CR>', opts 'Close buffer') -- close
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', opts 'Next buffer') -- next buffer
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', opts 'Previous buffer') -- previous buffer
 
-vim.keymap.set('n', '<leader>q', ':Bdelete!<CR>', opts 'Close buffer') -- alternative close buffer
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- alternative next buffer
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- alternative previous buffer
+-- Alternative buffers keymaps
+-- vim.keymap.set('n', '<leader>q', ':Bdelete!<CR>', opts 'Close buffer') -- using snacks
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- next buffer
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- previous buffer
 
 -- Tabs
 vim.keymap.set('n', '<leader>tN', ':tabnew<CR>', opts 'New tab') -- open new tab
@@ -99,17 +100,17 @@ vim.keymap.set('v', 'p', '"_dP', opts())
 -- vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 -- Toggle diagnostics
-local diagnostics_active = true
+-- local diagnostics_active = true
 
-vim.keymap.set('n', '<leader>eT', function()
-  diagnostics_active = not diagnostics_active
-
-  if diagnostics_active then
-    vim.diagnostic.enable(true)
-  else
-    vim.diagnostic.enable(false)
-  end
-end, opts 'Toggle diagnostics')
+-- vim.keymap.set('n', '<leader>eT', function()
+--   diagnostics_active = not diagnostics_active
+--
+--   if diagnostics_active then
+--     vim.diagnostic.enable(true)
+--   else
+--     vim.diagnostic.enable(false)
+--   end
+-- end, opts 'Toggle diagnostics')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -121,20 +122,21 @@ vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = tr
 vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
 -- CSS View Mode
-vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_mode=border', opts 'CSS View Mode')
+vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_mode=border<CR>', opts 'CSS View Mode')
 
 -- Terminal mappings
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts 'Exit terminal mode')
-vim.keymap.set('n', '<M-t>', '<cmd>terminal<CR>', opts 'Open terminal')
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', opts 'Move left')
-vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', opts 'Move down')
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', opts 'Move up')
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', opts 'Move right')
+-- vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts 'Exit terminal mode')
+-- vim.keymap.set('n', '<M-t>', '<cmd>terminal<CR>', opts 'Open terminal')
+-- vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', opts 'Move left')
+-- vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', opts 'Move down')
+-- vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', opts 'Move up')
+-- vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', opts 'Move right')
 
 -- Plugin management
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>', opts 'Lazy plugin manager')
 vim.keymap.set('n', '<leader>m', '<cmd>Mason<CR>', opts 'Mason package manager')
 
 -- UI toggles
-vim.keymap.set('n', '<leader>us', '<cmd>Themery<CR>', opts 'Colorscheme selector')
-vim.keymap.set('n', '<leader>uc', '<cmd>colorscheme<CR>', opts 'Show colorscheme')
+-- vim.keymap.set('n', '<leader>us', '<cmd>Themery<CR>', opts 'colorschemes')
+-- vim.keymap.set('n', '<leader>uu', '<cmd>colorscheme<CR>', opts 'Save colorscheme')
+vim.keymap.set('n', '<leader>uu', '<cmd>lua vim.cmd("colorscheme " .. vim.g.colors_name)<CR>', opts 'Save colorscheme')
