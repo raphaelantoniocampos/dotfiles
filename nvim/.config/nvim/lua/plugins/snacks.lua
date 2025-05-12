@@ -292,6 +292,13 @@ return {
       desc = 'Buffer Lines',
     },
     {
+      '<leader>sc',
+      function()
+        Snacks.picker.grep { cwd = vim.fn.stdpath 'config' }
+      end,
+      desc = 'Grep Open Buffers',
+    },
+    {
       '<leader>sB',
       function()
         Snacks.picker.grep_buffers()
@@ -343,14 +350,14 @@ return {
       desc = 'Buffer Lines',
     },
     {
-      '<leader>sc',
+      '<leader>sC',
       function()
         Snacks.picker.command_history()
       end,
       desc = 'Command History',
     },
     {
-      '<leader>sC',
+      '<leader>sa',
       function()
         Snacks.picker.commands()
       end,
@@ -623,6 +630,13 @@ return {
         Snacks.dashboard()
       end,
       desc = 'Dashboard',
+    },
+    {
+      '<leader>H',
+      function()
+        vim.cmd ':checkhealth'
+      end,
+      desc = 'Check Health',
     },
   },
   init = function()
