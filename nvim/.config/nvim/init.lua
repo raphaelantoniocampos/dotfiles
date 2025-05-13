@@ -37,7 +37,7 @@ require('lazy').setup({
   -- require 'plugins.noice', -- snacks notifier
   require 'plugins.oil',
   require 'plugins.snacks',
-  -- require 'plugins.telescope', -- snacks picker
+  require 'plugins.telescope', -- telescope on windows
   require 'plugins.treesitter',
   require 'plugins.trouble',
   -- require 'plugins.ufo',

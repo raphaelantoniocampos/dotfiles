@@ -24,18 +24,21 @@ return {
         { '<leader>W', group = 'workspaces', icon = { icon = '󰒖', color = 'yellow' } },
         { '<leader>c', group = 'code' },
         { '<leader>d', group = 'debug' },
-        -- { '<leader>F', group = 'fold', icon = { icon = '󰅂', color = 'yellow' } },
         { '<leader>f', group = 'find', icon = { icon = '󰈞' } },
-        { '<leader>n', group = 'notes', icon = { icon = '' } },
-        { '<leader>l', group = 'lazy', icon = { icon = '󰒲' } },
-        { '<leader>u', group = 'UI' },
-        { '<leader>m', group = 'mason', icon = { icon = '' } },
+        { '<leader>n', group = 'notes', icon = { icon = '', color = 'white' } },
+        { '<leader>D', group = 'Dashboard', icon = { icon = '󰡃', color = 'yellow' } },
+        { '<leader>H', group = 'Check Health', icon = { icon = '', color = 'green' } },
+        { '<leader>L', group = 'Lazy', icon = { icon = '󰒲' } },
+        { '<leader>u', group = 'UI', icon = { icon = '', color = 'yellow' } },
+        { '<leader>M', group = 'Mason', icon = { icon = '◍', color = 'magenta' } },
         { '<leader>s', group = 'search' },
         { '<leader>a', group = 'avante', icon = { icon = '', color = 'orange' } },
         { '<leader>S', group = 'session' },
-        { '<leader>\\', group = 'neotree', icon = { icon = '󰙅', color = 'blue' } },
+        { '<leader>e', group = 'explorer', icon = { icon = '', color = 'blue' } },
         { '<leader>g', group = 'git' },
-        { '<leader>e', group = 'diagnostics/quickfix', icon = { icon = '󱖫 ', color = 'green' } },
+        { '<leader>Q', group = 'quickfix/diagnostics', icon = { icon = '󱖫 ', color = 'green' } },
+        { '<leader>N', group = 'Neovim News', icon = { icon = ' ', color = 'white' } },
+        { '<leader>?', group = 'Buffer Keymaps', icon = { icon = ' ', color = 'green' } },
         { '[', group = 'prev' },
         { ']', group = 'next' },
         { 'g', group = 'goto' },
@@ -45,6 +48,11 @@ return {
           expand = function()
             return require('which-key.extras').expand.buf()
           end,
+          icon = { icon = '' },
+        },
+        {
+          '<leader>q',
+          icon = { icon = '', color = 'red' },
         },
         {
           '<leader>w',
@@ -68,11 +76,44 @@ return {
       desc = 'Buffer Keymaps (which-key)',
     },
     {
-      '<c-w><space>',
+      '<leader>q',
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = 'Delete Buffer',
+    },
+    {
+      '<c-w><leader>',
       function()
         require('which-key').show { keys = '<c-w>', loop = true }
       end,
       desc = 'Window Hydra Mode (which-key)',
+    },
+    {
+      '<leader>D',
+      function()
+        Snacks.dashboard()
+      end,
+      desc = 'Dashboard',
+    },
+    {
+      '<leader>H',
+      function()
+        vim.cmd ':checkhealth'
+      end,
+      desc = 'Check Health',
+    },
+    {
+      '<leader>L',
+      function()
+        vim.cmd ':Lazy'
+      end,
+    },
+    {
+      '<leader>M',
+      function()
+        vim.cmd ':Mason'
+      end,
     },
   },
   config = function(_, opts)

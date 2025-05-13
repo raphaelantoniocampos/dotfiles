@@ -113,9 +113,9 @@ vim.keymap.set('v', 'p', '"_dP', opts())
 -- end, opts 'Toggle diagnostics')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>em', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '[q', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']q', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>Qm', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 -- vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 vim.keymap.set('n', '<leader>Ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
@@ -131,10 +131,6 @@ vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_
 -- vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', opts 'Move down')
 -- vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', opts 'Move up')
 -- vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', opts 'Move right')
-
--- Plugin management
-vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>', opts 'Lazy plugin manager')
-vim.keymap.set('n', '<leader>m', '<cmd>Mason<CR>', opts 'Mason package manager')
 
 -- UI toggles
 -- vim.keymap.set('n', '<leader>us', '<cmd>Themery<CR>', opts 'colorschemes')
