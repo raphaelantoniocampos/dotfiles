@@ -30,7 +30,7 @@ return {
         { '<leader>H', group = 'Check Health', icon = { icon = '', color = 'green' } },
         { '<leader>L', group = 'Lazy', icon = { icon = '󰒲' } },
         { '<leader>u', group = 'UI', icon = { icon = '', color = 'yellow' } },
-        { '<leader>M', group = 'Mason', icon = { icon = '◍', color = 'magenta' } },
+        { '<leader>M', group = 'Mason', icon = { icon = '◍', color = 'orange' } },
         { '<leader>s', group = 'search' },
         { '<leader>a', group = 'avante', icon = { icon = '', color = 'orange' } },
         { '<leader>S', group = 'session' },
