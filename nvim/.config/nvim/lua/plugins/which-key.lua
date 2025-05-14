@@ -36,7 +36,7 @@ return {
         { '<leader>S', group = 'session' },
         { '<leader>e', group = 'explorer', icon = { icon = '', color = 'blue' } },
         { '<leader>g', group = 'git' },
-        { '<leader>Q', group = 'quickfix/diagnostics', icon = { icon = '󱖫 ', color = 'green' } },
+        { '<leader>l', group = 'quickfix/diagnostics', icon = { icon = '󱖫 ', color = 'green' } },
         { '<leader>N', group = 'Neovim News', icon = { icon = ' ', color = 'white' } },
         { '<leader>?', group = 'Buffer Keymaps', icon = { icon = ' ', color = 'green' } },
         { '[', group = 'prev' },
