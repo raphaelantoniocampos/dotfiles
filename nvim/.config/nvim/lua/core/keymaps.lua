@@ -33,7 +33,7 @@ vim.keymap.set('n', '<leader>cF', function()
 end, opts 'Format')
 
 -- delete single character without copying into register
-vim.keymap.set('n', 'x', '"_x', opts())
+-- vim.keymap.set('n', 'x', '"_x', opts())
 
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts())
