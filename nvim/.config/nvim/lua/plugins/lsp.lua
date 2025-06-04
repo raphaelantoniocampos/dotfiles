@@ -111,9 +111,6 @@ return { -- LSP Configuration & Plugins
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       lua_ls = {
-        -- cmd = {...},
-        -- filetypes { ...},
-        -- capabilities = {},
         settings = {
           Lua = {
             runtime = { version = 'LuaJIT' },
@@ -152,6 +149,7 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+      pyright = {},
       ruff = {
         -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
         -- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
