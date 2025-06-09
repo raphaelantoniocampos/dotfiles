@@ -28,6 +28,7 @@ require('lazy').setup({
   require 'plugins.gitsigns',
   require 'plugins.grug-far',
   -- require 'plugins.indent-blankline', -- snacks indent
+  require 'plugins.iron',
   -- require 'plugins.lazygit', -- snacks lazygit
   require 'plugins.lsp',
   require 'plugins.lualine',

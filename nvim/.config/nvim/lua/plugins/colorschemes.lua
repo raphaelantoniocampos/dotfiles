@@ -3,7 +3,7 @@ return {
   require('custom.save-colors').lazy_setup {
     -- List all colorscheme plugins here.
     { 'folke/tokyonight.nvim' },
-    { 'RRethy/base16-nvim', pattern = 'base16%-' }, -- <- `pattern`
+    -- { 'RRethy/base16-nvim', pattern = 'base16%-' }, -- <- `pattern`
     { 'EdenEast/nightfox.nvim' },
     {
       'Mofiqul/dracula.nvim',
