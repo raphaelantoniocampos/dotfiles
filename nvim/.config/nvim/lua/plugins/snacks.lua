@@ -559,7 +559,7 @@ return {
       desc = 'Dismiss All Notifications',
     },
     {
-      '<M-t>',
+      '<leader>t',
       function()
         Snacks.terminal()
       end,

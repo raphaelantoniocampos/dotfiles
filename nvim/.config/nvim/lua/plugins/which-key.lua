@@ -20,7 +20,8 @@ return {
     spec = {
       {
         mode = { 'n', 'v' },
-        { '<leader>t', group = 'tabs' },
+        { '<leader>T', group = 'tabs' },
+        { '<leader>t', group = 'terminal', icon = { icon = '' } },
         { '<leader>W', group = 'workspaces', icon = { icon = '󰒖', color = 'yellow' } },
         { '<leader>c', group = 'code' },
         { '<leader>d', group = 'debug' },
@@ -32,7 +33,7 @@ return {
         { '<leader>u', group = 'UI', icon = { icon = '', color = 'yellow' } },
         { '<leader>M', group = 'Mason', icon = { icon = '◍', color = 'orange' } },
         { '<leader>s', group = 'search' },
-        { '<leader>r', group = 'notebook', icon = { icon = '', color = 'orange' } },
+        { '<leader>r', group = 'ipython', icon = { icon = '', color = 'green' } },
         { '<leader>a', group = 'avante', icon = { icon = '', color = 'orange' } },
         { '<leader>S', group = 'session' },
         { '<leader>e', group = 'explorer', icon = { icon = '', color = 'blue' } },

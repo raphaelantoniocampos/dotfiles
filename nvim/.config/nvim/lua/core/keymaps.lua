@@ -58,6 +58,12 @@ vim.keymap.set('n', '<leader>wv', '<C-w>v', opts 'Split window vertically') -- s
 vim.keymap.set('n', '<leader>wh', '<C-w>s', opts 'Split window horizontally') -- split window horizontally
 vim.keymap.set('n', '<leader>wx', ':close<CR>', opts 'Close current split window') -- close current split window
 
+-- Move windows
+vim.keymap.set('n', '<m-h>', '<C-w>H', opts 'Move left')
+vim.keymap.set('n', '<m-j>', '<C-w>J', opts 'Move down')
+vim.keymap.set('n', '<m-k>', '<C-w>K', opts 'Move up')
+vim.keymap.set('n', '<m-l>', '<C-w>L', opts 'Move right')
+
 -- Navigate between splits
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts())
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts())
@@ -76,10 +82,10 @@ vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- next buffer
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- previous buffer
 
 -- Tabs
-vim.keymap.set('n', '<leader>tN', ':tabnew<CR>', opts 'New tab') -- open new tab
-vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts 'Close tab') -- close current tab
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts 'Next tab') --  go to next tab
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
+vim.keymap.set('n', '<leader>TN', ':tabnew<CR>', opts 'New tab') -- open new tab
+vim.keymap.set('n', '<leader>Tx', ':tabclose<CR>', opts 'Close tab') -- close current tab
+vim.keymap.set('n', '<leader>Tn', ':tabn<CR>', opts 'Next tab') --  go to next tab
+vim.keymap.set('n', '<leader>Tp', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
 
 -- Toggle line wrapping
 -- vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts())
