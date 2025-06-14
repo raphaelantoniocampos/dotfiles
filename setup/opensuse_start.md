@@ -1,13 +1,13 @@
 # Starting OpenSuse
 
 ### Install git, neovim
-sudo zypper in git neovim
+sudo zypper in git vim
 
 ### Clone dotfiles
 git clone https://github.com/raphaelantoniocampos/dotfiles
 
 ### Make zypper faster
-sudo nvim /etc/zypp/zypp.conf
+sudo vim /etc/zypp/zypp.conf
 
 download.max_concurrent_connections=10
 
@@ -16,26 +16,31 @@ download.min_download_speed = 20000
 ### Install codecs
 sudo zypper in opi
 
-opi codecs
- 
-### Install stow
-sudo zypper in stow
+opi codecs -n
 
 ### Update System
 sudo zypper refresh
 
 sudo zypper dup --allow-vendor-change
 
-### Install Window Manager
-zin i3 picom feh kitty vim polybar rofi
+### Install stow
+sudo zypper in stow
+
+### Install dotfiles apps and stow
+zin kitty nvim hyprland
+cd dotfiles/
+stow kitty/
+stow nvim/
+stow hyprland/
+...
 
 ### Reboot to start I3
 sudo reboot now
 
-### Install essential apps
-zin -y NetworkManager-applet ripgrep fd nodejs22 npm22 lua51-luarocks docker
+### install more essential apps
+zin -y ripgrep fd lua51-luarocks docker fastfetch
 
 ### Install trash-cli (you WILL want to use it)
-sudo zypper addrepo https://download.opensuse.org/repositories/home:X0F/openSUSE_Tumbleweed/home:X0F.repo
-sudo zypper refresh
 zin trash-cli
+
+### verify gpu instalation
