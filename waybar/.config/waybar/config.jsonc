@@ -21,7 +21,6 @@
 	],
 	"modules-right": [
 		"tray",
-		"battery",
 		"cpu",
 		"disk",
 		"memory",
@@ -33,6 +32,7 @@
 		"bluetooth",
 		"custom/weather",
 		//"hyprland/language",
+		"battery",
 		"custom/power"
 	],
 	//Modules configuration
