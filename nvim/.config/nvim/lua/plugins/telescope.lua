@@ -1,6 +1,7 @@
 -- Fuzzy Finder (files, lsp, etc)
 local M = {}
 
+-- Checks if is running on Windows to use telescope
 if vim.fn.has 'win32' == 1 then
   M = {
     'nvim-telescope/telescope.nvim',

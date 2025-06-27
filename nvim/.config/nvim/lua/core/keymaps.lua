@@ -24,12 +24,22 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '<Esc>', ':noh<CR>', opts())
 
 -- save file without auto-formatting
-vim.keymap.set('n', '<C-s>', '<cmd>noautocmd w <CR>', opts())
 vim.keymap.set('n', '<leader>cf', '<cmd>noautocmd w <CR>', opts 'Save without formatting')
 
 -- format file
 vim.keymap.set('n', '<leader>cF', function()
   vim.lsp.buf.format()
+end, opts 'Format (lsp)')
+
+vim.keymap.set('n', '<C-s>', function()
+  local conform = require 'conform'
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*',
+    callback = function(args)
+      conform.format { bufnr = args.buf }
+    end,
+  })
+  conform.format { async = true, lsp_format = 'fallback' }
 end, opts 'Format')
 
 -- delete single character without copying into register

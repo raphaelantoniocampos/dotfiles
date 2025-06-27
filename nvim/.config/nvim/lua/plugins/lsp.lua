@@ -6,7 +6,7 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'antosha417/nvim-lsp-file-operations', config = true }, --adds file operation support to lsp
-    { 'folke/neodev.nvim', opts = {} }, --improves lsp support for nvim's lua api
+    { 'folke/neodev.nvim',                   opts = {} },     --improves lsp support for nvim's lua api
     {
       'j-hui/fidget.nvim',
       tag = 'v1.4.0',

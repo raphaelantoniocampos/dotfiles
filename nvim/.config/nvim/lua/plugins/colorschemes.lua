@@ -10,7 +10,7 @@ return {
       lazy = false,
       priority = 100,
     },
-    { 'ellisonleao/gruvbox.nvim', priority = 1000, config = true },
+    { 'ellisonleao/gruvbox.nvim',         priority = 1000,     config = true },
 
     {
       'folke/tokyonight.nvim',
@@ -36,9 +36,9 @@ return {
       priority = 1000,
     },
 
-    { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+    { 'catppuccin/nvim',                  name = 'catppuccin', priority = 1000 },
 
-    { 'nyoom-engineering/oxocarbon.nvim', name = 'oxocarbon', priority = 1000 },
+    { 'nyoom-engineering/oxocarbon.nvim', name = 'oxocarbon',  priority = 1000 },
 
     {
       'drewxs/ash.nvim',
