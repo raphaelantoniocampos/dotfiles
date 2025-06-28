@@ -35,8 +35,19 @@ return {
       lazy = false,
       priority = 1000,
     },
-
+    {
+      "neanias/everforest-nvim",
+      version = false,
+      lazy = false,
+      priority = 1000, -- make sure to load this before all the other start plugins
+    },
+    {
+      'ribru17/bamboo.nvim',
+      lazy = false,
+      priority = 1000,
+    },
     { 'catppuccin/nvim',                  name = 'catppuccin', priority = 1000 },
+    { 'tanvirtin/monokai.nvim',           name = 'monokai',    priority = 1000 },
 
     { 'nyoom-engineering/oxocarbon.nvim', name = 'oxocarbon',  priority = 1000 },
 
