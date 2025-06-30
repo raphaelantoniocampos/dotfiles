@@ -2,21 +2,39 @@
 return {
   require('custom.save-colors').lazy_setup {
     -- List all colorscheme plugins here.
-    { 'folke/tokyonight.nvim' },
-    -- { 'RRethy/base16-nvim', pattern = 'base16%-' }, -- <- `pattern`
-    { 'EdenEast/nightfox.nvim' },
+    { 
+      'folke/tokyonight.nvim',
+      lazy = false,
+      priority = 1000,
+    },
+    { 
+      'EdenEast/nightfox.nvim',
+      lazy = false,
+      priority = 1000,
+    },
     {
       'Mofiqul/dracula.nvim',
       lazy = false,
-      priority = 100,
+      priority = 1000,
     },
-    { 'ellisonleao/gruvbox.nvim',         priority = 1000,     config = true },
+    {
+      'ellisonleao/gruvbox.nvim',
+      priority = 1000,
+      config = true
+    },
+
+    {
+      'catppuccin/nvim',
+      lazy = false,
+      priority = 1000,
+      -- name = 'catppuccin',
+    },
 
     {
       'folke/tokyonight.nvim',
       lazy = false,
       priority = 1000,
-      opts = {},
+      -- opts = {},
     },
     {
       'scottmckendry/cyberdream.nvim',
@@ -37,19 +55,28 @@ return {
     },
     {
       "neanias/everforest-nvim",
-      version = false,
       lazy = false,
-      priority = 1000, -- make sure to load this before all the other start plugins
+      priority = 1000,
     },
     {
       'ribru17/bamboo.nvim',
       lazy = false,
       priority = 1000,
     },
-    { 'catppuccin/nvim',                  name = 'catppuccin', priority = 1000 },
-    { 'tanvirtin/monokai.nvim',           name = 'monokai',    priority = 1000 },
 
-    { 'nyoom-engineering/oxocarbon.nvim', name = 'oxocarbon',  priority = 1000 },
+    {
+      'tanvirtin/monokai.nvim',
+      lazy = false,
+      priority = 1000
+      -- name = 'monokai',
+    },
+
+    {
+      'nyoom-engineering/oxocarbon.nvim',
+      lazy = false,
+      priority = 1000
+      -- name = 'oxocarbon',
+    },
 
     {
       'drewxs/ash.nvim',
@@ -61,7 +88,7 @@ return {
       'rose-pine/neovim',
       lazy = false,
       priority = 1000,
-      name = 'rose-pine',
+      -- name = 'rose-pine',
     },
 
     {

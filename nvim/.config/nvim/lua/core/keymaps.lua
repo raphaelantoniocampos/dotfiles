@@ -151,4 +151,4 @@ vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_
 -- UI toggles
 -- vim.keymap.set('n', '<leader>us', '<cmd>Themery<CR>', opts 'colorschemes')
 -- vim.keymap.set('n', '<leader>uu', '<cmd>colorscheme<CR>', opts 'Save colorscheme')
-vim.keymap.set('n', '<leader>uu', '<cmd>lua vim.cmd("colorscheme " .. vim.g.colors_name)<CR>', opts 'Save colorscheme')
+vim.keymap.set('n', '<leader>uu', '<cmd>lua vim.cmd("colorscheme " .. vim.g.colors_name)<CR>', opts 'Refresh Colorscheme')
