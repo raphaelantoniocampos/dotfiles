@@ -10,7 +10,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
       python = { 'ruff' },
-      c = { 'clang-format' },
+      c = { 'clangd' },
       gleam = { 'gleam' },
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
