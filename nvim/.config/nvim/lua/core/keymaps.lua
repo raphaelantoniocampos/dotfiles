@@ -92,10 +92,10 @@ vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts()) -- next buffer
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts()) -- previous buffer
 
 -- Tabs
-vim.keymap.set('n', '<leader>TN', ':tabnew<CR>', opts 'New tab') -- open new tab
-vim.keymap.set('n', '<leader>Tx', ':tabclose<CR>', opts 'Close tab') -- close current tab
-vim.keymap.set('n', '<leader>Tn', ':tabn<CR>', opts 'Next tab') --  go to next tab
-vim.keymap.set('n', '<leader>Tp', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
+vim.keymap.set('n', '<leader>aa', ':tabnew<CR>', opts 'New tab') -- open new tab
+vim.keymap.set('n', '<leader>ax', ':tabclose<CR>', opts 'Close tab') -- close current tab
+vim.keymap.set('n', '<leader>an', ':tabn<CR>', opts 'Next tab') --  go to next tab
+vim.keymap.set('n', '<leader>ap', ':tabp<CR>', opts 'Previous tab') --  go to previous tab
 
 -- Toggle line wrapping
 -- vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts())
