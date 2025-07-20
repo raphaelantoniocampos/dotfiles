@@ -115,13 +115,13 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Alt+Shift+L
+Lock Session=
 Log Out=
-Log Out Without Confirmation=Alt+Shift+E
+Log Out Without Confirmation=
 LogOut=
-Reboot=Alt+Shift+R
+Reboot=
 Reboot Without Confirmation=
-Shut Down=Alt+Shift+P
+Shut Down=
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
@@ -342,7 +342,7 @@ ToggleTouchpad=Meta+Ctrl+Touchpad Toggle; Touchpad Toggle; Meta+Ctrl+Zenkaku Han
 Decrease Keyboard Brightness=Keyboard Brightness Down
 Decrease Screen Brightness=Monitor Brightness Down
 Decrease Screen Brightness Small=Shift+Monitor Brightness Down
-Hibernate=Alt+Shift+H; Hibernate
+Hibernate=Hibernate
 Increase Keyboard Brightness=Keyboard Brightness Up
 Increase Screen Brightness=Monitor Brightness Up
 Increase Screen Brightness Small=Shift+Monitor Brightness Up
