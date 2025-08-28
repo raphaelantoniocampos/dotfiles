@@ -9,7 +9,7 @@ while true; do
       hyprctl notify 5 3000 0 "Battery Charging - Level: ${bat_lvl}%"
       brightnessctl set 100%
     fi
-    sleep 30
+    sleep 600
     continue
 
   elif [ "$bat_status" = "Full" ]; then

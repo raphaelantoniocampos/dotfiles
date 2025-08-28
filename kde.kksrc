@@ -118,10 +118,10 @@ Halt Without Confirmation=
 Lock Session=
 Log Out=
 Log Out Without Confirmation=
-LogOut=
-Reboot=
+LogOut=Alt+Shift+E
+Reboot=Alt+Shift+R
 Reboot Without Confirmation=
-Shut Down=
+Shut Down=Alt+Shift+P
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
