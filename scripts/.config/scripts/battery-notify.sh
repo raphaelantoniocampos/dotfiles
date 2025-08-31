@@ -14,7 +14,7 @@ while true; do
 
   elif [ "$bat_status" = "Full" ]; then
     hyprctl notify 5 3000 0 "Battery Full - Level: ${bat_lvl}%"
-    sleep 300
+    sleep 1200
 
   elif [ "$bat_lvl" -le 5 ]; then
     hyprctl notify 3 10000 0 "⚠ CRITICAL Battery - Level: ${bat_lvl}%"
@@ -26,12 +26,12 @@ while true; do
 
   elif [ "$bat_lvl" -le 15 ]; then
     hyprctl notify 0 3000 0 "Battery Low - Level: ${bat_lvl}%"
-    sleep 60 
+    sleep 120 
 
   elif [ "$bat_lvl" -le 30 ]; then
-    sleep 120
+    sleep 180
 
   else
-    sleep 180
+    sleep 240
   fi
 done
