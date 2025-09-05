@@ -36,6 +36,7 @@ require('lazy').setup({
   require 'plugins.misc',
   -- require 'plugins.neo-tree', -- snacks explorer
   -- require 'plugins.noice', -- snacks notifier
+  require 'plugins.nvim-surround',
   require 'plugins.oil',
   require 'plugins.snacks',
   require 'plugins.telescope', -- telescope on windows
