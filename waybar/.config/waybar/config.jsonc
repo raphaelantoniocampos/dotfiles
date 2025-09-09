@@ -22,9 +22,9 @@
 	"modules-right": [
 		"tray",
 		"cpu",
-		"disk",
 		"memory",
 		"temperature",
+		"disk",
 		"backlight",
 		"wireplumber",
 		// "pulseaudio",
@@ -131,6 +131,7 @@
 		"interval": "1",
 		"format": "<span color='#f9e2af'> </span>{usage}%",
 		"on-click": "kitty -e htop --sort-key PERCENT_CPU",
+		"on-click-right": "kitty -e btm",
 	},
 	"disk": {
 		"interval": 30,
@@ -174,6 +175,7 @@
 	"wireplumber": {
 		"format": "<span color='#cba6f7'>{icon} </span> {volume}%",
 		"format-muted": "<span color='#cba6f7'> </span> {volume}%",
+		"on-click": "$HOME/.config/scripts/toggle-mute.sh sink",
 		"on-click-right": "pavucontrol -t 3",
 		"format-icons": ["", "", "󰕾", ""], 
 		"max-volume": 100,
