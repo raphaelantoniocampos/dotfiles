@@ -37,12 +37,6 @@ return {
       -- opts = {},
     },
     {
-      'scottmckendry/cyberdream.nvim',
-      lazy = false,
-      priority = 1000,
-    },
-
-    {
       'clearaspect/onehalf',
       lazy = false,
       priority = 1000,
