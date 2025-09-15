@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Checa se estamos lidando com o output (alto-falante) ou input (microfone)
 TARGET=$1
