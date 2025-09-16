@@ -10,10 +10,10 @@ fi
 
 if [[ "$1" == "set" ]]; then
     # choose new langs
-    FROM=$(echo -e "$LANGS" | wofi --dmenu -p "origin")
+    FROM=$(echo -e "$LANGS" | wofi --dmenu -p "origin" --lines=5 --width=300)
     [ -z "$FROM" ] && exit 0
 
-    TO=$(echo -e "$LANGS" | wofi --dmenu -p "destination")
+    TO=$(echo -e "$LANGS" | wofi --dmenu -p "destination" --lines=5 --width=300)
     [ -z "$TO" ] && exit 0
 
     echo "$FROM:$TO" > "$CONFIG"
