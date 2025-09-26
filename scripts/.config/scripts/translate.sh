@@ -22,6 +22,15 @@ if [[ "$1" == "set" ]]; then
     exit 0
 fi
 
+if [[ "$1" == "switch" ]]; then
+    # switch languages
+    IFS=":" read FROM TO < "$CONFIG"
+    echo "$TO:$FROM" > "$CONFIG"
+
+    hyprctl notify 1 5000 1 "switch languages" "$TO → $FROM"
+    exit 0
+fi
+
 # read langs
 IFS=":" read FROM TO < "$CONFIG"
 
