@@ -39,7 +39,7 @@
 	"custom/os_button": {
 		"format": " ",
 		"on-click": "wofi --show drun",
-		"on-click-right": "sh $HOME/.config/env/yast.sh",
+		"on-click-right": "kitty sudo -E yast2",
 		"tooltip": true
 	},
 	"hyprland/workspaces": {
