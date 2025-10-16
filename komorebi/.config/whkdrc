@@ -2,7 +2,8 @@
 
 # Reload whkd configuration
 # win + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
-win + w                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden; komorebic reload-configuration # if shell is pwsh / powershell
+# win + w                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
+win + w                 : taskkill /f /im whkd.exe; taskkill -f /im komorebi.exe; taskkill -f /im komorebi-bar.exe; komorebic start --whkd --bar
 win + shift + w         : komorebic reload-configuration
 
 win + i                 : komorebic toggle-shortcuts
