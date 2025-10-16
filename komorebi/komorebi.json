@@ -30,7 +30,7 @@
         },
         {
           "name": "II",
-          "layout": "VerticalStack"
+          "layout": "UltrawideVerticalStack"
         },
         {
           "name": "III",

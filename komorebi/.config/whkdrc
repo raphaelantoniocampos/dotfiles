@@ -40,7 +40,7 @@ win + left              : komorebic stack left
 win + down              : komorebic stack down
 win + up                : komorebic stack up
 win + right             : komorebic stack right
-win + oem_1             : komorebic unstack # oem_1 is ;
+win + shift + down      : komorebic unstack # oem_1 is ;
 win + oem_4             : komorebic cycle-stack previous # oem_4 is [
 win + oem_6             : komorebic cycle-stack next # oem_6 is ]
 
@@ -51,8 +51,8 @@ win + shift + oem_plus  : komorebic resize-axis vertical increase
 win + shift + oem_minus : komorebic resize-axis vertical decrease
 
 # Manipulate windows
-win + t                 : komorebic toggle-float
-win + f                 : komorebic toggle-monocle
+win + f                 : komorebic toggle-float
+win + shift + f         : komorebic toggle-monocle
 
 # Window manager options
 win + shift + r         : komorebic retile
