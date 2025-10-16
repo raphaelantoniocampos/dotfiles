@@ -34,7 +34,7 @@
         },
         {
           "name": "III",
-          "layout": "HorizontalStack"
+          "layout": "VerticalStack"
         },
         {
           "name": "IV",

@@ -18,6 +18,8 @@ win + return            : wt
 win + shift + q         : komorebic close
 win + m                 : komorebic minimize
 
+alt + shift + l         : logoff
+
 # Focus windows
 win + h                 : komorebic focus left
 win + j                 : komorebic focus down
