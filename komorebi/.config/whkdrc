@@ -60,14 +60,14 @@ win + x                 : komorebic flip-layout horizontal
 win + y                 : komorebic flip-layout vertical
 
 # Workspaces
-win + 1                 : komorebic focus-workspace 0
-win + 2                 : komorebic focus-workspace 1
-win + 3                 : komorebic focus-workspace 2
-win + 4                 : komorebic focus-workspace 3
-win + 5                 : komorebic focus-workspace 4
-win + 6                 : komorebic focus-workspace 5
-win + 7                 : komorebic focus-workspace 6
-win + 8                 : komorebic focus-workspace 7
+win + 1                 : komorebic focus-workspaces 0
+win + 2                 : komorebic focus-workspaces 1
+win + 3                 : komorebic focus-workspaces 2
+win + 4                 : komorebic focus-workspaces 3
+win + 5                 : komorebic focus-workspaces 4
+win + 6                 : komorebic focus-workspaces 5
+win + 7                 : komorebic focus-workspaces 6
+win + 8                 : komorebic focus-workspaces 7
 
 # Move windows across workspaces
 win + shift + 1         : komorebic move-to-workspace 0
