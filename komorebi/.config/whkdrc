@@ -3,22 +3,27 @@
 # Reload whkd configuration
 # win + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
 # win + w                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
-win + w                 : taskkill /f /im whkd.exe; taskkill -f /im komorebi.exe; taskkill -f /im komorebi-bar.exe; komorebic start --whkd --bar
-win + shift + w         : komorebic reload-configuration
+win + w                 : komorebic reload-configuration
+win + shift + w         : taskkill /f /im whkd.exe; taskkill -f /im komorebi.exe; taskkill -f /im komorebi-bar.exe; komorebic start --whkd --bar
 
 win + i                 : komorebic toggle-shortcuts
 
 # App shortcuts - these require shell to be pwsh / powershell
 # The apps will be focused if open, or launched if not open
-win + b                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
+# win + b                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
 # win + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
-# win + return            : if ($wshell.AppActivate('wt') -eq $False) { pwsh wt }
-win + return            : wt
+win + return            : start wt
+win + b                 : start firefox
+win + c                 : start calc
+win + n                 : start notepad
 
 win + shift + q         : komorebic close
 win + m                 : komorebic minimize
 
-alt + shift + l         : logoff
+alt + shift + e         : logoff
+alt + shift + p         : shutdown -s -t 0
+alt + shift + r         : shutdown -r -t 0
+alt + shift + h         : shutdown -h -t 0
 
 # Focus windows
 win + h                 : komorebic focus left
@@ -59,6 +64,7 @@ win + shift + r         : komorebic retile
 win + shift + p         : komorebic toggle-pause
 
 # Layouts
+win + s                 : komorebic flip-layout horizontal-and-vertical
 win + x                 : komorebic flip-layout horizontal
 win + y                 : komorebic flip-layout vertical
 
@@ -73,11 +79,11 @@ win + 7                 : komorebic focus-workspaces 6
 win + 8                 : komorebic focus-workspaces 7
 
 # Move windows across workspaces
-win + shift + 1         : komorebic move-to-workspace 0
-win + shift + 2         : komorebic move-to-workspace 1
-win + shift + 3         : komorebic move-to-workspace 2
-win + shift + 4         : komorebic move-to-workspace 3
-win + shift + 5         : komorebic move-to-workspace 4
-win + shift + 6         : komorebic move-to-workspace 5
-win + shift + 7         : komorebic move-to-workspace 6
-win + shift + 8         : komorebic move-to-workspace 7
+win + shift + 1         : komorebic move-to-workspace 0; komorebic focus-workspaces 0
+win + shift + 2         : komorebic move-to-workspace 1; komorebic focus-workspaces 1
+win + shift + 3         : komorebic move-to-workspace 2; komorebic focus-workspaces 2
+win + shift + 4         : komorebic move-to-workspace 3; komorebic focus-workspaces 3
+win + shift + 5         : komorebic move-to-workspace 4; komorebic focus-workspaces 4
+win + shift + 6         : komorebic move-to-workspace 5; komorebic focus-workspaces 5
+win + shift + 7         : komorebic move-to-workspace 6; komorebic focus-workspaces 6
+win + shift + 8         : komorebic move-to-workspace 7; komorebic focus-workspaces 7

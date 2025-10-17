@@ -21,7 +21,19 @@
     "fps": 60,
     "style": "EaseOutSine"
   },
-"monitors": [
+  "floating_applications": [
+    {
+      "kind": "Title",
+      "id": "Calculadora",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Bloco de notas",
+      "matching_strategy": "EndsWith"
+    }
+  ],
+  "monitors": [
     {
       "workspaces": [
         {
