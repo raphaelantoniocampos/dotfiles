@@ -31,6 +31,16 @@
       "kind": "Title",
       "id": "Bloco de notas",
       "matching_strategy": "EndsWith"
+    },
+    {
+      "kind": "Exe",
+      "id": "explorer.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Configurações",
+      "matching_strategy": "Equals"
     }
   ],
   "monitors": [
