@@ -52,14 +52,13 @@
 @define-color	crust-rgb rgba(17, 17, 27, 0.2);
 
 * {
-  font-family: 0xProtoNerd;
+  font-family: "0xProtoNerd";
   color: @text;
   background: transparent;
 }
 
 #window {
   background: @base-rgb;
-  margin: auto;
   padding: 10px;
   border-radius: 20px;
   border: 2px solid @green;
