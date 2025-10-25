@@ -40,6 +40,14 @@ TEXT=$(wofi --dmenu -p "$FROM → $TO" --lines=1 --width=600)
 
 [ -z "$TEXT" ] && exit 0
 
+# count words
+WORD_COUNT=$(echo "$TEXT" | wc -w)
+
+# notification time based on word count
+TIME_MS=$((WORD_COUNT * 1000))
+[ "$TIME_MS" -lt 2000 ] && TIME_MS=2000
+[ "$TIME_MS" -gt 10000 ] && TIME_MS=10000
+
 # translate
 RESULT=$(trans -b "$FROM:$TO" "$TEXT")
 
@@ -47,5 +55,6 @@ RESULT=$(trans -b "$FROM:$TO" "$TEXT")
 echo -n "$RESULT" | wl-copy
 
 # notify
-hyprctl notify 2 5000 1 "$RESULT (copied to clipboard)"
+hyprctl notify 1 "$TIME_MS" 1 "(copied to clipboard)"
+hyprctl notify 5 "$TIME_MS" 1 "$RESULT"
 
