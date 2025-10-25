@@ -199,7 +199,7 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
       'clangd',
-      'typescript-language-server,
+      'typescript-language-server',
 
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
