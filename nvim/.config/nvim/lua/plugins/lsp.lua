@@ -6,7 +6,7 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'antosha417/nvim-lsp-file-operations', config = true }, --adds file operation support to lsp
-    { 'folke/neodev.nvim',                   opts = {} },     --improves lsp support for nvim's lua api
+    { 'folke/neodev.nvim', opts = {} }, --improves lsp support for nvim's lua api
     {
       'j-hui/fidget.nvim',
       tag = 'v1.4.0',
@@ -199,6 +199,8 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
       'clangd',
+      'typescript-language-server,
+
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
