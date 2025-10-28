@@ -43,6 +43,13 @@
       "matching_strategy": "Equals"
     }
   ],
+  "manage_rules": [
+    {
+      "kind": "Exe",
+      "id": "MarkText.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
   "monitors": [
     {
       "workspaces": [
