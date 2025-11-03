@@ -21,7 +21,7 @@
       "Komorebi": {
         "focused_window": {
           "enable": true,
-          "show_icon": true
+          "display":"IconAndTextOnSelected"
         }
       }
     }
@@ -37,5 +37,18 @@
       }
     }
   ],
-  "right_widgets": []
+  "right_widgets": [
+    {
+      "Date": {
+        "enable": true,
+        "format": "DateMonthYear"
+      }
+    },
+    {
+      "Time": {
+        "enable": true,
+        "format": "TwentyFourHour"
+      }
+    }
+  ]
 }
