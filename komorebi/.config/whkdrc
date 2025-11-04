@@ -17,6 +17,7 @@ alt + b                 : start firefox
 alt + c                 : start calc
 alt + n                 : start notepad
 alt + e                 : start explorer
+alt + o                 : start obsidian
 
 alt + shift + q         : komorebic close
 alt + m                 : komorebic minimize
