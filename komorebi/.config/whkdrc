@@ -16,6 +16,7 @@ alt + return            : start wt
 alt + b                 : start firefox
 alt + c                 : start calc
 alt + n                 : start notepad
+alt + e                 : start explorer
 
 alt + shift + q         : komorebic close
 alt + m                 : komorebic minimize
