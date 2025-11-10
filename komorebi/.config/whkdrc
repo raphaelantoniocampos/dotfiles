@@ -4,7 +4,7 @@
 # alt + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
 # alt + w                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
 alt + w                 : komorebic reload-configuration
-alt + shift + w         : taskkill /f /im komorebi.exe; taskkill -f /im komorebi-bar.exe; komorebic start --whkd --bar
+alt + shift + w         : taskkill /f /im whkd.exe; taskkill /f /im komorebi.exe; taskkill -f /im komorebi-bar.exe; komorebic start --whkd --bar
 
 alt + i                 : komorebic toggle-shortcuts
 
@@ -17,8 +17,7 @@ alt + b                 : start firefox
 alt + c                 : start calc
 alt + n                 : start notepad
 alt + e                 : start explorer
-alt + o                 : start obsidian
-
+alt + o                 : wt "$Env:USERPROFILE\Appdata\Local\Programs\Obsidian\Obsidian.exe" 
 alt + shift + q         : komorebic close
 alt + m                 : komorebic minimize
 
