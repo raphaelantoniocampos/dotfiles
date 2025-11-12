@@ -4,8 +4,7 @@
 # alt + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
 # alt + w                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
 alt + w                 : komorebic reload-configuration
-alt + shift + w         : taskkill /f /im whkd.exe; taskkill /f /im komorebi.exe; taskkill -f /im komorebi-bar.exe; komorebic start --whkd --bar
-
+alt + shift + w         : taskkill /f /im whkd.exe; taskkill /f /im komorebi.exe; taskkill /f /im komorebi-bar.exe; komorebic start --bar --whkd 
 alt + i                 : komorebic toggle-shortcuts
 
 # App shortcuts - these require shell to be pwsh / powershell
