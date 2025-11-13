@@ -248,10 +248,10 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/custom_modules/power_menu.xml",
 		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+			"shutdown":  "sh -c 'echo $(wofi -d -P -p \"Password:\" --lines=1 --width=300) | sudo -S systemctl poweroff'",
+			"reboot":    "sh -c 'echo $(wofi -d -P -p \"Password:\" --lines=1 --width=300) | sudo -S systemctl reboot'",
+			"hibernate": "sh -c 'echo $(wofi -d -P -p \"Password:\" --lines=1 --width=300) | sudo -S systemctl hibernate'",
+			"suspend":   "systemctl suspend"
 		}
 	},
 }
