@@ -1,0 +1,1 @@
+cmd /c mklink "C:\Users\$ENV:USERNAME\.config\starship.toml" "C:\Users\$ENV:USERNAME\dotfiles\starship\.config\starship.toml"
