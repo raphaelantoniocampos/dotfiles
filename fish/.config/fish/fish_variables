@@ -1,8 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export LEDGER_FILE:/home/raphaelac/obsidian/finance/hledger\x2ejournal\x0d
 SETUVAR __fish_initialized:3800
-SETUVAR fish_color_autosuggestion:brblack\x0d
+SETUVAR fish_color_autosuggesourion:brblack\x0d
 SETUVAR fish_color_cancel:\x2dr\x0d
 SETUVAR fish_color_command:blue\x0d
 SETUVAR fish_color_comment:red\x0d
