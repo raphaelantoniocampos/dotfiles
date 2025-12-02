@@ -40,6 +40,13 @@
       "matching_strategy": "Equals"
     }
   ],
+  "layered_applications": [
+    {
+      "kind": "Exe",
+      "id": "mstsc.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
   "monitors": [
     {
       "workspaces": [
