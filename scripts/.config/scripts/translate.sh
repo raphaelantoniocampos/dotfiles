@@ -34,9 +34,13 @@ fi
 # read langs
 IFS=":" read FROM TO < "$CONFIG"
 
-# get text
-hyprctl notify 2 5000 1 "Translating - $FROM → $TO"
-TEXT=$(wofi --dmenu -p "$FROM → $TO" --lines=1 --width=600)
+if [[ "$1" == "auto" ]]; then
+    hyprctl notify 2 5000 1 "Translating (clipboard) - $FROM → $TO"
+    TEXT=$(wl-paste -n)
+else
+    hyprctl notify 2 5000 1 "Translating - $FROM → $TO"
+    TEXT=$(wofi --dmenu -p "$FROM → $TO" --lines=1 --width=600)
+fi
 
 [ -z "$TEXT" ] && exit 0
 
