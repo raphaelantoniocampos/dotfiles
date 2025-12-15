@@ -43,7 +43,7 @@ vim.keymap.set('n', '<C-s>', function()
 end, opts 'Format')
 
 -- delete single character without copying into register
--- vim.keymap.set('n', 'x', '"_x', opts())
+vim.keymap.set('n', 'x', '"_x', opts())
 
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts())
@@ -69,17 +69,17 @@ vim.keymap.set('n', '<leader>wh', '<C-w>s', opts 'Split window horizontally') --
 vim.keymap.set('n', '<leader>wx', ':close<CR>', opts 'Close current split window') -- close current split window
 
 -- Move windows
-vim.keymap.set('n', '<m-h>', '<C-w>H', opts 'Move left')
-vim.keymap.set('n', '<C-S-h>', '<C-w>H', opts 'Move left')
+-- vim.keymap.set('n', '<m-h>', '<C-w>H', opts 'Move left')
+-- vim.keymap.set('n', '<C-S-h>', '<C-w>H', opts 'Move left')
 
-vim.keymap.set('n', '<m-j>', '<C-w>J', opts 'Move down')
-vim.keymap.set('n', '<C-S-j>', '<C-w>J', opts 'Move down')
+-- vim.keymap.set('n', '<m-j>', '<C-w>J', opts 'Move down')
+-- vim.keymap.set('n', '<C-S-j>', '<C-w>J', opts 'Move down')
 
-vim.keymap.set('n', '<m-k>', '<C-w>K', opts 'Move up')
-vim.keymap.set('n', '<C-S-k>', '<C-w>K', opts 'Move up')
+-- vim.keymap.set('n', '<m-k>', '<C-w>K', opts 'Move up')
+-- vim.keymap.set('n', '<C-S-k>', '<C-w>K', opts 'Move up')
 
-vim.keymap.set('n', '<m-l>', '<C-w>L', opts 'Move right')
-vim.keymap.set('n', '<C-S-l>', '<C-w>L', opts 'Move right')
+-- vim.keymap.set('n', '<m-l>', '<C-w>L', opts 'Move right')
+-- vim.keymap.set('n', '<C-S-l>', '<C-w>L', opts 'Move right')
 
 -- Navigate between splits
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts())
@@ -112,12 +112,11 @@ vim.keymap.set('v', '<', '<gv', opts())
 vim.keymap.set('v', '>', '>gv', opts())
 
 -- Move text up and down
-vim.keymap.set('v', '<A-j>', ':m .+1<CR>==', opts())
-vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', opts())
+vim.keymap.set('v', '<m-S-j>', ':m .+1<CR>==', opts())
+vim.keymap.set('v', '<m-S-k>', ':m .-2<CR>==', opts())
 
--- Keep last yanked when pasting
+-- Keep last yanked when pasting-
 vim.keymap.set('v', 'p', '"_dP', opts())
-
 -- Explicitly yank to system clipboard (highlighted and entire row)
 -- vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 -- vim.keymap.set('n', '<leader>Y', [["+Y]])
@@ -146,6 +145,12 @@ vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, 
 
 -- CSS View Mode
 vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_mode=border<CR>', opts 'CSS View Mode')
+
+-- Next function
+vim.keymap.set('n', '<C-S-J>', ']m', opts 'Next Function')
+
+-- Previous function
+vim.keymap.set('n', '<C-S-K>', '[m', opts 'Previous Function')
 
 -- Terminal mappings
 -- vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts 'Exit terminal mode')

@@ -33,7 +33,7 @@ return {
         { '<leader>u', group = 'UI', icon = { icon = '', color = 'yellow' } },
         { '<leader>M', group = 'Mason', icon = { icon = '◍', color = 'orange' } },
         { '<leader>s', group = 'search' },
-        { '<leader>r', group = 'ipython', icon = { icon = '', color = 'green' } },
+        -- { '<leader>r', group = 'ipython', icon = { icon = '', color = 'green' } },
         { '<leader>S', group = 'session' },
         { '<leader>e', group = 'explorer', icon = { icon = '', color = 'blue' } },
         { '<leader>g', group = 'git' },
