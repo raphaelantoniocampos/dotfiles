@@ -146,12 +146,6 @@ vim.keymap.set('n', '<leader>Sl', ':source .session.vim<CR>', { noremap = true, 
 -- CSS View Mode
 vim.keymap.set('n', '<leader>uv', ':CsvViewToggle delimiter=, comment=# display_mode=border<CR>', opts 'CSS View Mode')
 
--- Next function
-vim.keymap.set('n', '<C-S-J>', ']m', opts 'Next Function')
-
--- Previous function
-vim.keymap.set('n', '<C-S-K>', '[m', opts 'Previous Function')
-
 -- Terminal mappings
 -- vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts 'Exit terminal mode')
 -- vim.keymap.set('n', '<M-t>', '<cmd>terminal<CR>', opts 'Open terminal')
