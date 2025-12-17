@@ -70,16 +70,16 @@ vim.keymap.set('n', '<leader>wx', ':close<CR>', opts 'Close current split window
 
 -- Move windows
 -- vim.keymap.set('n', '<m-h>', '<C-w>H', opts 'Move left')
--- vim.keymap.set('n', '<C-S-h>', '<C-w>H', opts 'Move left')
+vim.keymap.set('n', '<C-S-h>', '<C-w>H', opts 'Move left')
 
 -- vim.keymap.set('n', '<m-j>', '<C-w>J', opts 'Move down')
--- vim.keymap.set('n', '<C-S-j>', '<C-w>J', opts 'Move down')
+vim.keymap.set('n', '<C-S-j>', '<C-w>J', opts 'Move down')
 
 -- vim.keymap.set('n', '<m-k>', '<C-w>K', opts 'Move up')
--- vim.keymap.set('n', '<C-S-k>', '<C-w>K', opts 'Move up')
+vim.keymap.set('n', '<C-S-k>', '<C-w>K', opts 'Move up')
 
 -- vim.keymap.set('n', '<m-l>', '<C-w>L', opts 'Move right')
--- vim.keymap.set('n', '<C-S-l>', '<C-w>L', opts 'Move right')
+vim.keymap.set('n', '<C-S-l>', '<C-w>L', opts 'Move right')
 
 -- Navigate between splits
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts())
