@@ -16,6 +16,7 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Set-Alias ls lsd
 Set-Alias cat bat
 Set-Alias trp Remove-ItemSafely
+Set-Alias lg lazygit
 
 function uvr
 {
