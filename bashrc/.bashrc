@@ -30,3 +30,7 @@ alias zup="sudo zypper refresh && sudo zypper dup --allow-vendor-change"
 
 # NOTE:Trash-cli
 alias rm='echo "This is not the command you are looking for, try trp. (If you really want it use \rm)"; false'
+
+# Added by flyctl installer
+export FLYCTL_INSTALL="/home/raphaelac/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"

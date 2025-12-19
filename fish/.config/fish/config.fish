@@ -6,3 +6,5 @@ end
 
 # uv
 fish_add_path "/home/raphaelac/.local/bin"
+# flyctl
+fish_add_path $FLYCTL_INSTALL/bin
