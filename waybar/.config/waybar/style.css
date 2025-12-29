@@ -77,14 +77,14 @@ button:hover {
     box-shadow: inset 0 -3px @transparent;
 }
 
-#custom-os_button {
+#custom-suse_button {
     font-size: 15px;
     padding-left: 12px;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
     color: @green
 }
 
-#custom-os_button:hover {
+#custom-suse_button:hover {
     color: @text;
 }
 
