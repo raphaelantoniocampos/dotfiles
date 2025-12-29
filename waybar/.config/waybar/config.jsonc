@@ -8,7 +8,7 @@
 	"margin-left": 3,
 	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
-		"custom/os_button",
+		"custom/suse_button",
 		"hyprland/workspaces",
 		"hyprland/window",
 		//"sway/window",
@@ -36,9 +36,10 @@
 		"custom/power"
 	],
 	//Modules configuration
-	"custom/os_button": {
+	//SUSE
+	"custom/suse_button": {
 		"format": " ",
-		"on-click": "wofi --show drun",
+		"on-click": "wofi --show drun -I -p \"Search\"",
 		"on-click-right": "kitty sudo -E yast2",
 		"tooltip": true
 	},
