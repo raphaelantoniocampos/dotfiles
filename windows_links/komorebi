@@ -1,2 +1,0 @@
-cmd /c mklink /D "C:\Users\$ENV:USERNAME\.config\komorebi" "C:\Users\$ENV:USERNAME\dotfiles\komorebi\.config\komorebi" && cmd /c mklink "C:\Users\$ENV:USERNAME\.config\whkdrc" "C:\Users\$ENV:USERNAME\dotfiles\komorebi\.config\whkdrc"
-

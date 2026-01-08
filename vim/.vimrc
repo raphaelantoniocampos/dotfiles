@@ -123,8 +123,8 @@ nnoremap <leader>tx :tabclose<CR>
 nnoremap <leader>tn :tabn<CR>
 nnoremap <leader>tp :tabp<CR>
 
-nnoremap <leader>x :bdelete<CR>
-nnoremap <leader>b :enew<CR>
+nnoremap <leader>q :bdelete<CR>
+nnoremap <leader>bn :enew<CR>
 
 " toggle line wrapping
 nnoremap <leader>lw :set wrap!<CR>
@@ -145,7 +145,7 @@ noremap <leader>y "+y
 noremap <leader>Y "+Y
 
 " Open file explorer
-noremap <silent> <leader>e :Lex<CR>
+noremap <silent> \ :Lex<CR>
 
 
 " ========================================
@@ -157,7 +157,7 @@ syntax on
 
 " Colorscheme
 " colorscheme industry
-colorscheme wildcharm
+colorscheme slate
 set background=dark
 " hi Normal ctermbg=NONE guibg=NONE
 " hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE

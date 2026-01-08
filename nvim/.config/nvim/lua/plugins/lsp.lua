@@ -37,7 +37,7 @@ return { -- LSP Configuration & Plugins
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
 				--  To jump back, press <C-T>.
-				-- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition') -- disabling telescope
+				map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition') -- disabling telescope
 
 				-- Find references for the word under your cursor.
 				-- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences') -- disabling telescope
@@ -53,11 +53,11 @@ return { -- LSP Configuration & Plugins
 
 				-- Fuzzy find all the symbols in your current document.
 				--  Symbols are things like variables, functions, types, etc.
-				-- map('<leader>cy', require('telescope.builtin').lsp_document_symbols, 'Document S[y]mbols') -- disabling telescope
+				map('<leader>cy', require('telescope.builtin').lsp_document_symbols, 'Document S[y]mbols') -- disabling telescope
 
 				-- Fuzzy find all the symbols in your current workspace
 				--  Similar to document symbols, except searches over your whole project.
-				-- map('<leader>Wy', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace S[y]mbols') -- disabling telescope
+				map('<leader>Wy', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace S[y]mbols') -- disabling telescope
 
 				-- Rename the variable under your cursor
 				--  Most Language Servers support renaming across files, etc.

@@ -37,7 +37,7 @@ return {
         { '<leader>S', group = 'session' },
         { '<leader>e', group = 'explorer', icon = { icon = '', color = 'blue' } },
         { '<leader>g', group = 'git' },
-        { '<leader>x', group = 'diagnostics', icon = { icon = '󱖫 ', color = 'red' } },
+        { '<leader>Q', group = 'diagnostics', icon = { icon = '󱖫 ', color = 'red' } },
         { '<leader>N', group = 'Neovim News', icon = { icon = ' ', color = 'white' } },
         { '<leader>?', group = 'Buffer Keymaps', icon = { icon = ' ', color = 'green' } },
         { '[', group = 'prev' },
@@ -52,7 +52,7 @@ return {
           icon = { icon = '' },
         },
         {
-          '<leader>q',
+          '<leader>Q',
           icon = { icon = '', color = 'red' },
         },
         {

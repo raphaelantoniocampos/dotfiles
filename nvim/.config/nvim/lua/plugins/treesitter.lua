@@ -11,11 +11,11 @@ return {
       ensure_installed = {
         'lua',
         'python',
-        'c',
         'json',
         'gitignore',
         'yaml',
         'html',
+        'c',
         'gleam',
       },
 

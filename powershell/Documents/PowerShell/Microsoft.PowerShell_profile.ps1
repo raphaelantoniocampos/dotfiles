@@ -17,6 +17,8 @@ Set-Alias ls lsd
 Set-Alias cat bat
 Set-Alias trp Remove-ItemSafely
 Set-Alias lg lazygit
+Set-Alias stow winstow
+Set-Alias -Name cd -Value z -Scope Global -Option Constant,AllScope -Force
 
 function uvr
 {
