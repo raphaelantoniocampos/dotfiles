@@ -5,7 +5,7 @@ echo "sudo zypper packages --unneeded"
 
 UNNEEDED_PACKAGES_FILE="/home/raphaelac/.unneeded_packages.txt"
 
-sudo zypper packages --unneeded | grep "^i" > "$UNNEEDED_PACKAGES_FILE"
+zypper packages --unneeded | grep "^i" > "$UNNEEDED_PACKAGES_FILE"
 if [ -s "$UNNEEDED_PACKAGES_FILE" ]; then 
     cat "$UNNEEDED_PACKAGES_FILE" | cut -d '|' -f3 | xargs sudo zypper rm -y --clean-deps
 else 

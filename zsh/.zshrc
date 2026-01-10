@@ -27,7 +27,7 @@ alias trp="trash-put"
 alias ls="lsd"
 alias uvr="uv run"
 alias zup="sudo -E sh ~/.config/scripts/zup.sh"
-alias zclean="sh ~/.config/scripts/zclean.sh"
+alias zclean="sudo -E sh ~/.config/scripts/zclean.sh"
 alias rm='echo "This is not the command you are looking for, try trp. (If you really want it use \rm)"; false'
 
 fastfetch --logo opensuse
