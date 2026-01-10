@@ -3,9 +3,11 @@
 echo "Removing unneeded packages"
 echo "sudo zypper packages --unneeded"
 
-sudo zypper packages --unneeded | grep "^i" > /tmp/unneeded_packages.txt
-if [ -s /tmp/unneeded_packages.txt ]; then 
-    cat /tmp/unneeded_packages.txt | cut -d '|' -f3 | xargs sudo zypper rm -y --clean-deps
+UNNEEDED_PACKAGES_FILE="/home/raphaelac/.unneeded_packages.txt"
+
+sudo zypper packages --unneeded | grep "^i" > "$UNNEEDED_PACKAGES_FILE"
+if [ -s "$UNNEEDED_PACKAGES_FILE" ]; then 
+    cat "$UNNEEDED_PACKAGES_FILE" | cut -d '|' -f3 | xargs sudo zypper rm -y --clean-deps
 else 
     echo "No unneeded packages found."
 fi
