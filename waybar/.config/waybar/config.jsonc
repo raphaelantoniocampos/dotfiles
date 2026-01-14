@@ -132,7 +132,6 @@
 		"interval": "1",
 		"format": "<span color='#f9e2af'> </span>{usage}%",
 		"on-click": "kitty -e htop --sort-key PERCENT_CPU",
-		"on-click-right": "kitty -e btm",
 	},
 	"disk": {
 		"interval": 30,
@@ -140,6 +139,7 @@
 		"format": "<span color='#eba0ac'> </span>{percentage_used}%",
 		//"format": " {used}",
 		"unit": "GB",
+		"on-click": "nemo",
 		"tooltip-format": " {used}"
 	},
 	"temperature": {
@@ -172,6 +172,8 @@
 			""
 		],
 		"tooltip-format": "{percent}%",
+		"on-click": "brightnessctl s 5%+;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%",
+		"on-click-right":"brightnessctl s 5%-;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
 	},
 	"wireplumber": {
 		"format": "<span color='#cba6f7'>{icon} </span> {volume}%",
@@ -213,7 +215,7 @@
 		"format-linked": "    {ifname} (No IP)",
 		"format-disconnected": "⚠  Disconnected",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}",
-		"on-click-right": "nm-connection-editor",
+		"on-click-right": "kitty -e nmtui",
 	},
 	"bluetooth": {
 		"format": "<span color='#74c7ec'>󰂰</span>",
@@ -235,7 +237,7 @@
 		//"exec": "curl 'https://wttr.in/'",
 		"tooltip-format": "{}",
 		"interval": 3600,
-		"on-click": "gnome-weather",
+		"on-click": "kweather",
 		"min-length": 5,
 		"max-length": 10
 	},
