@@ -28,7 +28,7 @@ while true; do
   if [[ "$bat_lvl" != "$last_lvl" || "$bat_status" != "$last_status" ]]; then
     case "$bat_status" in
       "Charging")
-        if [ "$brightness" -le 240 ]; then
+        if [ "$last_status" != "$bat_status" ]; then
           notify_and_sound 5 3000 "Charging - ${bat_lvl}%" "$SND_CHARGE" "charging"
           brightnessctl set 100%
         fi
@@ -45,6 +45,8 @@ while true; do
         fi
         ;;
     esac
+    echo "${bat_status} - ${bat_lvl}% brightness: ${brightness}%"
+    echo "Last lvl - ${last_lvl}% Last status: ${last_status}"
   fi
 
   last_lvl=$bat_lvl
