@@ -172,8 +172,8 @@
 			""
 		],
 		"tooltip-format": "{percent}%",
-		"on-click": "brightnessctl s 5%+;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%",
-		"on-click-right":"brightnessctl s 5%-;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
+		"on-click": "brightnessctl set 100%;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%",
+		"on-click-right":"brightnessctl set 5%;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
 	},
 	"wireplumber": {
 		"format": "<span color='#cba6f7'>{icon} </span> {volume}%",
