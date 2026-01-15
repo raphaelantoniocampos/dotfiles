@@ -1,142 +1,120 @@
-# Raphael Campos
 include $HOME/.config/sway/output.conf
-include $HOME/.config/env/sway.conf
 
-# set mods
+##########################
+### MODS AND VARIABLES ###
+##########################
+
 set $mod Mod4
 set $mod2 Mod1
+font pango:0xProto Nerd Font Mono 12
 
-# set terminal
+###################
+### DEFAULT APPS ###
+###################
 set $terminal kitty
+set $fileManager nemo
+set $browser firefox
+set $calc kalk
+set $notepad mousepad
+set $music_player youtube-music
+set $menu wofi --show drun -I -p "Search"
 
-# set file manager
-set $filemanager nautilus
 
-# set browser
-set $browser librewolf
+#################
+### AUTOSTART ###
+#################
 
-# set calculator
-set $calc gnome-calculator
+exec swaync --style $HOME/.config/sway/swaync/style.css --config $HOME/.config/sway/swaync/config.json
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec --no-startup-id mpd
+# exec $HOME/.config/scripts/battery-notify.sh
 
-# set program launcher
-set $menu wofi --conf $HOME/.config/wofi/config --style $HOME/.config/wofi/style.css
+bar {
+    swaybar_command waybar
+    workspace_buttons yes
+}
 
 # set wallpaper and lock screen
-set $wallpaper /home/$USER/.config/backgrounds/nice-forest-background.jpg
-set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
+# set $wallpaper /home/$USER/.config/backgrounds/nice-forest-background.jpg
+# set $lockscreen /home/$USER/.config/backgrounds/nice-forest-background.jpg
+#
+# set $screenlock 'swaylock --config $HOME/.config/sway/swaylock/swaylock.conf -i $lockscreen'
 
-set $screenlock 'swaylock --config $HOME/.config/sway/swaylock/swaylock.conf -i $lockscreen'
 
-# Shutdown, Reboot, Lock Screen, and Logout 
-bindsym $mod2+Shift+p   exec systemctl poweroff
-bindsym $mod2+Shift+r   exec systemctl reboot
-bindsym $mod2+Shift+l   exec swaylock -i $lockscreen 
-bindsym $mod2+Shift+h   exec systemctl hibernate  
+###################
+### KEYBINDINGS ###
+###################
 
-# Idle configuration
+# Program Launchers
+bindsym $mod+Return exec $terminal
+bindsym $mod+e exec $fileManager
+bindsym $mod+b exec $browser
+bindsym $mod+c exec $calc
+bindsym $mod+d exec $menu
+bindsym $mod+m exec $music_player
+bindsym $mod+n exec $notepad
+bindsym $mod+o exec obsidian
+bindsym $mod+z exec sudo $HOME/.config/scripts/zup.sh
+
+# Help & Scripts
+bindsym $mod+i exec $HOME/.config/scripts/hotkeys.sh
+bindsym $mod+t exec $HOME/.config/scripts/translate.sh
+bindsym $mod+Shift+t exec $HOME/.config/scripts/translate.sh auto
+bindsym $mod+Ctrl+t exec $HOME/.config/scripts/translate.sh switch
+bindsym $mod+Shift+Ctrl+t exec $HOME/.config/scripts/translate.sh set
+bindsym Ctrl+Shift+Escape exec $terminal -e htop 
+
+# Reload / Reset
+bindsym $mod+w reload
+
+# Window Control
+bindsym $mod+Shift+q kill
+bindsym $mod+f floating toggle
+bindsym $mod+Shift+f fullscreen toggle
+bindsym $mod+space focus mode_toggle
+
+# Window Layout 
+bindsym $mod+s layout toggle split
+bindsym $mod+p layout toggle tabbed
+bindsym $mod2+Shift+s layout stacking
+bindsym $mod2+Shift+t layout tabbed
+bindsym $mod2+s layout toggle split
+bindsym $mod+Ctrl+h split h
+bindsym $mod+Ctrl+v split v
+
+# Power Management
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
+bindsym $mod+Shift+Delete exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
+bindsym $mod2+Shift+l exec swaylock -i $lockscreen 
+bindsym $mod2+Shift+p exec systemctl poweroff
+bindsym $mod2+Shift+r exec systemctl reboot
+bindsym $mod2+Shift+h exec systemctl hibernate
+
+# Idle Lock
 exec swayidle -w \
          timeout 900 $screenlock \
          timeout 960 'swaymsg "output * power off"' \
               resume 'swaymsg "output * power on"' \
          before-sleep $screenlock
 
-
-# i3-gaps
-# for_window [class="^.*"] border
-# gaps inner 4
-# gaps outer 4
-# smart_gaps on
-# default_border pixel 1
-# #smart_borders on
-# #set $borderwidth 1
-# hide_edge_borders both
-
-font pango:0xProto Nerd Font Mono 12
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec $terminal
-
-# start file manager
-bindsym $mod+e exec $filemanager
-
-# start browser
-bindsym $mod+b exec $browser
-
-# start calculator
-bindsym $mod+c exec $calc
-
-# start yast
-bindsym $mod+Escape exec "foot -e bash -c 'echo $psw | sudo -S -E yast2'"
-
-bindsym $mod+tab workspace next_on_output
-bindsym $mod+Shift+tab workspace prev_on_output
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start wofi
-bindsym $mod+d exec --no-startup-id $menu
-
-# start rofi
-# bindsym $mod+d exec --no-startup-id $menu -show run -m
-# bindsym $mod+Shift+d exec --no-startup-id $programlauncher -show combi
-# bindsym $mod+Tab exec --no-startup-id $programlauncher -show window
-
-# change focus
+# Focus Movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+Ctrl+h split h
-
-# split in vertical orientation
-bindsym $mod+Ctrl+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+Shift+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod2+Shift+s layout stacking
-bindsym $mod2+Shift+t layout tabbed
-bindsym $mod2+s layout toggle split
-
-# toggle tiling / floatinl
-bindsym $mod+f floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+# Workspace Navigation
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Switch workspaces 1-10
+# set workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -148,7 +126,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -160,7 +137,18 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-# move focused container to workspace
+# Move Windows in the same workspace
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Move Windows to other workspaces 1-10
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -172,65 +160,58 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
+# Mouse Windows Control
+floating_modifier $mod
 
-# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
-# bindsym $mod+Shift+c restart
-bindsym $mod+Shift+r reload
-# exit sway
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
-
-
-# resize window (you can also use the mouse for that)
-
-# Pressing left will shrink the window’s width.
+# Resize with Arrows
 bindsym $mod+Ctrl+Left resize shrink width 3 px or 3 ppt
-# Pressing up will grow the window’s height.
 bindsym $mod+Ctrl+Up resize grow height 3 px or 3 ppt
-# Pressing down will shrink the window’s height.
 bindsym $mod+Ctrl+Down resize shrink height 3 px or 3 ppt
-# Pressing right will grow the window’s width.
 bindsym $mod+Ctrl+Right resize grow width 3 px or 3 ppt
 
-
-# custom bind keys
+# Multimedia & Brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
 bindsym XF86AudioMute exec pactl set-sink-mute  $(pacmd list-sinks |awk '/* index:/{print $3}') toggle # Mute
+bindsym XF86MonBrightnessUp exec brightnessctl s 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 
-# Sreen brightness controls -- # https://github.com/haikarainen/light
-bindsym XF86MonBrightnessUp exec brightnessctl s +10%
-bindsym XF86MonBrightnessDown exec brightnessctl s 10%- 
-# multimedia keys
-bindsym XF86AudioPlay  exec "mpc toggle"
-bindsym XF86AudioStop  exec "mpc stop"
-bindsym XF86AudioNext  exec "mpc next"
-bindsym XF86AudioPrev  exec "mpc prev"
-bindsym XF86AudioPause exec "mpc pause"
+# Media Control (mpv)
+bindsym XF86AudioPlay  exec "mpv toggle"
+bindsym XF86AudioStop  exec "mpv stop"
+bindsym XF86AudioNext  exec "mpv next"
+bindsym XF86AudioPrev  exec "mpv prev"
+bindsym XF86AudioPause exec "mpv pause"
 
-bar {
-    swaybar_command waybar
-    workspace_buttons yes
-}
+# Recording
+bindsym $mod+g exec $HOME/.config/scripts/recording.sh
 
-# startup programs
-exec --no-startup-id mpd
+# Screenshot
+bindsym Print exec grim -t png $HOME/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
+bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png $HOME/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
 
-exec --no-startup-id /usr/lib/gsd-xsettings
 
-exec --no-startup-id swaync --style $HOME/.config/sway/swaync/style.css --config $HOME/.config/sway/swaync/config.json
+#####################
+### WINDOWS RULES ###
+#####################
 
-# bind app to workspace
-# check class by : xprop
-# swaymsg -t get_tree
+# i3-gaps
+# for_window [class="^.*"] border
+# gaps inner 4
+# gaps outer 4
+# smart_gaps on
+# default_border pixel 1
+# #smart_borders on
+# #set $borderwidth 1
+# hide_edge_borders both
 
-# Floating windows
 
+# General Float Rules (Dialogs, Popups, File Choosers)
+for_window [title="Picture-in-Picture"] floating enable, sticky enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
-
 for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
 for_window [window_role="Open Files"] floating enable sticky
 for_window [window_role="File Operation Progress"] floating enable sticky
@@ -242,38 +223,36 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 #for_window [class="VirtualBox"] floating enable
 
+# Games
+for_window [class="steam"] floating enable
+for_window [class="wow.exe"] border none
+for_window [title="Microsoft Visual C++ Runtime Library"] floating enable
+
 # Sticky window
 for_window [instance="file_progress"]  sticky enable
 for_window [class="info|Mate-color-select|gcolor2|timesup|QtPass|GtkFileChooserDialog"] sticky enable
-
-# Teamviewer
-for_window [instance="TeamViewer.exe"] floating enable
-for_window [class="TeamViewer"] floating enable
-#for_window [instance="Qt-subapplication" title="TeamViewer"] move scratchpad
 
 # Focus window settings
 no_focus [window_role="pop-up"]
 focus_on_window_activation urgent 
 #for_window [class="(?i)"] focus 
 
-for_window [app_id="mpv"] floating enable
-for_window [app_id="mpv"] resize set 960 540
-for_window [app_id="mpv"] border pixel 0
+# Media
+# for_window [app_id="mpv"] floating enable
+# for_window [app_id="mpv"] resize set 960 540
+# for_window [app_id="mpv"] border pixel 0
 
+# GNOME APPS
 for_window [app_id="org.gnome.(Nautilus|Weather|Calculator|Calendar)"] floating enable
 
+# Other Apps
 for_window [app_id="org.opensuse.YaST"] floating enable
 for_window [app_id="ruby"] floating enable
-
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
-
 for_window [app_id="blueman-manager"] floating enable
-
 for_window [app_id="foot"] floating enable
-
 for_window [app_id="xterm"] floating enable
 for_window [app_id="xterm"] resize set 960 540
-
 for_window [app_id="nm-connection-editor"] floating enable
 
 # Allow Firefox pop-ups
@@ -290,13 +269,6 @@ for_window [app_id="firefox" title="File Upload"] floating enable
 # Allow Chromium pop-ups
 for_window [class="Chromium" instance="chromium"] floating enable
 for_window [class="Chromium" instance="dialog"] floating enable
-
-bindsym $mod+g exec --no-startup-id "notify-send 'Recording' 'Recording started at workspace 10' -a foot -i $HOME/.config/sway/rec.ico && foot -e wf-recorder -f $HOME/Videos/recording-$(date +%Y-%m-%d_%H-%M-%S).mkv"
-# bindsym $mod+Shift+g exec --no-startup-id "wf-recorder "
-
-bindsym Print exec --no-startup-id "grim $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym Shift+Print exec --no-startup-id "grim -g '$(slurp)' $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym $mod+Shift+s exec --no-startup-id "grim -g '$(slurp)' $HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 # Configure outputs here
 # How to get outputs configurable - $ swaymsg -t get_outputs
@@ -334,6 +306,21 @@ exec_always {
     # tail -f $SWAYSOCK.wob | $wob
 }
 
+# Look and Feel
+default_border pixel 2
+default_floating_border pixel 2
+smart_gaps on
+smart_borders on
+
+gaps inner 3
+gaps outer 5
+
+# --- SwayFX Only Features ---
+# corner_radius 10
+# shadow_enabled on
+# shadow_blur_radius 4
+# blur on
+# ----------------------------
 
 # colorscheme
 set $rosewater #f5e0dc
@@ -362,7 +349,7 @@ set $surface0  #313244
 set $base      #1e1e2e
 set $mantle    #181825
 set $crust     #11111b
- 
+
 # target                 title     bg    text   indicator  border
 client.focused           $green $base $text  $rosewater $green
 client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
