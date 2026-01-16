@@ -10,14 +10,16 @@
 	"modules-left": [
 		"custom/suse_button",
 		"hyprland/workspaces",
+		"sway/workspaces",
 		"hyprland/window",
-		//"sway/window",
-		//"sway/mode",
+		"sway/window",
+		// "sway/mode",
 		"custom/mediaplayer"
 	],
 	"modules-center": [
 		"clock#date",
-		"clock#time"
+		"clock#time",
+		"custom/weather",
 	],
 	"modules-right": [
 		"tray",
@@ -30,7 +32,6 @@
 		// "pulseaudio",
 		"network",
 		"bluetooth",
-		"custom/weather",
 		//"hyprland/language",
 		"battery",
 		"custom/power"
@@ -54,11 +55,6 @@
 		"on-scroll-up": "hyprctl dispatch workspace e+1",
 		"on-scroll-down": "hyprctl dispatch workspace e-1",
 	},
-	"hyprland/window": {
-		"format": "{class} {title}",
-		"icon": true,
-		"icon-size": 15,
-	},
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
@@ -66,10 +62,18 @@
 		"warp-on-scroll": false,
 		"format": "{icon}",
 	},
+	"hyprland/window": {
+		"format": "{class} {title}",
+		"icon": true,
+		"icon-size": 15,
+	},
 	"sway/window": {
 		"format": "{app_id}",
 		"max-length": 20
 	},
+	// "sway/mode": {
+	// 	"format": "<span style=\"italic\">{}</span>"
+	// },
 	"custom/mediaplayer": {
 		"format": "{}",
 		"tooltip": false,
@@ -83,9 +87,6 @@
 	"tray": {
 		"icon-size": 13,
 		"spacing": 3
-	},
-	"sway/mode": {
-		"format": "<span style=\"italic\">{}</span>"
 	},
 	"clock#date": {
 		"format": "<span color='#f9e2af'> </span>{:%e %b}",
@@ -101,6 +102,16 @@
 		"on-click": "gnome-calendar",
 		"min-length": 8,
 		"max-length": 12
+	},
+	"custom/weather": {
+		"format": "{}",
+		"exec": "curl 'https://wttr.in/?format=1'",
+		//"exec": "curl 'https://wttr.in/'",
+		"tooltip-format": "{}",
+		"interval": 3600,
+		"on-click": "kweather",
+		"min-length": 5,
+		"max-length": 10
 	},
 	"battery#bat2": {
 		"bat": "BAT2"
@@ -231,16 +242,6 @@
 		"interval": 1,
 		"max-length": 10
 	},
-	"custom/weather": {
-		"format": "{}",
-		"exec": "curl 'https://wttr.in/?format=1'",
-		//"exec": "curl 'https://wttr.in/'",
-		"tooltip-format": "{}",
-		"interval": 3600,
-		"on-click": "kweather",
-		"min-length": 5,
-		"max-length": 10
-	},
 	"hyprland/language": {
 		"format": "{}",
 		"format-pt": "PT-BR",
@@ -251,10 +252,10 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/custom_modules/power_menu.xml",
 		"menu-actions": {
-			"shutdown":  "sh -c 'echo $(wofi -d -P -p \"Password:\" --lines=1 --width=300) | sudo -S systemctl poweroff'",
-			"reboot":    "sh -c 'echo $(wofi -d -P -p \"Password:\" --lines=1 --width=300) | sudo -S systemctl reboot'",
-			"hibernate": "sh -c 'echo $(wofi -d -P -p \"Password:\" --lines=1 --width=300) | sudo -S systemctl hibernate'",
-			"suspend":   "systemctl suspend"
+			"shutdown": "sh -c 'echo $(wofi -d -P -Q password --lines=1 --width=300 ) | sudo -S systemctl poweroff'",
+			"reboot": "sh -c 'echo $(wofi -d -P -Q password --lines=1 --width=300) | sudo -S systemctl reboot'",
+			"hibernate": "sh -c 'echo $(wofi -d -P -Q password --lines=1 --width=300) | sudo -S systemctl hibernate'",
+			"suspend": "systemctl suspend"
 		}
 	},
 }

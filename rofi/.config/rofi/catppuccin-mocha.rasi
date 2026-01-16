@@ -9,7 +9,7 @@
     grey: #6c7086;
 
     width: 600;
-    font: "JetBrainsMono Nerd Font 14";
+    font: "0xProto Nerd Font Mono 12";
 }
 
 element-text, element-icon , mode-switcher {
@@ -22,6 +22,7 @@ window {
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
+    border-radius: 20px;
 }
 
 mainbox {

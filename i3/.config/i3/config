@@ -1,5 +1,3 @@
-include $HOME/.config/sway/output.conf
-
 ##########################
 ### MODS AND VARIABLES ###
 ##########################
@@ -17,40 +15,44 @@ set $browser firefox
 set $calc kalk
 set $notepad mousepad
 set $music_player youtube-music
-set $menu wofi --show drun -I -p "Search"
-
+set $menu rofi -show drun -display-drun "Search"
 
 #################
 ### AUTOSTART ###
 #################
 
-exec swaync --style $HOME/.config/sway/swaync/style.css --config $HOME/.config/sway/swaync/config.json
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# Compositor
+exec --no-startup-id picom -b
+
+# Notification daemon
+exec --no-startup-id dunst
+
+# Polkit agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# X11 Settings
 exec --no-startup-id /usr/lib/gsd-xsettings
 exec --no-startup-id mpd
-# exec $HOME/.config/scripts/battery-notify.sh
 
-bar {
-    swaybar_command waybar
-    workspace_buttons yes
-#   colors {
-#     background         $base
-#     statusline         $text
-#     focused_statusline $text
-#     focused_separator  $base
-#
-#     # target           border bg        text
-#     focused_workspace  $base  $mauve    $crust
-#     active_workspace   $base  $surface2 $text
-#     inactive_workspace $base  $base     $text
-#     urgent_workspace   $base  $red      $crust
-#   }
-}
+# Wallpaper
+exec --no-startup-id feh --bg-fill /home/raphaelac/Pictures/wallpapers/castle.png
+
+# Keyboard Layout
+exec --no-startup-id setxkbmap br -model microsoftpro -option terminate:ctrl_alt_bksp
+
+# Touchpad settings
+exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 
 # Lockscreen
-set $lockscreen $HOME/Pictures/backgrounds/nice-desert-background.jpg
-set $screenlock 'swaylock --config $HOME/.config/sway/swaylock/swaylock.conf -i $lockscreen'
+set $lockscreen /home/raphaelac/Pictures/backgrounds/nice-desert-background.jpg
+set $screenlock i3lock -i $lockscreen
 
+#################
+### POLYBAR   ###
+#################
+
+# Launch Polybar
+exec_always --no-startup-id bash $HOME/.config/polybar/launch_polybar.sh
 
 ###################
 ### KEYBINDINGS ###
@@ -65,18 +67,19 @@ bindsym $mod+d exec $menu
 bindsym $mod+m exec $music_player
 bindsym $mod+n exec $notepad
 bindsym $mod+o exec obsidian
-bindsym $mod+z exec sudo $HOME/.config/scripts/zup.sh
 
 # Help & Scripts
-bindsym $mod+i exec $HOME/.config/scripts/hotkeys.sh
-bindsym $mod+t exec $HOME/.config/scripts/translate.sh
-bindsym $mod+Shift+t exec $HOME/.config/scripts/translate.sh auto
-bindsym $mod+Ctrl+t exec $HOME/.config/scripts/translate.sh switch
-bindsym $mod+Shift+Ctrl+t exec $HOME/.config/scripts/translate.sh set
+bindsym $mod+i exec /home/raphaelac/.config/scripts/hotkeys.sh
+bindsym $mod+t exec /home/raphaelac/.config/scripts/translate.sh
+bindsym $mod+Shift+t exec /home/raphaelac/.config/scripts/translate.sh auto
+bindsym $mod+Ctrl+t exec /home/raphaelac/.config/scripts/translate.sh switch
+bindsym $mod+Shift+Ctrl+t exec /home/raphaelac/.config/scripts/translate.sh set
 bindsym Ctrl+Shift+Escape exec $terminal -e htop 
 
-# Reload / Reset
+# Reload / Restart
 bindsym $mod+w reload
+bindsym $mod+Shift+w exec pkill polybar && i3-msg restart
+# bindsym $mod+Shift+p exec pkill polybar
 
 # Window Control
 bindsym $mod+Shift+q kill
@@ -94,19 +97,12 @@ bindsym $mod+Ctrl+h split h
 bindsym $mod+Ctrl+v split v
 
 # Power Management
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
-bindsym $mod+Shift+Delete exec swaynag -t warning -m 'Do you really want to exit sway' -b 'Yes, exit sway' 'swaymsg exit' 
+bindsym $mod2+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod2+Shift+Delete exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod2+Shift+l exec $screenlock
 bindsym $mod2+Shift+p exec systemctl poweroff
 bindsym $mod2+Shift+r exec systemctl reboot
 bindsym $mod2+Shift+h exec systemctl hibernate
-
-# Idle Lock
-exec swayidle -w \
-         timeout 900 $screenlock \
-         timeout 960 'swaymsg "output * power off"' \
-              resume 'swaymsg "output * power on"' \
-         before-sleep $screenlock
 
 # Focus Movement
 bindsym $mod+h focus left
@@ -120,11 +116,10 @@ bindsym $mod+Right focus right
 bindsym $mod+a focus parent
 
 # Workspace Navigation
-bindsym $mod+Tab workspace next_on_output
-bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # Switch workspaces 1-10
-# set workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -180,9 +175,9 @@ bindsym $mod+Ctrl+Down resize shrink height 3 px or 3 ppt
 bindsym $mod+Ctrl+Right resize grow width 3 px or 3 ppt
 
 # Multimedia & Brightness
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
-bindsym XF86AudioMute exec pactl set-sink-mute  $(pacmd list-sinks |awk '/* index:/{print $3}') toggle # Mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessUp exec brightnessctl s 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 
@@ -194,24 +189,22 @@ bindsym XF86AudioPrev  exec "mpv prev"
 bindsym XF86AudioPause exec "mpv pause"
 
 # Recording
-bindsym $mod+g exec $HOME/.config/scripts/recording.sh
+bindsym $mod+g exec /home/raphaelac/.config/scripts/recording.sh
 
 # Screenshot
-bindsym Print exec grim -t png $HOME/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
-bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png $HOME/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
+bindsym Print exec scrot '/home/raphaelac/Screenshots/%Y-%m-%d_%H-%M-%S.png'
+bindsym $mod+Shift+s exec scrot -s '/home/raphaelac/Screenshots/%Y-%m-%d_%H-%M-%S.png'
 
 
 #####################
 ### WINDOWS RULES ###
 #####################
 
-# General Float Rules (Dialogs, Popups, File Choosers)
 for_window [title="Picture-in-Picture"] floating enable, sticky enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
-for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
 for_window [window_role="Open Files"] floating enable sticky
 for_window [window_role="File Operation Progress"] floating enable sticky
 for_window [window_role="Save As"] floating enable
@@ -220,104 +213,54 @@ for_window [class="qBittorrent" window_role="pop-up"] floating enable
 for_window [class="mtp-ng-qt" window_role="Open"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
-#for_window [class="VirtualBox"] floating enable
 
 # Games
 for_window [class="steam"] floating enable
 for_window [class="wow.exe"] border none
-for_window [title="Microsoft Visual C++ Runtime Library"] floating enable
 
 # Sticky window
-for_window [instance="file_progress"]  sticky enable
+for_window [instance="file_progress"] sticky enable
 for_window [class="info|Mate-color-select|gcolor2|timesup|QtPass|GtkFileChooserDialog"] sticky enable
 
 # Focus window settings
 no_focus [window_role="pop-up"]
 focus_on_window_activation urgent 
-#for_window [class="(?i)"] focus 
 
-# Media
-# for_window [app_id="mpv"] floating enable
-# for_window [app_id="mpv"] resize set 960 540
-# for_window [app_id="mpv"] border pixel 0
-
-# GNOME APPS
-for_window [app_id="org.gnome.(Nautilus|Weather|Calculator|Calendar)"] floating enable
+# Maps for GNOME/GTK Apps
+for_window [class="org.gnome.Nautilus"] floating enable
+for_window [class="org.gnome.Weather"] floating enable
+for_window [class="org.gnome.Calculator"] floating enable
+for_window [class="org.gnome.Calendar"] floating enable
 
 # Other Apps
-for_window [app_id="org.opensuse.YaST"] floating enable
-for_window [app_id="ruby"] floating enable
-for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
-for_window [app_id="blueman-manager"] floating enable
-for_window [app_id="foot"] floating enable
-for_window [app_id="xterm"] floating enable
-for_window [app_id="xterm"] resize set 960 540
-for_window [app_id="nm-connection-editor"] floating enable
+for_window [class="org.opensuse.YaST"] floating enable
+for_window [class="pavucontrol"] floating enable
+for_window [class="blueman-manager"] floating enable
+for_window [class="foot"] floating enable
+for_window [class="XTerm"] floating enable
+for_window [class="nm-connection-editor"] floating enable
 
-# Allow Firefox pop-ups
+# Firefox/Chromium
 for_window [class="Firefox" title="Opening"] floating enable, focus
 for_window [class="Firefox" instance="Navigator"] floating enable
 for_window [class="Firefox" instance="Dialog"] floating enable
-for_window [app_id="firefox" title="Pushbullet"] floating enable
-for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
-for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
-for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
-for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
-for_window [app_id="firefox" title="File Upload"] floating enable
-
-# Allow Chromium pop-ups
-for_window [class="Chromium" instance="chromium"] floating enable
-for_window [class="Chromium" instance="dialog"] floating enable
-
-# Configure outputs here
-# How to get outputs configurable - $ swaymsg -t get_outputs
-exec --no-startup-id "sh /$HOME/.config/sway/scripts/get_outputs.sh"
-
-# Inputs - Get your inputs with the command:
-# swaymsg -t get_inputs
-input 1267:35:Elan_Touchpad {
-    tap enabled
-    natural_scroll enabled
-}
-
-input type:keyboard {
-    xkb_layout "br"
-    xkb_options "terminate:ctrl_alt_bksp"
-    xkb_model "microsoftpro"
-}
+for_window [class="Chromium"] floating enable
 
 
-# set $wob wob --config /etc/sway/wob/wob.ini
-#
-exec_always {
-    systemctl --user import-environment
-    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface color-scheme 'dark'
-    # test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
-    # tail -f $SWAYSOCK.wob | $wob
-}
+#####################
+### LOOK AND FEEL ###
+#####################
 
-# Look and Feel
 default_border pixel 1
 default_floating_border pixel 1
-smart_gaps on
-smart_borders on
-for_window [class="^.*"] border
-set $borderwidth 1
 hide_edge_borders both
-gaps inner 3
-gaps outer 5
 
-# --- SwayFX Only Features ---
-# corner_radius 10
-# shadow_enabled on
-# shadow_blur_radius 4
-# blur on
-# ----------------------------
+# Gaps (i3-gaps features)
+smart_gaps on
+gaps inner 1
+gaps outer 1
 
-# colorscheme
+# Colorscheme (Catppuccin Mocha)
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
 set $pink      #f5c2e7
@@ -352,4 +295,3 @@ client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
-
