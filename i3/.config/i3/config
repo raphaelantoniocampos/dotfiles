@@ -43,10 +43,6 @@ exec --no-startup-id setxkbmap br -model microsoftpro -option terminate:ctrl_alt
 # Touchpad settings
 exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 
-# Lockscreen
-set $lockscreen /home/raphaelac/Pictures/backgrounds/nice-desert-background.jpg
-set $screenlock i3lock -i $lockscreen
-
 #################
 ### POLYBAR   ###
 #################
@@ -99,7 +95,7 @@ bindsym $mod+Ctrl+v split v
 # Power Management
 bindsym $mod2+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod2+Shift+Delete exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod2+Shift+l exec $screenlock
+bindsym $mod2+Shift+l exec "i3lock -i /home/raphaelac/Pictures/wallpapers/literati.png"
 bindsym $mod2+Shift+p exec systemctl poweroff
 bindsym $mod2+Shift+r exec systemctl reboot
 bindsym $mod2+Shift+h exec systemctl hibernate
@@ -257,8 +253,8 @@ hide_edge_borders both
 
 # Gaps (i3-gaps features)
 smart_gaps on
-gaps inner 1
-gaps outer 1
+gaps inner 2
+gaps outer 2
 
 # Colorscheme (Catppuccin Mocha)
 set $rosewater #f5e0dc
