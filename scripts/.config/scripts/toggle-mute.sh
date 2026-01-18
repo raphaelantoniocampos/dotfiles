@@ -21,7 +21,7 @@ wpctl set-mute "$NODE" toggle
 STATE=$(wpctl get-volume "$NODE")
 
 if [[ "$STATE" == *"[MUTED]"* ]]; then
-    hyprctl notify 3 2000 0 "$LABEL: $ICON_MUTED"
+    notify-send -u critical -t 2000 "$LABEL: $ICON_MUTED"
 else
-    hyprctl notify 5 2000 0 "$LABEL: $ICON_UNMUTED"
+    notify-send -u low -t 2000 "$LABEL: $ICON_UNMUTED"
 fi

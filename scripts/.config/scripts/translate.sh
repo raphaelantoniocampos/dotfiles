@@ -18,7 +18,7 @@ if [[ "$1" == "set" ]]; then
 
     echo "$FROM:$TO" > "$CONFIG"
 
-    hyprctl notify 1 5000 1 "updated default languages" "$FROM → $TO"
+    notify-send -u low -t 5000 "updated default languages" "$FROM → $TO"
     exit 0
 fi
 
@@ -27,7 +27,7 @@ if [[ "$1" == "switch" ]]; then
     IFS=":" read FROM TO < "$CONFIG"
     echo "$TO:$FROM" > "$CONFIG"
 
-    hyprctl notify 1 5000 1 "switch languages" "$TO → $FROM"
+    notify-send -u low -t 5000 "switch languages" "$TO → $FROM"
     exit 0
 fi
 
@@ -35,10 +35,10 @@ fi
 IFS=":" read FROM TO < "$CONFIG"
 
 if [[ "$1" == "auto" ]]; then
-    hyprctl notify 2 5000 1 "Translating (clipboard) - $FROM → $TO"
+    notify-send -u low -t 5000 "Translating (clipboard) - $FROM → $TO"
     TEXT=$(wl-paste -n)
 else
-    hyprctl notify 2 5000 1 "Translating - $FROM → $TO"
+    notify-send -u low -t 5000 "Translating - $FROM → $TO"
     TEXT=$(wofi --dmenu -p "$FROM → $TO" --lines=1 --width=600)
 fi
 
@@ -59,6 +59,6 @@ RESULT=$(trans -b "$FROM:$TO" "$TEXT")
 echo -n "$RESULT" | wl-copy
 
 # notify
-hyprctl notify 1 "$TIME_MS" 1 "(copied to clipboard)"
-hyprctl notify 5 "$TIME_MS" 1 "$RESULT"
+notify-send -u low -t "$TIME_MS" "(copied to clipboard)"
+notify-send -u low -t "$TIME_MS" "$RESULT"
 

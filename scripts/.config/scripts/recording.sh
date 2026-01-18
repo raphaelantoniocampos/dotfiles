@@ -8,9 +8,9 @@ DEVICE_NAME=$(pactl list sources | grep 'Name:' | head -n 1 | awk '{print $2}')
 if pgrep -x "wf-recorder" > /dev/null; then
     pkill -INT -x wf-recorder
     
-    hyprctl notify 5 $NOTIFY_TIMEOUT 0 "Stopped Recording"
+    notify-send -u low -t $NOTIFY_TIMEOUT "Stopped Recording"
 else
-    hyprctl notify 1 $NOTIFY_TIMEOUT 0 "Recording Starting in 2.0 seconds..."
+    notify-send -u low -t $NOTIFY_TIMEOUT "Recording Starting in 2.0 seconds..."
 
     sleep 2
 

@@ -12,14 +12,6 @@ last_status=""
 last_lvl=0
 last_notify=""
 
-notify_and_sound() {
-  if [[ "$5" != "$last_notify" ]]; then
-    last_notify=$5
-    hyprctl notify "$1" "$2" 0 "$3"
-    [ -f "$4" ] && pw-play "$4" >/dev/null 2>&1 &
-  fi
-}
-
 while true; do
   bat_lvl=$(<"$BAT_PATH/capacity")
   bat_status=$(<"$BAT_PATH/status")
@@ -29,24 +21,26 @@ while true; do
     case "$bat_status" in
       "Charging")
         if [ "$last_status" != "$bat_status" ]; then
-          notify_and_sound 5 3000 "Charging - ${bat_lvl}%" "$SND_CHARGE" "charging"
+          notify-send -u low "Charging - ${bat_lvl}%"
+          pw-play "$SND_CHARGE" >/dev/null 2>&1 &
           brightnessctl set 100%
         fi
         ;;
       "Full")
-        notify_and_sound 5 3000 "Battery Full - ${bat_lvl}%" "$SND_FULL" "full"
+        notify-send -u low "Battery Full - ${bat_lvl}%"
+        pw-play "$SND_FULL" >/dev/null 2>&1 &
         ;;
       "Discharging")
         if [ "$bat_lvl" -le 5 ]; then
-          notify_and_sound 3 10000 "CRITICAL - ${bat_lvl}%" "$SND_CRITICAL" "critical"
+          notify-send -u critical "CRITICAL - ${bat_lvl}%"
+          pw-play "$SND_CRITICAL" >/dev/null 2>&1 &
           [ "$brightness" -gt 240 ] && brightnessctl set 30%
         elif [ "$bat_lvl" -le 15 ]; then
-          notify_and_sound 0 3000 "Battery Low - ${bat_lvl}%" "$SND_LOW" "low"
+          notify-send -u normal "Battery Low - ${bat_lvl}%" "$SND_LOW" "low"
+          pw-play "$SND_LOW" >/dev/null 2>&1 &
         fi
         ;;
     esac
-    echo "${bat_status} - ${bat_lvl}% brightness: ${brightness}%"
-    echo "Last lvl - ${last_lvl}% Last status: ${last_status}"
   fi
 
   last_lvl=$bat_lvl

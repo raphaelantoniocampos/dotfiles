@@ -7,18 +7,18 @@ while true; do
 
   if [ "$bat_status" = "Charging" ]; then
     if [ "$brightness" -le 240 ]; then
-      hyprctl notify 5 3000 0 "Battery Charging - Level: ${bat_lvl}%"
+      notify-send -u low -t 3000 "Battery Charging - Level: ${bat_lvl}%"
       brightnessctl set 100%
     fi
     sleep 600
     continue
 
   elif [ "$bat_status" = "Full" ]; then
-    hyprctl notify 5 3000 0 "Battery Full - Level: ${bat_lvl}%"
+    notify-send -u low -t 3000 "Battery Full - Level: ${bat_lvl}%"
     sleep 1200
 
   elif [ "$bat_lvl" -le 5 ]; then
-    hyprctl notify 3 10000 0 "⚠ CRITICAL Battery - Level: ${bat_lvl}%"
+    notify-send -u critical "⚠ CRITICAL Battery - Level: ${bat_lvl}%"
 
     if [ "$brightness" != 240 ]; then
       brightnessctl set 30%
@@ -26,7 +26,7 @@ while true; do
     sleep 1
 
   elif [ "$bat_lvl" -le 15 ]; then
-    hyprctl notify 0 3000 0 "Battery Low - Level: ${bat_lvl}%"
+    notify-send -u normal -t 3000 "Battery Low - Level: ${bat_lvl}%"
     sleep 120 
 
   elif [ "$bat_lvl" -le 30 ]; then
