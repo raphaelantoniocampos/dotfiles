@@ -8,6 +8,8 @@ bindkey -v
 
 # The following lines were added by compinstall
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '/home/raphaelac/zshrc'
 
