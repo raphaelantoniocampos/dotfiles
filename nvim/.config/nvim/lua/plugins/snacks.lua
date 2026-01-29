@@ -25,7 +25,10 @@ return {
       timeout = 3000,
     },
     notify = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      trash = true,
+    },
     -- profiler = { enabled = true },
     quickfile = { enabled = true },
     rename = { enabled = true },
