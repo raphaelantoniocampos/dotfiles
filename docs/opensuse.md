@@ -37,9 +37,6 @@ stow hyprland/
 ### Reboot to start I3
 sudo reboot now
 
-### install more essential apps
-zin -y ripgrep fd lua51-luarocks docker fastfetch
-
 ### Install trash-cli (you WILL want to use it)
 zin trash-cli
 
