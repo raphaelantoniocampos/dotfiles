@@ -52,7 +52,7 @@ return {
           icon = { icon = '' },
         },
         {
-          '<leader>Q',
+          '<leader>x',
           icon = { icon = '', color = 'red' },
         },
         {
