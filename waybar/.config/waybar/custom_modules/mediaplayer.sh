@@ -10,7 +10,7 @@ else
     icon=""
 fi
 
-# Exibe o artista e o título se o player estiver tocando ou pausado
+# Displays artist and title if player is playing or paused
 if [ "$player_status" = "Playing" ] || [ "$player_status" = "Paused" ]; then
     echo "${icon}  $(playerctl metadata artist) - $(playerctl metadata title)"
 else

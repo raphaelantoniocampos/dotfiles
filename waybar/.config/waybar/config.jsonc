@@ -12,9 +12,8 @@
 		"hyprland/workspaces",
 		"sway/workspaces",
 		"hyprland/window",
-		"sway/window",
+		"sway/window"
 		// "sway/mode",
-		"custom/mediaplayer"
 	],
 	"modules-center": [
 		"clock#date",
@@ -22,6 +21,7 @@
 		"custom/weather",
 	],
 	"modules-right": [
+		"custom/mediaplayer",
 		"tray",
 		"cpu",
 		"memory",
@@ -78,10 +78,8 @@
 		"format": "{}",
 		"tooltip": false,
 		"interval": 1,
-		"max-length": 45,
+		"max-length": 30,
 		"exec": "$HOME/.config/waybar/custom_modules/mediaplayer.sh",
-		"on-click-right": "playerctl next",
-		"on-click-left": "playerctl previous",
 		"on-click": "playerctl play-pause",
 	},
 	"tray": {
