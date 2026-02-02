@@ -17,6 +17,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+bindkey '^[[1;5D' backward-word     # Ctrl+Left
+bindkey '^[[1;5C' forward-word      # Ctrl+Right
+bindkey '^H' backward-kill-word     # Ctrl+Backspace
+WORDCHARS=${WORDCHARS//\/[&.;]}
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
