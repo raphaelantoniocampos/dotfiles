@@ -2,17 +2,18 @@
 switch-to-activity-8f0bdc65-482e-4a54-ac88-f2343f437e51=
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
+Switch keyboard layout to Portuguese (Brazil)=
 Switch to Last-Used Keyboard Layout=Meta+Alt+L
 Switch to Next Keyboard Layout=Meta+Alt+K
 
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+]; Ctrl+PgDown
-Activate Previous Tab=Ctrl+[; Ctrl+PgUp
+Activate Next Tab=Ctrl+PgDown; Ctrl+]
+Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Back; Alt+Left
+Back=Alt+Left; Back
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
@@ -20,7 +21,7 @@ Clear=
 Close=Ctrl+W; Ctrl+Esc
 ConfigureNotifications=
 ConfigureToolbars=
-Copy=Ctrl+C; Ctrl+Ins
+Copy=Ctrl+Ins; Ctrl+C
 CreateFolder=Ctrl+Shift+N
 Cut=Shift+Del; Ctrl+X
 DeleteFile=Shift+Del
@@ -39,7 +40,7 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Forward; Alt+Right
+Forward=Alt+Right; Forward
 ForwardWord=Ctrl+Right
 FullScreen=Ctrl+Shift+F
 Goto=
@@ -66,7 +67,7 @@ PrintPreview=
 Prior=PgUp
 Quit=Ctrl+Q
 Redo=Ctrl+Shift+Z
-Reload=Refresh; F5
+Reload=F5; Refresh
 RenameFile=F2
 Replace=Ctrl+R
 ReportBug=
@@ -110,18 +111,22 @@ decrease_volume_small=Shift+Volume Down
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
 increase_volume_small=Shift+Volume Up
-mic_mute=Meta+Volume Mute; Microphone Mute
+mic_mute=Microphone Mute; Meta+Volume Mute
 mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=
+Lock Session=Alt+Shift+L
 Log Out=
 Log Out Without Confirmation=
 LogOut=Alt+Shift+E
 Reboot=Alt+Shift+R
 Reboot Without Confirmation=
 Shut Down=Alt+Shift+P
+
+[ktorrent][Global Shortcuts]
+queue_suspend=
+show_kt=Alt+Shift+T
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
@@ -130,7 +135,7 @@ Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Launch (C); Ctrl+F10
+ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Focus Down=Meta+J
@@ -140,7 +145,7 @@ Focus Up=Meta+K
 Grid View=Meta+G
 Increase Opacity=
 Keep Window Above Others=Meta+F
-Kill Window=
+Kill Window= Meta+Shift+Q
 Move Tablet to Next Output=
 Move Window=Meta+Mouse Button 1
 MoveMouseToCenter=Meta+F6
@@ -162,10 +167,10 @@ Switch One Desktop Down=
 Switch One Desktop Up=
 Switch One Desktop to the Left=
 Switch One Desktop to the Right=
-Switch Window Down=Meta+J
-Switch Window Left=Meta+L
-Switch Window Right=Meta+H
-Switch Window Up=Meta+K
+Switch Window Down=
+Switch Window Left=
+Switch Window Right=
+Switch Window Up=
 Switch to Desktop 1=Meta+1
 Switch to Desktop 10=
 Switch to Desktop 11=Ctrl+F11
@@ -209,12 +214,12 @@ Walk Through Windows (Reverse)=Alt+Shift+Tab
 Walk Through Windows Alternative=
 Walk Through Windows Alternative (Reverse)=
 Walk Through Windows of Current Application=Alt+`; Meta+`
-Walk Through Windows of Current Application (Reverse)=Alt+~; Meta+~
+Walk Through Windows of Current Application (Reverse)=Meta+~; Alt+~
 Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Meta+Shift+Q; Alt+F4
+Window Close=Alt+F4; Meta+Shift+Q
 Window Custom Quick Tile Bottom=Meta+Down
 Window Custom Quick Tile Left=Meta+Left
 Window Custom Quick Tile Right=Meta+Right
@@ -273,7 +278,7 @@ Window to Desktop 20=
 Window to Desktop 3=Meta+#
 Window to Desktop 4=Meta+$
 Window to Desktop 5=Meta+%
-Window to Desktop 6=Meta+ោ
+Window to Desktop 6=Meta+&
 Window to Desktop 7=Meta+&
 Window to Desktop 8=Meta+*
 Window to Desktop 9=Meta+(
@@ -291,7 +296,7 @@ Window to Screen 6=
 Window to Screen 7=
 disableInputCapture=Meta+Shift+Esc
 view_actual_size=
-view_zoom_in=Meta++; Meta+=
+view_zoom_in=Meta+=; Meta++
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -314,7 +319,7 @@ _launch=
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=Alt+Shift+F2
-_launch=Meta+D; Search
+_launch=Search; Meta+D
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=Display; Meta+P
@@ -323,7 +328,7 @@ ShowOSD=Display; Meta+P
 _launch=
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
-_launch=Meta+.; Meta+Ctrl+Alt+Shift+Space
+_launch=Meta+Ctrl+Alt+Shift+Space; Meta+.
 
 [org.kde.spectacle.desktop][Global Shortcuts]
 ActiveWindow=
@@ -336,7 +341,7 @@ _launch=
 [org.kde.touchpadshortcuts.desktop][Global Shortcuts]
 DisableTouchpad=Touchpad Off
 EnableTouchpad=Touchpad On
-ToggleTouchpad=Meta+Ctrl+Zenkaku Hankaku; Meta+Ctrl+Touchpad Toggle; Touchpad Toggle
+ToggleTouchpad=Meta+Ctrl+Touchpad Toggle; Touchpad Toggle; Meta+Ctrl+Zenkaku Hankaku
 
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
@@ -354,6 +359,7 @@ Turn Off Screen=
 powerProfile=Battery
 
 [plasmashell][Global Shortcuts]
+Slideshow Wallpaper Next Image=
 activate application launcher=Alt+F1; Meta
 activate task manager entry 1=
 activate task manager entry 10=
@@ -365,6 +371,7 @@ activate task manager entry 6=
 activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
+activate widget 95=
 clear-history=
 clipboard_action=Meta+Ctrl+X
 cycle-panels=Meta+Alt+P
@@ -384,7 +391,7 @@ switch to previous activity=
 toggle do not disturb=
 
 [systemsettings.desktop][Global Shortcuts]
-_launch=Ctrl+Shift+Esc; Tools
+_launch=Tools; Ctrl+Shift+Esc
 kcm-kscreen=
 kcm-lookandfeel=
 kcm-powerdevilprofilesconfig=
@@ -400,6 +407,3 @@ Previous Profile=Meta+Ctrl+P
 Toggle screen map selection=Meta+Ctrl+M
 Toggle stylus mode=Meta+Ctrl+S
 Toggle touch tool=Meta+Ctrl+T
-
-[youtube-music.desktop][Global Shortcuts]
-_launch=Meta+M
