@@ -10,7 +10,6 @@ function prompt()
 
 $Env:STARSHIP_CONFIG = "C:\Users\$Env:USERNAME\.config\starship.toml"
 $Env:KOMOREBI_CONFIG_HOME = "C:\Users\$Env:USERNAME\.config\komorebi"
-$Env:LEDGER_FILE = "C:\Users\$Env:USERNAME\obsidian\finance\hledger.journal"
 
 Invoke-Expression (&starship init powershell)
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
