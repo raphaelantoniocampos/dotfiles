@@ -1,3 +1,5 @@
+fastfetch
+
 function prompt()
 {
     if($_last = Get-History | Select-Object -Last 1)
@@ -24,6 +26,3 @@ function uvr
 {
     uv run $args
 }
-
-fastfetch
-
