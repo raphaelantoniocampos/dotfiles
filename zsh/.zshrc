@@ -4,6 +4,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v
 
+fastfetch --logo opensuse
+
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
@@ -37,4 +39,6 @@ alias zup="sudo -E sh ~/.config/scripts/zup.sh"
 alias zclean="sudo -E sh ~/.config/scripts/zclean.sh"
 alias rm='echo "This is not the command you are looking for, try trp. (If you really want it use \rm)"; false'
 
-fastfetch --logo opensuse
+
+# opencode
+export PATH=/home/raphaelac/.opencode/bin:$PATH
