@@ -11,7 +11,7 @@ terminal-border: "0"
 
 +label{
 text="Grub Bootloader"
-font = "Poppins Regular 48"
+font = "0xProtoNerdFont Regular 48"
 color="#5A7AA4"
 left = 50%-200
 top = 15%
@@ -24,7 +24,7 @@ align = "center"
 
 +label{
 text="select your preferred os"
-font = "Poppins Regular 16"
+font = "0xProtoNerdFont Regular 16"
 color="#8f8f8f"
 top=30%-30
 left = 50%-80
@@ -54,7 +54,7 @@ height= 40
   item_icon_space = 12
   item_spacing = 8
   menu_pixmap_style = "boot_menu_*.png"
-  item_font = "Poppins Regular 18"
+  item_font = "0xProtoNerdFont Regular 18"
   item_color = "#EDEDED"
   selected_item_color= "#EDEDED"
   selected_item_pixmap_style= "select_bkg_*.png"
