@@ -9,6 +9,7 @@
 	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
 		// "custom/suse_button",
+		"custom/separator",
 		"custom/arch_button",
 		"hyprland/workspaces",
 		"sway/workspaces",
@@ -38,6 +39,10 @@
 		"custom/power"
 	],
 	//Modules configuration
+	"custom/separator": {
+		"format": " " ,
+		// "on-click": "wofi --show drun -I -p \"Search\"",
+	},
 	//SUSE
 	"custom/suse_button": {
 		"format": " ",
@@ -46,7 +51,7 @@
 	},
 	//ARCH
 	"custom/arch_button": {
-		"format": "<span color='#74c7ec'>  </span>" ,
+		"format": "<span color='#74c7ec'> </span>" ,
 		"on-click": "wofi --show drun -I -p \"Search\"",
 	},
 	"hyprland/workspaces": {
