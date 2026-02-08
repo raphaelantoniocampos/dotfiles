@@ -2,12 +2,12 @@
 return {
   require('custom.save-colors').lazy_setup {
     -- List all colorscheme plugins here.
-    { 
+    {
       'folke/tokyonight.nvim',
       lazy = false,
       priority = 1000,
     },
-    { 
+    {
       'EdenEast/nightfox.nvim',
       lazy = false,
       priority = 1000,
@@ -20,7 +20,7 @@ return {
     {
       'ellisonleao/gruvbox.nvim',
       priority = 1000,
-      config = true
+      config = true,
     },
 
     {
@@ -41,14 +41,17 @@ return {
       lazy = false,
       priority = 1000,
     },
-
+    {
+      'olimorris/onedarkpro.nvim',
+      priority = 1000, -- Ensure it loads first
+    },
     {
       'vague2k/vague.nvim',
       lazy = false,
       priority = 1000,
     },
     {
-      "neanias/everforest-nvim",
+      'neanias/everforest-nvim',
       lazy = false,
       priority = 1000,
     },
@@ -61,15 +64,14 @@ return {
     {
       'tanvirtin/monokai.nvim',
       lazy = false,
-      priority = 1000
+      priority = 1000,
       -- name = 'monokai',
     },
 
     {
       'nyoom-engineering/oxocarbon.nvim',
       lazy = false,
-      priority = 1000
-      -- name = 'oxocarbon',
+      priority = 1000,
     },
 
     {
@@ -79,6 +81,12 @@ return {
     },
 
     {
+      'eldritch-theme/eldritch.nvim',
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
+    {
       'rose-pine/neovim',
       lazy = false,
       priority = 1000,
@@ -87,6 +95,11 @@ return {
 
     {
       'rebelot/kanagawa.nvim',
+      lazy = false,
+      priority = 1000,
+    },
+    {
+      'savq/melange-nvim',
       lazy = false,
       priority = 1000,
     },
