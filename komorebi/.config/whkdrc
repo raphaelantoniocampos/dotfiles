@@ -16,7 +16,7 @@ win + b                 : start firefox
 win + c                 : start calc
 win + n                 : start notepad
 win + e                 : start explorer
-win + o                 : wt "$Env:USERPROFILE\Appdata\Local\Programs\Obsidian\Obsidian.exe" 
+win + o                 : wt opencode
 win + shift + q         : komorebic close
 win + m                 : komorebic minimize
 
