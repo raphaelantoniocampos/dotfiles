@@ -20,7 +20,7 @@
 	"modules-center": [
 		"clock#date",
 		"clock#time",
-		"custom/weather",
+		"custom/weather"
 	],
 	"modules-right": [
 		"custom/mediaplayer",
@@ -40,19 +40,19 @@
 	],
 	//Modules configuration
 	"custom/separator": {
-		"format": " " ,
+		"format": " "
 		// "on-click": "wofi --show drun -I -p \"Search\"",
 	},
 	//SUSE
 	"custom/suse_button": {
 		"format": " ",
 		"on-click": "wofi --show drun -I -p \"Search\"",
-		"on-click-right": "kitty sudo -E yast2",
+		"on-click-right": "kitty sudo -E yast2"
 	},
 	//ARCH
 	"custom/arch_button": {
-		"format": "<span color='#74c7ec'> </span>" ,
-		"on-click": "wofi --show drun -I -p \"Search\"",
+		"format": " ",
+		"on-click": "wofi --show drun -I -p \"Search\""
 	},
 	"hyprland/workspaces": {
 		"all-outputs": true,
@@ -63,19 +63,19 @@
 		"format": "{icon}",
 		"on-click": "activate",
 		"on-scroll-up": "hyprctl dispatch workspace e+1",
-		"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1"
 	},
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
 		"active-only": false,
 		"warp-on-scroll": false,
-		"format": "{icon}",
+		"format": "{icon}"
 	},
 	"hyprland/window": {
 		"format": "{class} {title}",
 		"icon": true,
-		"icon-size": 15,
+		"icon-size": 15
 	},
 	"sway/window": {
 		"format": "{app_id}",
@@ -90,7 +90,7 @@
 		"interval": 1,
 		"max-length": 30,
 		"exec": "$HOME/.config/waybar/custom_modules/mediaplayer.sh",
-		"on-click": "playerctl play-pause",
+		"on-click": "playerctl play-pause"
 	},
 	"tray": {
 		"icon-size": 13,
@@ -100,14 +100,14 @@
 		"format": "<span color='#f9e2af'> </span>{:%e %b}",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"today-format": "{}",
-		"on-click": "gnome-calendar",
+		"on-click": "dde-calendar",
 		"min-length": 8,
 		"max-length": 20
 	},
 	"clock#time": {
 		"format": "<span color='#74c7ec'> </span>{:%H:%M}",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
-		"on-click": "gnome-calendar",
+		"on-click": "dde-calendar",
 		"min-length": 8,
 		"max-length": 12
 	},
@@ -145,21 +145,19 @@
 		"format-charging": "<span color='#a6e3a1'></span>{capacity}%",
 		"format-charging-warning": "<span color='#fab387'></span>{capacity}%",
 		"format-charging-critical": "<span color='#f38ba8'></span>{capacity}%",
-		"format-plugged": "<span color='#a6e3a1'></span>{capacity}%",
+		"format-plugged": "<span color='#a6e3a1'></span>{capacity}%"
 	},
 	"cpu": {
 		"interval": "1",
 		"format": "<span color='#f9e2af'> </span>{usage}%",
-		"on-click": "kitty -e htop --sort-key PERCENT_CPU",
+		"on-click": "kitty -e htop --sort-key PERCENT_CPU"
 	},
 	"disk": {
 		"interval": 30,
-		//#eba0ac
-		"format": "<span color='#eba0ac'> </span>{percentage_used}%",
-		//"format": " {used}",
+		"format": "<span color='#89dceb'> </span>{percentage_used}%",
 		"unit": "GB",
 		"on-click": "nemo",
-		"tooltip-format": " {used}"
+		"tooltip-format": " {used} used"
 	},
 	"temperature": {
 		// "thermal-zone": 2,
@@ -174,7 +172,7 @@
 		]
 	},
 	"memory": {
-		"format": "<span color='#94e2d5'> </span>{}%",
+		"format": "<span color='#a6e3a1'> </span>{}%"
 	},
 	"backlight": {
 		//"device": "acpi_video1",
@@ -192,15 +190,20 @@
 		],
 		"tooltip-format": "{percent}%",
 		"on-click": "brightnessctl set 100%;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%",
-		"on-click-right":"brightnessctl set 5%;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
+		"on-click-right": "brightnessctl set 5%;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
 	},
 	"wireplumber": {
-		"format": "<span color='#cba6f7'>{icon} </span> {volume}%",
+		"format": "<span color='#b4befe'>{icon} </span> {volume}%",
 		"format-muted": "<span color='#f38ba8'> </span> {volume}%",
 		"on-click": "$HOME/.config/scripts/toggle-mute.sh sink",
 		"on-click-right": "pavucontrol -t 3",
-		"format-icons": ["", "", "󰕾", ""], 
-		"max-volume": 100,
+		"format-icons": [
+			"",
+			"",
+			"󰕾",
+			""
+		],
+		"max-volume": 100
 	},
 	"pulseaudio": {
 		"scroll-step": 3, // %, can be a float
@@ -224,7 +227,7 @@
 				" ",
 				" "
 			]
-		},
+		}
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -234,7 +237,7 @@
 		"format-linked": "    {ifname} (No IP)",
 		"format-disconnected": "⚠  Disconnected",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}",
-		"on-click-right": "kitty -e nmtui",
+		"on-click-right": "kitty -e nmtui"
 	},
 	"bluetooth": {
 		"format": "<span color='#74c7ec'>󰂰</span>",
@@ -252,7 +255,7 @@
 	},
 	"hyprland/language": {
 		"format": "{}",
-		"format-pt": "PT-BR",
+		"format-pt": "PT-BR"
 	},
 	"custom/power": {
 		"format": "",
@@ -265,5 +268,5 @@
 			"hibernate": "sh -c 'echo $(wofi -d -P -Q password --lines=1 --width=300) | sudo -S systemctl hibernate'",
 			"suspend": "systemctl suspend"
 		}
-	},
+	}
 }

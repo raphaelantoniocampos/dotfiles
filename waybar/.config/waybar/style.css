@@ -88,6 +88,17 @@ button:hover {
     color: @text;
 }
 
+#custom-arch_button {
+    font-size: 15px;
+    padding-left: 12px;
+    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    color: @sapphire
+}
+
+#custom-arch_button:hover {
+    color: @text;
+}
+
 #workspaces {
     color: @transparent;
     margin-right: 4px;
@@ -96,8 +107,9 @@ button:hover {
 
 #workspaces button {
     padding: 3px;
-    color: @text;
+    color: @subtext1;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    font-weight: bold;
 }
 
 #workspaces button.active {
@@ -116,7 +128,7 @@ button:hover {
 }
 
 #workspaces button:hover {
-    background: @crust;
+    /* background: @crust; */
     color: @text;
 }
 

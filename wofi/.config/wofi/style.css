@@ -61,7 +61,7 @@
   background: @base-rgb;
   padding: 10px;
   border-radius: 20px;
-  border: 2px solid @green;
+  border: 2px solid @sapphire;
 }
 
 #input {
