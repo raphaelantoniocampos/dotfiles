@@ -27,8 +27,8 @@
 		"tray",
 		"cpu",
 		"memory",
-		"temperature",
 		"disk",
+		"temperature",
 		"backlight",
 		"wireplumber",
 		// "pulseaudio",
@@ -157,7 +157,11 @@
 		"format": "<span color='#89dceb'> </span>{percentage_used}%",
 		"unit": "GB",
 		"on-click": "nemo",
-		"tooltip-format": " {used} used"
+		"tooltip-format": "{used}/{total}\n {free} Free"
+	},
+	"memory": {
+		"format": "<span color='#a6e3a1'> </span>{}%",
+		"tooltip-format": " {used}/{total}GiB"
 	},
 	"temperature": {
 		// "thermal-zone": 2,
@@ -170,9 +174,6 @@
 			"",
 			""
 		]
-	},
-	"memory": {
-		"format": "<span color='#a6e3a1'> </span>{}%"
 	},
 	"backlight": {
 		//"device": "acpi_video1",
