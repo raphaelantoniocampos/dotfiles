@@ -12,6 +12,7 @@ win + i                 : komorebic toggle-shortcuts
 # win + b                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
 # win + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
 win + return            : start wt
+win + shift + return    : wt wsl
 win + b                 : start firefox
 win + c                 : start calc
 win + n                 : start notepad
