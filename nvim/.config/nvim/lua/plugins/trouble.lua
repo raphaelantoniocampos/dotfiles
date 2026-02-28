@@ -10,7 +10,7 @@ return {
     },
   },
   keys = {
-    { '<leader>xo', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Open trouble diagnostics' },
+    { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Open trouble diagnostics' },
     { '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Open trouble document diagnostics' },
     { '<leader>xs', '<cmd>Trouble symbols toggle<cr>', desc = 'Open trouble symbols' },
     { '<leader>xS', '<cmd>Trouble lsp toggle<cr>', desc = 'Open trouble LSP references/definitions/...' },
