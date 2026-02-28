@@ -9,17 +9,20 @@
 	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
 		// "custom/suse_button",
-		"custom/separator",
 		"custom/arch_button",
 		"hyprland/workspaces",
-		"sway/workspaces",
-		"hyprland/window",
-		"sway/window"
+		"custom/separator",
+		// "sway/workspaces",
+		"hyprland/window"
+		// "sway/window",
 		// "sway/mode",
 	],
 	"modules-center": [
+		"mpris",
+		"custom/separator",
 		"clock#date",
 		"clock#time",
+		"custom/separator",
 		"custom/weather"
 	],
 	"modules-right": [
@@ -37,11 +40,12 @@
 		//"hyprland/language",
 		"battery",
 		"custom/notifications",
+		"custom/separator",
 		"custom/power"
 	],
 	//Modules configuration
 	"custom/separator": {
-		"format": " "
+		"format": "|"
 		// "on-click": "wofi --show drun -I -p \"Search\"",
 	},
 	//SUSE
@@ -52,7 +56,7 @@
 	},
 	//ARCH
 	"custom/arch_button": {
-		"format": " ",
+		"format": "  ",
 		"on-click": "wofi --show drun -I -p \"Search\""
 	},
 	"hyprland/workspaces": {
@@ -65,6 +69,37 @@
 		"on-click": "activate",
 		"on-scroll-up": "hyprctl dispatch workspace e+1",
 		"on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
+	"mpris": {
+		"interval": 1,
+		"format": "{status_icon} {title}",
+		"on-click-middle": "playerctl play-pause",
+		"on-click": "playerctl previous",
+		"on-click-right": "playerctl next",
+		"scroll-step": 5.0,
+		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+;notify-send -u low -t 1000 Volume: $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}')%",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-;notify-send -u low -t 1000 Volume: $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}')% ",
+		"smooth-scrolling-threshold": 1,
+		"player-icons": {
+			"chromium": " ",
+			"mpd": " ",
+			"default": " ",
+			"firefox": " ",
+			"kdeconnect": " ",
+			"mopidy": " ",
+			"mpv": "󰐹 ",
+			"spotify": " ",
+			"vlc": "󰕼 "
+		},
+		"status-icons": {
+			"playing": "<span color='#a6e3a1'></span>",
+			"paused": "<span color='#89b4fa'></span>",
+			"stopped": "<span color='#f38ba8'></span>"
+		},
+		"ignored-players": [
+			"firefox"
+		],
+		"max-length": 40
 	},
 	"sway/workspaces": {
 		"disable-scroll": true,
