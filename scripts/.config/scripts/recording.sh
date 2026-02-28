@@ -5,6 +5,8 @@ DATE_FORMAT=$(date +%Y-%m-%d_%H-%M-%S)
 NOTIFY_TIMEOUT=2000
 DEVICE_NAME=$(pactl list sources | grep 'Name:' | head -n 1 | awk '{print $2}')
 
+mkdir -p $RECORDING_DIR
+
 if pgrep -x "wf-recorder" > /dev/null; then
     pkill -INT -x wf-recorder
     
