@@ -21,7 +21,7 @@ wpctl set-mute "$NODE" toggle
 STATE=$(wpctl get-volume "$NODE")
 
 if [[ "$STATE" == *"[MUTED]"* ]]; then
-    notify-send -u critical -t 2000 "$LABEL: $ICON_MUTED"
+    notify-send -u critical -t 2000 "$LABEL: MUTED $ICON_MUTED"
 else
-    notify-send -u low -t 2000 "$LABEL: $ICON_UNMUTED"
+    notify-send -u low -t 2000 "$LABEL: UNMUTED $ICON_UNMUTED"
 fi

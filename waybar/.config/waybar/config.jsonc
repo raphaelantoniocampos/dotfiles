@@ -293,10 +293,10 @@
 		"on-click-right": "kitty -e nmtui"
 	},
 	"bluetooth": {
-		"format": "<span color='#74c7ec'>󰂰</span>",
-		"format-disabled": "<span color='#89b4fa'>󰂲</span>",
-		"format-connected": "<span color='#89dceb'>󰂱</span>",
-		"format-connected-battery": "<span color='#89dceb'>󰂱</span>",
+		"format": "󰂰",
+		"format-disabled": "󰂲",
+		"format-connected": "󰂱 ",
+		"format-connected-battery": "󰂱 ",
 		"tooltip-format": "{num_connections} connected",
 		"tooltip-format-disabled": "Bluetooth Disabled",
 		"tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
