@@ -19,11 +19,10 @@
 	],
 	"modules-center": [
 		"mpris",
-		"custom/separator",
 		"clock#date",
 		"clock#time",
 		"custom/separator",
-		"custom/weather"
+		"custom/weather",
 	],
 	"modules-right": [
 		// "custom/mediaplayer",
@@ -72,7 +71,7 @@
 	},
 	"mpris": {
 		"interval": 1,
-		"format": "{status_icon} {title}",
+		"format": "{status_icon} {title} |",
 		"on-click-middle": "playerctl play-pause",
 		"on-click": "playerctl previous",
 		"on-click-right": "playerctl next",
