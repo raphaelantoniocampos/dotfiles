@@ -31,6 +31,11 @@
       "kind": "Title",
       "id": "Configurações",
       "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Antigravity",
+      "matching_strategy": "Contains"
     }
   ],
   "manage_rules": [
@@ -38,7 +43,18 @@
       "kind": "Exe",
       "id": "MarkText.exe",
       "matching_strategy": "Equals"
-    }
+    },
+    {
+      "kind": "Title",
+      "id": "Antigravity",
+      "matching_strategy": "Contains"
+    },
+    {
+
+      "kind": "Title",
+      "id": "Configurações",
+      "matching_strategy": "Equals"
+  }
   ],
   "layered_applications": [
     {
