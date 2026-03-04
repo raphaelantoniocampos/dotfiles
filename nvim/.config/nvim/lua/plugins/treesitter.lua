@@ -61,7 +61,7 @@ return {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
-            ['<m-j>'] = '@function.outer',
+            ['<M-j>'] = '@function.outer',
             [']m'] = '@class.outer',
           },
           goto_next_end = {
@@ -69,7 +69,7 @@ return {
             [']['] = '@class.outer',
           },
           goto_previous_start = {
-            ['<m-k>'] = '@function.outer',
+            ['<M-k>'] = '@function.outer',
             ['[m'] = '@class.outer',
           },
           goto_previous_end = {
