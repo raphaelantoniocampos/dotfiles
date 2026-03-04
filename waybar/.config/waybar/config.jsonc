@@ -21,8 +21,7 @@
 		"mpris",
 		"clock#date",
 		"clock#time",
-		"custom/separator",
-		"custom/weather",
+		"custom/weather"
 	],
 	"modules-right": [
 		// "custom/mediaplayer",
@@ -152,26 +151,27 @@
 		"format": "<span color='#f9e2af'> </span>{:%e %b}",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"today-format": "{}",
-		"on-click": "dde-calendar",
+		"on-click": "merkuro-calendar",
 		"min-length": 8,
 		"max-length": 20
 	},
 	"clock#time": {
-		"format": "<span color='#74c7ec'> </span>{:%H:%M}",
+		"format": "<span color='#74c7ec'> </span>{:%H:%M:%S}",
 		"tooltip-format": "<tt><big>{calendar}</big></tt>",
-		"on-click": "dde-calendar",
+		"interval": 1,
+		"on-click": "solanum",
 		"min-length": 8,
 		"max-length": 12
 	},
 	"custom/weather": {
-		"format": "{}",
+		"format": "| {}",
 		"exec": "curl 'https://wttr.in/?format=1'",
 		//"exec": "curl 'https://wttr.in/'",
 		"tooltip-format": "{}",
 		"interval": 3600,
 		"on-click": "kweather",
 		"min-length": 5,
-		"max-length": 10
+		"max-length": 15
 	},
 	"battery#bat2": {
 		"bat": "BAT2"
