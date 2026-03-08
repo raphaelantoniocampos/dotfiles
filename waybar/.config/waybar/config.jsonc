@@ -44,7 +44,6 @@
 	//Modules configuration
 	"custom/separator": {
 		"format": "|"
-		// "on-click": "wofi --show drun -I -p \"Search\"",
 	},
 	//SUSE
 	"custom/suse_button": {
@@ -109,7 +108,8 @@
 	"hyprland/window": {
 		"format": "{class} {title}",
 		"icon": true,
-		"icon-size": 15
+		"icon-size": 15,
+		"max-length": 40
 	},
 	"sway/window": {
 		"format": "{app_id}",
@@ -246,7 +246,7 @@
 		"on-click-right": "brightnessctl set 5%;hyprctl notify 2 1000 0 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
 	},
 	"wireplumber": {
-		"format": "<span color='#b4befe'>{icon} </span> {volume}%",
+		"format": "<span color='#b4befe'>{icon}</span> {volume}%",
 		"format-muted": "<span color='#f38ba8'> </span> {volume}%",
 		"on-click": "$HOME/.config/scripts/toggle-mute.sh sink",
 		"on-click-right": "pavucontrol -t 3",
