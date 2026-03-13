@@ -1,15 +1,10 @@
-add_newline = false
-format = """
-$directory\
-$character"""
+format = "$all"
 right_format = """$git_branch $git_status $git_state $cmd_duration"""
 
 [directory]
-read_only = " 󰌾"
 truncation_length = 2
 
 [hostname]
-ssh_symbol = " "
 format = "[$ssh_symbol $hostname]($style) "
 
 [git_branch]
