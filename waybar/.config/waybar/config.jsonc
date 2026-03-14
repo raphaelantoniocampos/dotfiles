@@ -31,7 +31,8 @@
 		"disk",
 		"temperature",
 		"backlight",
-		"wireplumber",
+		"wireplumber#sink",
+		"wireplumber#source",
 		// "pulseaudio",
 		"network",
 		"bluetooth",
@@ -190,14 +191,14 @@
 			" ",
 			" "
 		],
-		"format": "<span color='#a6e3a1'>{icon}</span>{capacity}%",
-		"format-critical": "<span color='#f38ba8'>{icon}</span>{capacity}%",
-		"format-warning": "<span color='#fab387'>{icon}</span>{capacity}%",
-		"format-full": "<span color='#a6e3a1'>{icon}</span>{capacity}%",
-		"format-charging": "<span color='#a6e3a1'></span>{capacity}%",
-		"format-charging-warning": "<span color='#fab387'></span>{capacity}%",
-		"format-charging-critical": "<span color='#f38ba8'></span>{capacity}%",
-		"format-plugged": "<span color='#a6e3a1'></span>{capacity}%"
+		"format": "<span color='#a6e3a1'>{icon}</span> {capacity}%",
+		"format-critical": "<span color='#f38ba8'>{icon}</span> {capacity}%",
+		"format-warning": "<span color='#fab387'>{icon}</span> {capacity}%",
+		"format-full": "<span color='#a6e3a1'>{icon}</span> {capacity}%",
+		"format-charging": "<span color='#a6e3a1'></span> {capacity}%",
+		"format-charging-warning": "<span color='#fab387'></span> {capacity}%",
+		"format-charging-critical": "<span color='#f38ba8'></span> {capacity}%",
+		"format-plugged": "<span color='#a6e3a1'></span> {capacity}%"
 	},
 	"cpu": {
 		"interval": "1",
@@ -243,20 +244,29 @@
 		],
 		"tooltip-format": "{percent}%",
 		"on-click": "brightnessctl s 5%-;notify-send -u low -t 1000 Brightness: $(brightnessctl g | awk '{print $1/8}')% ",
-		"on-click-right": "brightnessctl s 5%+;notify-send -u low -t 1000 Brightness: $(brightnessctl g | awk '{print $1/8}')%"
+		"on-click-right": "brightnessctl s 5%+;notify-send -u low -t 1000 Brightness: $(brightnessctl g | awk '{print $1/8}')%",
+		"scroll-step": 5
 	},
-	"wireplumber": {
+	"wireplumber#sink": {
 		"format": "<span color='#b4befe'>{icon}</span> {volume}%",
-		"format-muted": "<span color='#f38ba8'> </span> {volume}%",
-		"on-click": "$HOME/.config/scripts/toggle-mute.sh sink",
-		"on-click-right": "pavucontrol -t 3",
+		"format-muted": "<span color='#f38ba8'></span> {volume}%",
 		"format-icons": [
 			"",
 			"",
 			"󰕾",
 			""
 		],
-		"max-volume": 100
+		"on-click": "$HOME/.config/scripts/toggle-mute.sh sink",
+		"on-click-right": "pavucontrol -t 3",
+		"max-volume": 100,
+		"scroll-step": 5
+	},
+	"wireplumber#source": {
+		"node-type": "Audio/Source",
+		"format": "<span color='#94e2d5'></span> {volume}%",
+		"format-muted": "<span color='#f38ba8'></span> {volume}%",
+		"on-click": "$HOME/.config/scripts/toggle-mute.sh source",
+		"scroll-step": 5
 	},
 	"pulseaudio": {
 		"scroll-step": 3, // %, can be a float

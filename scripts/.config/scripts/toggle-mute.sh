@@ -1,23 +1,23 @@
 #!/bin/sh
 
-# Checa se estamos lidando com o output (alto-falante) ou input (microfone)
+# Check if we are dealing with the output (speaker) or input (microphone)
 TARGET=$1
 if [[ "$TARGET" == "sink" ]]; then
     NODE="@DEFAULT_AUDIO_SINK@"
     LABEL="Volume"
-    ICON_MUTED=""   # volume mudo (Font Awesome ou Nerd Font)
-    ICON_UNMUTED="" # volume normal
+    ICON_MUTED=""   # muted volume (Font Awesome or Nerd Font)
+    ICON_UNMUTED=" " # normal volume
 else
     NODE="@DEFAULT_AUDIO_SOURCE@"
     LABEL="Mic"
-    ICON_MUTED=""   # microfone mudo
-    ICON_UNMUTED="" # microfone ativo
+    ICON_MUTED=" "   # muted mic
+    ICON_UNMUTED="" # active mic
 fi
 
-# Inverte mute
+# toggle mute
 wpctl set-mute "$NODE" toggle
 
-# Pega estado atual
+# Get current status
 STATE=$(wpctl get-volume "$NODE")
 
 if [[ "$STATE" == *"[MUTED]"* ]]; then
