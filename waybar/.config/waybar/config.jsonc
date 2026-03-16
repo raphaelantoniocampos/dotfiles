@@ -248,7 +248,7 @@
 		"scroll-step": 5
 	},
 	"wireplumber#sink": {
-		"format": "<span color='#b4befe'>{icon}</span> {volume}%",
+		"format": "<span color='#89dceb'>{icon}</span> {volume}%",
 		"format-muted": "<span color='#f38ba8'></span> {volume}%",
 		"format-icons": [
 			"",
@@ -263,7 +263,7 @@
 	},
 	"wireplumber#source": {
 		"node-type": "Audio/Source",
-		"format": "<span color='#94e2d5'></span> {volume}%",
+		"format": "<span color='#89b4fa'></span> {volume}%",
 		"format-muted": "<span color='#f38ba8'></span> {volume}%",
 		"on-click": "$HOME/.config/scripts/toggle-mute.sh source",
 		"scroll-step": 5
