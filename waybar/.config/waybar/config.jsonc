@@ -38,6 +38,7 @@
 		"bluetooth",
 		//"hyprland/language",
 		"battery",
+		"power-profiles-daemon",
 		"custom/notifications",
 		"custom/separator",
 		"custom/power"
@@ -198,7 +199,19 @@
 		"format-charging": "<span color='#a6e3a1'></span> {capacity}%",
 		"format-charging-warning": "<span color='#fab387'></span> {capacity}%",
 		"format-charging-critical": "<span color='#f38ba8'></span> {capacity}%",
-		"format-plugged": "<span color='#a6e3a1'></span> {capacity}%"
+		"format-plugged": "<span color='#a6e3a1'></span> {capacity}%",
+		"tooltip": true
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "{profile}\n{driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "<span color='#f9e2af'> </span>",
+			"performance": "<span color='#f9e2af'> </span>",
+			"balanced": "<span color='#f5c2e7'> </span>",
+			"power-saver": "<span color='#a6e3a1'> </span>"
+		}
 	},
 	"cpu": {
 		"interval": "1",
@@ -217,8 +230,11 @@
 		"tooltip-format": " {used}/{total}GiB"
 	},
 	"temperature": {
-		// "thermal-zone": 2,
-		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"thermal-zone": 2,
+		"hwmon-path": [
+			"/sys/class/hwmon/hwmon*/temp1_input",
+			"/sys/class/thermal/thermal_zone*/temp"
+		],
 		"critical-threshold": 75,
 		"format": "<span color='#f38ba8'>{icon}</span> {temperatureC}°C",
 		"format-critical": "{temperatureC}°C {icon}",
@@ -269,7 +285,7 @@
 		"scroll-step": 5
 	},
 	"pulseaudio": {
-		"scroll-step": 3, // %, can be a float
+		"scroll-step": 5, // %, can be a float
 		"format": "<span color='#cba6f7'>{icon}</span> {volume}%",
 		"format-muted": "<span color='#cba6f7'> </span> {volume}%",
 		"format-bluetooth": "<span color='#cba6f7'>󰂰</span> {volume}%",
