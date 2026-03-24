@@ -173,7 +173,7 @@
 		"interval": 3600,
 		"on-click": "kweather",
 		"min-length": 5,
-		"max-length": 15
+		"max-length": 25
 	},
 	"battery#bat2": {
 		"bat": "BAT2"
