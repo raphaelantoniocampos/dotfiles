@@ -324,3 +324,11 @@ button:hover {
 #custom-power:hover {
     color: @text;
 }
+
+#custom-notifications {
+    color: @flamingo;
+}
+
+#custom-vpn {
+    color: @yellow;
+}

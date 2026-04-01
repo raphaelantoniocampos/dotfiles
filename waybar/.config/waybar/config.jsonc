@@ -35,6 +35,7 @@
 		"wireplumber#source",
 		// "pulseaudio",
 		"network",
+		"custom/vpn",
 		"bluetooth",
 		//"hyprland/language",
 		"battery",
@@ -108,7 +109,7 @@
 		"format": "{icon}"
 	},
 	"hyprland/window": {
-		"format": "{class} {title}",
+		"format": "{class}",
 		"icon": true,
 		"icon-size": 15,
 		"max-length": 40
@@ -209,7 +210,7 @@
 		"format-icons": {
 			"default": "<span color='#f9e2af'> </span>",
 			"performance": "<span color='#f9e2af'> </span>",
-			"balanced": "<span color='#f5c2e7'> </span>",
+			"balanced": "<span color='#bac2de'> </span>",
 			"power-saver": "<span color='#a6e3a1'> </span>"
 		}
 	},
@@ -309,14 +310,21 @@
 		}
 	},
 	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
 		"format-wifi": "  {essid}",
-		"format-ethernet": "   {ipaddr}/{cidr}",
-		"tooltip-format": "   {ifname} via {gwaddr}",
-		"format-linked": "    {ifname} (No IP)",
-		"format-disconnected": "⚠  Disconnected",
+		"format-ethernet": " {ipaddr}/{cidr}",
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+		"format-linked": "  {ifname} (No IP)",
+		"format-disconnected": "⚠ Disconnected",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}",
-		"on-click-right": "kitty -e nmtui"
+		"on-click-middle": "nm-applet",
+		"on-click-right": "nm-connection-editor"
+	},
+	"custom/vpn": {
+		"format": " ",
+		"exec": "nmcli -t -f name,type,state connection show --active | grep vpn | head -1 | cut -d: -f1",
+		"interval": 10,
+		"tooltip-format": "{}",
+		"return-type": ""
 	},
 	"bluetooth": {
 		"format": "󰂰",
