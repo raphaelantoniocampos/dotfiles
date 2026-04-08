@@ -63,6 +63,9 @@ symbol = " "
 [git_commit]
 tag_symbol = '  '
 
+[gleam]
+symbol = " "
+
 [golang]
 symbol = " "
 
