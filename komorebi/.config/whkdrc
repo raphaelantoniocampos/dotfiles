@@ -18,7 +18,7 @@ alt + c                 : start calc
 alt + n                 : start notepad
 alt + e                 : start explorer
 alt + o                 : wt opencode
-alt + shift + q         : komorebic close
+alt + q                 : komorebic close
 alt + m                 : komorebic minimize
 
 win + shift + e         : logoff
