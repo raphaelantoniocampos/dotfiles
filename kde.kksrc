@@ -145,7 +145,7 @@ Focus Up=Meta+K
 Grid View=Meta+G
 Increase Opacity=
 Keep Window Above Others=Meta+F
-Kill Window= Meta+Shift+Q
+Kill Window= Meta+Ctrl+Q
 Move Tablet to Next Output=
 Move Window=Meta+Mouse Button 1
 MoveMouseToCenter=Meta+F6
@@ -219,7 +219,7 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Alt+F4; Meta+Shift+Q
+Window Close=Meta+Q;Alt+F4
 Window Custom Quick Tile Bottom=Meta+Down
 Window Custom Quick Tile Left=Meta+Left
 Window Custom Quick Tile Right=Meta+Right
@@ -319,7 +319,7 @@ _launch=
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=Alt+Shift+F2
-_launch=Search; Meta+D
+_launch=Search; Meta+Space
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=Display; Meta+P
@@ -378,7 +378,7 @@ cycle-panels=Meta+Alt+P
 cycleNextAction=
 cyclePrevAction=
 edit_clipboard=
-manage activities=Meta+Q
+manage activities=Meta+Shift+Q
 next activity=
 previous activity=
 repeat_action=
