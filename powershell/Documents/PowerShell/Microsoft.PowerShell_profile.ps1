@@ -1,5 +1,3 @@
-fastfetch
-
 function prompt()
 {
     if($_last = Get-History | Select-Object -Last 1)
@@ -14,6 +12,8 @@ $Env:KOMOREBI_CONFIG_HOME = "C:\Users\$Env:USERNAME\.config\komorebi"
 Invoke-Expression (&starship init powershell)
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
+Set-Alias v nvim
+Set-Alias ff fastfetch
 Set-Alias ls lsd
 Set-Alias cat bat
 Set-Alias trp Remove-ItemSafely
