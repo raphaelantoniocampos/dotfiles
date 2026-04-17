@@ -35,11 +35,14 @@ alias lg="lazygit"
 alias trp="trash-put"
 alias ls="lsd"
 alias uvr="uv run"
-alias zup="sudo -E sh ~/.config/scripts/zup.sh"
-alias zclean="sudo -E sh ~/.config/scripts/zclean.sh"
+alias pclean="sh ~/.config/scripts/pclean.sh"
 alias rm='echo "This is not the command you are looking for, try trp. (If you really want it use \rm)"; false'
 alias ff="fastfetch"
 alias v="nvim"
+
+# Old Suse alias
+# alias zup="sudo -E sh ~/.config/scripts/zup.sh"
+# alias zclean="sudo -E sh ~/.config/scripts/zclean.sh"
 
 
 # opencode
