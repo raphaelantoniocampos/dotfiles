@@ -1,3 +1,5 @@
+@import "colors.css";
+
 /* Catppuccin Color Definitions */
 @define-color white #fdfdfd;
 @define-color rosewater #f5e0dc;
@@ -14,7 +16,7 @@
 @define-color sapphire #74c7ec;
 @define-color blue #89b4fa;
 @define-color lavender #b4befe;
-@define-color text #cdd6f4;
+/* @define-color text #cdd6f4; */
 @define-color subtext1 #bac2de;
 @define-color subtext0 #a6adc8;
 @define-color overlay2 #9399b2;
@@ -37,10 +39,10 @@
 }
 
 window#waybar {
-    background-color: @crust_transparent;
-    border: 1px solid @surface0_transparent;
+    background-color: @surface-trans;
+    border: 1px solid @bg-trans;
     border-radius: 20px;
-    color: @subtext1;
+    color: @foreground;
     font-weight: bold;
     transition-property: background-color;
     transition-duration: .5s;
@@ -52,15 +54,15 @@ window#waybar.hidden {
 }
 
 tooltip {
-    background: @crust;
+    background: @background;
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
-    border-color: @text;
+    border-color: @foreground;
 }
 
 tooltip label {
-    color: @text;
+    color: @foreground;
 }
 
 button {
@@ -81,22 +83,22 @@ button:hover {
     font-size: 15px;
     padding-left: 12px;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: @green
+    color: @primary
 }
 
 #custom-suse_button:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #custom-arch_button {
     font-size: 15px;
     padding-left: 12px;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: @sapphire
+    color: @primary
 }
 
 #custom-arch_button:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #workspaces {
@@ -107,29 +109,29 @@ button:hover {
 
 #workspaces button {
     padding: 3px;
-    color: @subtext1;
+    color: @foreground;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
     font-weight: bold;
 }
 
 #workspaces button.active {
-    color: @text;
-    border-bottom: 2px solid @text;
+    color: @foreground;
+    border-bottom: 2px solid @foreground;
 }
 
 #workspaces button.focused {
-    color: @text;
+    color: @foreground;
 }
 
 #workspaces button.urgent {
-    background: @crust;
-    border-bottom: 2px dashed @red;
-    color: @red;
+    background: @background;
+    border-bottom: 2px dashed @error;
+    color: @error;
 }
 
 #workspaces button:hover {
-    /* background: @crust; */
-    color: @text;
+    /* background: @background; */
+    color: @foreground;
 }
 
 /*#taskbar {*/
@@ -157,21 +159,21 @@ button:hover {
 /**/
 /*#taskbar button.active {*/
 /*    min-width: 100px;*/
-/*    border-bottom: 2px solid @text;*/
+/*    border-bottom: 2px solid @foreground;*/
 /*    margin-left: 2px;*/
 /*    margin-right: 2px;*/
 /*    padding-left: 8px;*/
 /*    padding-right: 8px;*/
 /*    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
-/*    border-bottom: 2px solid @text;*/
-/*    color: @text;*/
-/*    background: @crust;*/
+/*    border-bottom: 2px solid @foreground;*/
+/*    color: @foreground;*/
+/*    background: @background;*/
 /*}*/
 /**/
 /*#taskbar button:hover {*/
-/*    border-bottom: 2px solid @text;*/
-/*    background: @crust;*/
-/*    color: @text;*/
+/*    border-bottom: 2px solid @foreground;*/
+/*    background: @background;*/
+/*    color: @foreground;*/
 /*}*/
 
 /*#taskbar button.minimized {*/
@@ -184,15 +186,15 @@ button:hover {
 /*}*/
 
 #battery:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #cpu:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #disk:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #memory {
@@ -200,24 +202,24 @@ button:hover {
 }
 
 #memory:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #temperature {
-    color: @subtext1;
+    color: @foreground;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #temperature.critical {
     padding-right: 2px;
-    color: @red;
+    color: @error;
     font-size: initial;
-    border-bottom: 2px dashed @red;
+    border-bottom: 2px dashed @error;
     transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #temperature:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #window {
@@ -227,7 +229,7 @@ button:hover {
 }
 
 #backlight:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #tray {
@@ -240,11 +242,11 @@ button:hover {
 }
 
 #tray>.active {
-    border-bottom: 2px solid @text;
+    border-bottom: 2px solid @foreground;
 }
 
 #tray>.needs-attention {
-    border-bottom: 2px solid @red;
+    border-bottom: 2px solid @error;
 }
 
 #tray>widget {
@@ -252,7 +254,7 @@ button:hover {
 }
 
 #tray>widget:hover {
-    background: @crust;
+    background: @background;
 }
 
 #pulseaudio {
@@ -263,7 +265,7 @@ button:hover {
 }
 
 #pulseaudio:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #wireplumber {
@@ -274,7 +276,7 @@ button:hover {
 }
 
 #wireplumber:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #network {
@@ -283,7 +285,7 @@ button:hover {
 }
 
 #network:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #language {
@@ -292,7 +294,7 @@ button:hover {
 }
 
 #language:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #custom-weather {
@@ -301,7 +303,7 @@ button:hover {
 }
 
 #clock:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #bluetooth {
@@ -309,11 +311,11 @@ button:hover {
 }
 
 #bluetooth:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #custom-weather:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #custom-power {
@@ -322,13 +324,13 @@ button:hover {
 }
 
 #custom-power:hover {
-    color: @text;
+    color: @foreground;
 }
 
 #custom-notifications {
-    color: @flamingo;
+    color: @primary;
 }
 
 #custom-vpn {
-    color: @yellow;
+    color: @secondary;
 }

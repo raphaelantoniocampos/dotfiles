@@ -1,0 +1,2 @@
+[binds]
+<Return> = exec echo $imv_current_file; quit

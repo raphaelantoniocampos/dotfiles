@@ -1,0 +1,21 @@
+@define-color background {{colors.background.default.hex}};
+@define-color foreground {{colors.on_background.default.hex}};
+@define-color primary {{colors.primary.default.hex}};
+@define-color on-primary {{colors.on_primary.default.hex}};
+@define-color secondary {{colors.secondary.default.hex}};
+@define-color tertiary {{colors.tertiary.default.hex}};
+@define-color error {{colors.error.default.hex}};
+@define-color surface {{colors.surface.default.hex}};
+@define-color surface-variant {{colors.surface_variant.default.hex}};
+
+/* Corrected transparent variants using individual color formatters */
+@define-color bg-trans rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.7);
+@define-color surface-trans rgba({{colors.surface_variant.default.red}}, {{colors.surface_variant.default.green}}, {{colors.surface_variant.default.blue}}, 0.5);
+
+@define-color text              @foreground;
+@define-color background-alt    @surface-variant;
+@define-color selected          @primary;
+@define-color hover             alpha(@selected,0.5);
+@define-color urgent            @error;
+@define-color main-color        @primary;
+@define-color bg               alpha(@background,0.6);
