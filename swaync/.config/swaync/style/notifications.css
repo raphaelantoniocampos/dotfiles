@@ -25,12 +25,12 @@
 }
 
 .floating-notifications.background .notification-row .notification-background .notification.critical {
-  border: 2px solid @red;
+  border: 2px solid @error;
   border-radius: 4px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification.critical .summary {
-  color: @red;
+  color: @error;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content {
@@ -65,7 +65,7 @@
 }
 
 .summary {
-  font-family: 0xProtoNerdFont;
+  font-family: "0xProtoNerdFont";
   font-weight: bold;
   font-size: 12px;
   color: @main-color;
@@ -74,7 +74,7 @@
 
 .body {
   font-size: 10px;
-  font-family: 0xProtoNerdFont;
+  font-family: "0xProtoNerdFont";
   font-weight: bold;
 }
 
