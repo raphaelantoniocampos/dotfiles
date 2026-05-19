@@ -1,5 +1,5 @@
 [config.wallpaper]
-command = "awww img {{image}}"
+command = "awww img {{image}} --transition-type any --transition-step 100 --transition-fps 60"
 set = true
 
 [templates.vicinae]
