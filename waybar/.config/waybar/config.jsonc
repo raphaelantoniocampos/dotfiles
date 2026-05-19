@@ -8,14 +8,10 @@
 	"margin-left": 3,
 	"stylesheet": "$HOME/.config/waybar/style.css",
 	"modules-left": [
-		// "custom/suse_button",
 		"custom/arch_button",
 		"hyprland/workspaces",
 		"custom/separator",
-		// "sway/workspaces",
 		"hyprland/window"
-		// "sway/window",
-		// "sway/mode",
 	],
 	"modules-center": [
 		"mpris",
@@ -24,7 +20,6 @@
 		"custom/weather"
 	],
 	"modules-right": [
-		// "custom/mediaplayer",
 		"tray",
 		"cpu",
 		"memory",
@@ -137,14 +132,6 @@
 		"on-click": "swaync-client -t -sw",
 		"on-click-right": "swaync-client -d -sw",
 		"escape": true
-	},
-	"custom/mediaplayer": {
-		"format": "{}",
-		"tooltip": false,
-		"interval": 1,
-		"max-length": 30,
-		"exec": "$HOME/.config/waybar/custom_modules/mediaplayer.sh",
-		"on-click": "playerctl play-pause"
 	},
 	"tray": {
 		"icon-size": 13,
