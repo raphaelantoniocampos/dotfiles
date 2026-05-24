@@ -22,3 +22,4 @@ fi
 
 matugen image "$IMAGE" --prefer value
 notify-send "Changed Wallpaper" "Themes successfully updated para: $(basename "$IMAGE")"
+exit 0
