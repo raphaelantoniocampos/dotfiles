@@ -104,10 +104,10 @@
 		"format": "{icon}"
 	},
 	"hyprland/window": {
-		"format": "{class}",
+		"format": "{}",
 		"icon": true,
 		"icon-size": 15,
-		"max-length": 40
+		"expand": true
 	},
 	"sway/window": {
 		"format": "{app_id}",
