@@ -1,17 +1,19 @@
 #!/bin/sh
 
-# Check if we are dealing with the output (speaker) or input (microphone)
+SND_ON="/usr/share/sounds/freedesktop/stereo/device-added.oga"
+SND_OFF="/usr/share/sounds/freedesktop/stereo/device-removed.oga"
+
 TARGET=$1
 if [[ "$TARGET" == "sink" ]]; then
     NODE="@DEFAULT_AUDIO_SINK@"
     LABEL="Volume"
-    ICON_MUTED=""   # muted volume (Font Awesome or Nerd Font)
-    ICON_UNMUTED=" " # normal volume
+    ICON_MUTED=""
+    ICON_UNMUTED=" "
 else
     NODE="@DEFAULT_AUDIO_SOURCE@"
     LABEL="Mic"
-    ICON_MUTED=" "   # muted mic
-    ICON_UNMUTED="" # active mic
+    ICON_MUTED=" "
+    ICON_UNMUTED=""
 fi
 
 # toggle mute
@@ -22,6 +24,8 @@ STATE=$(wpctl get-volume "$NODE")
 
 if [[ "$STATE" == *"[MUTED]"* ]]; then
     notify-send -u critical -t 2000 "$LABEL: MUTED $ICON_MUTED"
+    paplay "$SND_OFF" >/dev/null 2>&1 &
 else
     notify-send -u low -t 2000 "$LABEL: UNMUTED $ICON_UNMUTED"
+    paplay "$SND_ON" >/dev/null 2>&1 &
 fi
