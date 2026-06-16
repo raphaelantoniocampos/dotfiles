@@ -19,9 +19,17 @@
   "left_widgets": [
     {
       "Komorebi": {
+        "workspaces": {
+          "enable": true,
+          "hide_empty_workspaces": true
+        }
+      }
+    },
+    {
+      "Komorebi": {
         "focused_window": {
           "enable": true,
-          "display":"IconAndTextOnSelected"
+          "display": "IconAndTextOnSelected"
         }
       }
     }
@@ -29,21 +37,13 @@
   "widget_spacing": 20,
   "center_widgets": [
     {
-      "Komorebi": {
-        "workspaces": {
-          "enable": true,
-          "hide_empty_workspaces": true
-        }
-      }
-    }
-  ],
-  "right_widgets": [
-    {
       "Date": {
         "enable": true,
         "format": "DateMonthYear"
       }
-    },
+    }
+  ],
+  "right_widgets": [
     {
       "Time": {
         "enable": true,

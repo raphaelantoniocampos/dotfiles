@@ -3,7 +3,7 @@
 # Reload whkd configuration
 # alt + o                 : taskkill /f /im whkd.exe && start /b whkd # if ehell is cmd
 # alt + w                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
-alt + r                 : komorebic reload-configuration
+alt + r                 : taskkill /f /im whkd.exe; taskkill /f /im komorebi.exe; taskkill /f /im komorebi-bar.exe; komorebic start --bar --whkd
 alt + i                 : komorebic toggle-shortcuts
 
 # App shortcuts - these require shell to be pwsh / powershell
@@ -11,7 +11,6 @@ alt + i                 : komorebic toggle-shortcuts
 # alt + b                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
 # alt + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
 alt + return            : start wt
-alt + shift + return    : wt wsl
 alt + b                 : start firefox
 alt + c                 : start calc
 alt + n                 : start notepad
