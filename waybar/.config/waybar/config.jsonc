@@ -104,7 +104,7 @@
 		"format": "{icon}"
 	},
 	"hyprland/window": {
-		"format": "{}",
+		"format": "{title}",
 		"icon": true,
 		"icon-size": 15,
 		"expand": true
