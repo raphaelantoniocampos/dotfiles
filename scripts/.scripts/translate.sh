@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIG="$HOME/.config/scripts/translate_langs.conf"
+CONFIG="$HOME/.scripts/translate_langs.conf"
 LANGS="pt-BR\nen\nes\nfr\nde\nit\nja\nzh"
 
 # creates default translate conf
