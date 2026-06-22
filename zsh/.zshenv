@@ -20,6 +20,7 @@ export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup 
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME"/claude
 
 mkdir -p "$XDG_DATA_HOME"/wineprefixes > /dev/null 2>&1
 mkdir -p "$XDG_CONFIG_HOME/pg" > /dev/null 2>&1

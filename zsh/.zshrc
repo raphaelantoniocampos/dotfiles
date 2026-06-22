@@ -40,7 +40,3 @@ alias v="nvim"
 # Old Suse alias
 # alias zup="sudo -E sh ~/.config/scripts/zup.sh"
 # alias zclean="sudo -E sh ~/.config/scripts/zclean.sh"
-
-
-# opencode
-export PATH=/home/raphaelac/.opencode/bin:$PATH
